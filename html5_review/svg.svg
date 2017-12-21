@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="200">-->
+    <!--<rect x="0" y="0" width="100%" height="100%" fill="none" stroke="black"/>-->
+    <!--<circle cx="100" cy="100" r="50" style="stroke: black; fill: red;"/>-->
+<!--</svg>-->
+
+<!--绘制基本图形-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1800" height="1200" preserveAspectRatio="xMaxYMax" style="overflow:visible;">
+    <!--绘制矩形-->
+    <rect x="5" y="5" rx="0" ry="0" width="50" height="30" stroke="black" stroke-width="4" fill="none"  />
+    <!--<rect x="0" y="0" rx="0" ry="0" width="1400" height="1200" stroke="black" stroke-width="4" fill="none"  />-->
+
+    <!--绘制圆形-->
+    <circle cx="72" cy="15" r="15" stroke="red" fill="transparent" />
+
+    <!--绘制椭圆-->
+    <ellipse rx="20" ry="15" cx="110" cy="15" stroke="rgb(12,43,105)" fill="none" />
+    <!--<ellipse rx="15" ry="15" cx="110" cy="15" stroke="rgb(12,43,105)" fill="none" />-->
+    <!--<ellipse rx="10" ry="15" cx="110" cy="15" stroke="rgb(12,43,105)" fill="none" />-->
+
+    <!--绘制直线-->
+    <line x1="130" y1="5" x2="180" y2="30" stroke="#22998e" fill="" />
+    <!--<line x="130" y="5" x3="180" y3="30" stroke="#22998e" fill="none" />-->
+
+    <!--绘制折线-->
+    <polyline points="5 40,15,40,15 45,25 45,25 40,35 40,35,45,45,45,45,40,55,40,55 45" stroke="blue" fill="" />
+
+    <!--绘制折线并闭合-->
+    <polygon points="60 50,70 40,80 50,90 60,100 50 110 40" stroke="green" />
+
+    <!--使用path绘制任意路径-->
+    <path d="M120 40 l60 -10 v10 m10 0 h5 v10" stroke="black" fill="" />
+    <!--<path d="M 10 315-->
+             <!--L 110 215-->
+             <!--A 30 50 0 0 1 162.55 162.45-->
+             <!--L 172.55 152.45-->
+             <!--A 30 50 -45 0 1 215.1 109.9-->
+             <!--L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5"/>-->
+    <!--圆弧所在x轴方向与水平方向夹角不同-->
+    <path id="my_path" d="M5 110 h10 a30 50 0 0 1 50 -15 h10 a30 50 -45 0 1 50 -15" stroke="black" fill="none" />
+    <!--圆弧大小角弧、顺逆方向参数不同-->
+    <path d="M5 150 a30 30 0 0 0 30 -30 h-30 z" stroke="black" fill="url(#gradient2)" />
+    <path d="m40 150 a30 30 0 0 1 30 -30 h-30 z" stroke="black" fill="url(#gradient2)" />
+    <path d="M75 150 a30 30 0 1 0 30 -30 h-30 z" stroke="black" fill="url(#gradient2)" />
+    <path d="M165 150 a30 30 0 1 1 30 -30 h-30 z" stroke="black" fill="green" />
+    <!--三次贝塞尔曲线-->
+    <path d="M5 190 C5 210 35 210 35 190" stroke="black" fill="none" />
+    <!--特殊版本三次贝塞尔曲线-->
+    <path d="M40 190 S80 210 80 190" stroke="black" fill="none" />
+    <path d="M85 190 C90 170 100 170 105 190 S120 210 125 190" stroke="black" fill="none" />
+    <path d="M130 190 S140 170 150 190 S180 210 190 190" stroke="black" fill="none" />
+    <path d="M130 190 L140 170 L150 190 L160 210 L180 210 L190 190" stroke="black" fill="none" />
+    <!--二次贝塞尔曲线-->
+    <path d="M5 240 Q25 260 35 240" stroke="black" fill="none" />
+    <path d="M5 240 L25 260 L35 240" stroke="black" fill="none" />
+    <!--特殊二次贝塞尔曲线-->
+    <path d="M40 240 T60 260" stroke="black" fill="none" />
+    <path d="M65 240 Q75 220 85 240 T105 240" stroke="black" fill="none" />
+    <path d="M110 240 T120 220 T140 240" stroke="black" fill="none" />
+    <path d="M110 240 L120 220 L130 200 L140 240" stroke="black" fill="none" />
+
+    <!--绘制文本-->
+    <line x1="100" y1="270" x2="100" y2="320" stroke="black" fill="none" />
+    <text x="100" y="270" dx="5 5" dy="-5 5" style="font-size:20px;stroke:blue;dominant-baseline:middle;text-anchor:start;">start</text>
+    <text x="100" y="290" text-anchor="end" dominant-baseline="mathematical" stroke="blue" font-variant="">end我们是</text>
+    <line x1="10" y1="290" x2="150" y2="290" stroke="black" />
+    <text x="100" y="310" text-anchor="middle" stroke="blue" style="text-decoration:line-through">middle</text>
+    <text x="5 25" y="340 330 320 340">测试x、y</text>
+    <text x="5 25" y="360 350 340 360" dx="5 0 5 5 5 5 5" dy="-5 5 15 -5 5">测试dx、dy</text>
+    <text x="5" y="375" rotate="0 180">测试rotate</text>
+    <text x="5" y="400" dx="40 40 20" rotate="" textLength="60" lengthAdjust="spacingAndGlyphs" style="font-size:20px;">测测测</text>
+    <line x1="45" y1="350" x2="45" y2="480" stroke="black" />
+    <line x1="95" y1="350" x2="95" y2="430" stroke="black" />
+    <line x1="55" y1="350" x2="55" y2="430" stroke="black" />
+    <line x1="105" y1="350" x2="105" y2="430" stroke="black" />
+    <line x1="85" y1="350" x2="85" y2="430" stroke="black" />
+    <text x="5" y="450" dx="10" font-size="20px">
+        <tspan text-anchor="start" x="105" y="450" dx="" textLength="40" lengthAdjust="spacingAndGlyphs" dominant-baseline="" rotate="">试测</tspan>
+        <tspan dx="" rotate="" text-anchor="middle" font-size="20px">米那</tspan>
+    </text>
+    <line x1="115" y1="420" x2="115" y2="490" stroke="black" />
+    <line x1="155" y1="420" x2="155" y2="490" stroke="black" />
+    <!--<line x1="186" y1="420" x2="186" y2="490" stroke="black" />-->
+    <!--<line x1="235" y1="420" x2="235" y2="490" stroke="black" />-->
+    <!--<line x1="125" y1="420" x2="125" y2="490" stroke="black" />-->
+    <text x="5" y="470" font-size="15px">看 看</text>
+    <line x1="24" y1="450" x2="24" y2="480" stroke="black" />
+
+    <defs><text id="example">This</text></defs>
+    <text x="100" y="490">
+        <tref xlink:href="#example" />
+    </text>
+    <text dx="50" dy="-10" text-anchor="">
+        <textPath xlink:href="#my_path">This text follows a curve.</textPath>
+    </text>
+
+    <!--绘制图片-->
+    <!--<image x="5" y="500" xlink:href="images/04.jpg" width="100" height="50" style="border:1px solid" />-->
+    <image x="5" y="500" xlink:href="svg1.svg" viewBox="0,0,100,150" preserveAspectRatio="xMinYMin slice" width="100" height="50" />
+    <rect x="5" y="500" width="100" height="50" stroke="black" fill="none" />
+    <!--<line x1="0" y1="506.25" x2="155" y2="506.25" stroke="black" />-->
+
+    <svg x="110" y="500" width="50" height="50" viewBox="0,0,100,50" preserveAspectRatio="xMidYMin meet">
+        <rect x="0" y="0" width="100%" height="100%" fill="none" stroke="black"/>
+        <circle cx="25" cy="25" r="25" style="stroke: black; fill: red;"/>
+    </svg>
+    <rect x="110" y="500" width="50" height="50" stroke="black" fill="none" />
+
+    <!--<text x="55 55 30" y="470 470 470" dx="30" dy="5" text-anchor="end">测试呀有</text>-->
+    <!--<line x1="85" y1="450" x2="85" y2="490" stroke="black" />-->
+    <!--<line x1="55" y1="450" x2="55" y2="490" stroke="black" />-->
+    <!--<line x1="30" y1="450" x2="30" y2="490" stroke="black" />-->
+
+    <!--测试填充规则-->
+    <path d="M200 40 a40 40 0 1 1 80 0 a40 40 0 1 1 -80 0 m20 0 a20 20 0 1 1 40 0 a20 20 0 1 1 -40 0" fill-rule="evenodd" stroke="black" />
+    <path d="M300 40 a40 40 0 1 1 80 0 a40 40 0 1 1 -80 0 m20 0 a20 20 0 1 0 40 0 a20 20 0 1 0 -40 0" fill-rule="nonzero" stroke="black" />
+    <path d="M280 100 a40 40 0 1 1 -80 0 a40 40 0 1 1 80 0 h100 a40 40 0 1 1 -80 0 a40 40 0 0 1 40 -40" fill-rule="nonzero" stroke="green" />
+    <path d="M300 240 h-100 l50 -90 l50 90 M250 230 l25 -30 h-50 l25 30" fill-rule="nonzero" fill-opacity="0.5" stroke="red" />
+    <line x1="200" y1="250" x2="250" y2="250" stroke-width="10" stroke="black" stroke-linecap="butt" stroke-opacity="0.5" />
+    <line x1="200" y1="270" x2="250" y2="270" stroke-width="10" stroke="black" stroke-linecap="round" />
+    <line x1="200" y1="290" x2="250" y2="290" stroke-width="10" stroke="black" stroke-linecap="square" />
+    <polyline points="300 150,360 160,300 170" stroke="black" stroke-width="10" stroke-linejoin="miter" stroke-miterlimit="6.083" fill="none" />
+    <polyline points="300 200,360 220,300 240" stroke="black" stroke-width="10" stroke-linejoin="round" fill="none" />
+    <polyline points="300 250,360 270,300 290" stroke="black" stroke-width="10" stroke-linejoin="bevel" fill="none" />
+    <line x1="200" y1="300" x2="400" y2="300" stroke="black" stroke-dasharray="5,10,15" stroke-dashoffset="100" />
+
+    <!--测试线性渐变-->
+    <style type="text/css"><![CDATA[
+        #rect1{
+            stroke: url(#gradient1);
+            fill:url(#gradient2);
+            //fill:none;
+        }
+        #rect1:hover{
+            //fill:green;
+        }
+        .stop1{
+            stop-color:red;
+        }
+        .stop2{
+            stop-color:rgba(0,0,0,0.5);
+            stop-opacity:0.5;
+        }
+        .stop3{
+            stop-color:blue;
+        }
+    ]]>
+    </style>
+    <defs>
+        <linearGradient id="gradient1">
+            <stop class="stop1" offset="0" />
+            <stop class="stop2" offset="0.5" />
+            <stop class="stop3" offset="1" />
+        </linearGradient>
+        <!--<linearGradient x1="0" y1="0" x2="1" y2="0.25" id="gradient2" gradientUnits="" spreadMethod="repeat" xlink:href="#gradient1">-->
+        <linearGradient x1="0" y1="0" x2="0.5" y2="1" id="gradient2" gradientUnits="objectBoundingBox" spreadMethod="repeat" xlink:href="#gradient1">
+            <!--重新定义会覆盖-->
+            <!--<stop offset="0.5" stop-color="green" />-->
+        </linearGradient>
+    </defs>
+    <!--<rect id="rect1" x="200" y="310" width="200" height="100" />-->
+    <ellipse cx="300" cy="360" rx="100" ry="50" fill="url(#gradient2)" />
+    <!--<ellipse cx="300" cy="360" rx="100" ry="50" fill="none" stroke="black" />-->
+    <line x1="200" y1="410" x2="250" y2="310" stroke="black" />
+
+    <!--测试径向渐变-->
+    <defs>
+        <radialGradient id="gradient3" cx="0.25" cy="0.25" r="0.5" fx="0.5" fy="0.5" spreadMethod="repeat">
+            <stop class="stop1" offset="0" />
+            <stop class="stop2" offset="0.5" />
+            <stop class="stop3" offset="1" />
+        </radialGradient>
+    </defs>
+    <rect x="200" y="420" width="200" height="100" stroke="black" fill="url(#gradient3)" />
+    <!--<ellipse cx="300" cy="470" rx="100" ry="50" fill="url(#gradient3)" />-->
+    <!--<ellipse cx="300" cy="470" rx="50" ry="25" stroke="black" fill="none" />-->
+
+    <!--测试纹理填充-->
+    <defs>
+        <linearGradient id="gradient4">
+            <stop offset="0" stop-color="orange" />
+            <stop offset="1" stop-color="red" />
+        </linearGradient>
+        <linearGradient id="gradient5" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="white" />
+            <stop offset="1" stop-color="gray" />
+        </linearGradient>
+        <pattern id="Pattern" x="400" y="5" width="50" height="50" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+            <rect x="0" y="0" width="25" height="25" fill="url(#gradient4)"/>
+            <circle cx="25" cy="25" r="20" fill="url(#gradient5)" fill-opacity="0.5"/>
+        </pattern>
+    </defs>
+    <rect fill="url(#Pattern)" stroke="black" x="400" y="5" width="200" height="200"/>
+    <!--<line x1="415" y1="0" x2="415" y2="220" stroke="black" />-->
+    <!--<line x1="490" y1="0" x2="490" y2="220" stroke="black" />-->
+
+    <!--测试视窗变换-->
+    <svg x="400" y="210" width="100" height="100" viewBox="50,50,100,100">
+        <rect x="50" y="50" width="100" height="100" fill="green" />
+        <rect x="50" y="50" width="50" height="50" fill="blue" />
+    </svg>
+    <svg x="500" y="210" width="100" height="100" viewBox="0,0,50,100" preserveAspectRatio="xMinYMax meet">
+        <rect x="0" y="0" width="100%" height="100%" fill="green" />
+        <!--<rect x="0" y="0" width="50" height="50" fill="blue" />-->
+    </svg>
+    <svg x="600" y="210" width="100" height="100" viewBox="0,0,200,200" preserveAspectRatio="xMinYMin slice">
+        <rect x="0" y="0" width="100" height="100" fill="green" />
+        <rect x="0" y="0" width="50" height="50" fill="blue" />
+    </svg>
+
+    <!--测试用户坐标系的变换-->
+    <!--<rect x="0" y="0" width="100" height="50" transform="translate(410,320)" stroke="black" fill="none" />-->
+    <rect x="0" y="0" width="100" height="50" transform="matrix(1,0,0,1,410,320)" stroke="black" fill="none" />
+    <!--<rect x="0" y="0" width="100" height="50"  transform="rotate(45) rotate(30)" stroke="black" fill="none" />-->
+    <rect x="0" y="0" width="100" height="50"  transform="matrix(0.71,0.71,-0.71,0.71,0,0)" stroke="black" fill="none" />
+    <rect x="0" y="0" width="100" height="50"  transform="scale(2,2)" stroke="black" fill="none" />
+    <!--<rect x="0" y="0" width="100" height="50"  transform="matrix(2,0,0,2,0,0) matrix(4,0,0,4,0,0)" stroke="black" fill="none" />-->
+    <!--<text x="400" y="400" stroke="black" transform="scale(0.5,0.5)">我是</text>-->
+    <text x="400" y="400" stroke="black" transform="matrix(0.5,0,0,0.5,0,0)">我是</text>
+    <!--<circle cx="460" cy="345" r="25" transform="skewY(5)" stroke="black" />-->
+    <circle cx="460" cy="345" r="25" transform="matrix()" stroke="black" />
+    <rect x="410" y="320" width="100" height="50" transform="skewY(5)" stroke="black" fill="none" />
+
+    <!--测试组合元素g-->
+    <desc>two rectangles,one circle</desc>
+    <g id="g1" stroke="red" fill="blue" transform="translate(420,420)">
+        <g id="g2" fill="green">
+            <rect x="0" y="0" width="75" height="50" />
+            <circle cx="130" cy="25" r="25" />
+        </g>
+        <rect x="160" y="0" width="20" height="50" />
+    </g>
+
+    <!--测试模板元素symbol-->
+    <desc>one rectangle, one circle</desc>
+    <symbol id="s1" fill="green" x="0" y="0" transform="translate(100,0)" viewBox="0,0,200,60" preserveAspectRatio="xMinYMin meet">
+        <!--<g transform="translate(420,480)">-->
+            <rect width="100%" height="100%" fill="red" />
+            <rect x="0" y="0" width="60" height="50" />
+            <circle cx="90" cy="25" r="25" />
+        <!--</g>-->
+    </symbol>
+    <use xlink:href="#s1" x="420" y="480" target="_blank" rel="nofollow" />
+
+    <!--测试定义元素defs-->
+    <desc>Example Use01 - Simple case of 'use' on a 'rect'</desc>
+    <defs>
+        <rect id="rect2" width="50" height="50" fill="green" />
+    </defs>
+    <use xlink:href="#rect2" x="540" y="480" />
+
+    <!--测试use元素-->
+    <rect id="rect3" x="0" y="0" width="50" height="50" />
+    <use xlink:href="#rect3" x="610" y="5" width="50" height="10" fill="red" /> <!--transform="translate(180,0)"-->
+    <use xlink:href="#s1" x="665" y="5" fill="red" width="100" height="30" />
+    <svg id="svg1" width="100" height="25" viewBox="0,0,50,25" preserveAspectRatio="xMinYMin meet">
+        <rect width="100%" height="100%" fill="blue" />
+        <circle cx="25" cy="25" r="25" fill="pink" />
+    </svg>
+    <use x="770" y="5" xlink:href="#svg1" />
+    <g id="g3" transform="translate(610,60)" width="50" height="25">
+        <rect x="0" y="0" width="50" height="50" fill="orange" />
+    </g>
+    <use x="55" y="0" width="50" height="25" xlink:href="#g3" />
+    <svg x="0" y="0" transform="translate(720,60)">
+        <rect width="50" height="50" fill="blue" />
+    </svg>
+    <image x="0" y="0" transform="translate(720,60)" width="100" height="50" xlink:href="svg1.svg" />
+    <defs>
+        <rect x="610" y="115" id="rect4" width="50" height="50" fill="green" />
+    </defs>
+    <use xlink:href="#rect4" />
+
+    <!--测试marker元素-->
+    <defs>
+        <marker id="Triangle" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="3" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10z " fill="none" stroke="black" />
+        </marker>
+    </defs>
+    <desc>Placing an arrowhead at the end of a path.</desc>
+    <path d="M 665 130 L 800 130 L750 180 " fill="none" stroke="red" stroke-width="20" marker-end="url(#Triangle)"  />
+
+    <!--测试clipPath元素-->
+    <defs>
+        <clipPath id="clip1">
+            <ellipse cx="860" cy="135" rx="40" ry="20" fill="none" stroke="black" clip-rule="evenodd" />
+            <!--<clipPath id="clip4">-->
+                <rect x="825" y="120" width="100" height="50" clip-rule="evenodd" />
+            <!--</clipPath>-->
+        </clipPath>
+        <clipPath id="clip2" clipPathUnits="objectBoundingBox">
+            <rect x="0.2" y="0" width="0.6" height="1" fill="none" stroke="black" />
+        </clipPath>
+        <clipPath id="clip3">
+            <rect x="825" y="120" width="100" height="50" clip-rule="evenodd" />
+        </clipPath>
+    </defs>
+    <!--<g clip-path="url(#clip3)">-->
+        <rect x="820" y="115" width="80" height="40" fill="pink" clip-path="url(#clip1)" />
+    <!--</g>-->
+
+    <!--测试mask元素-->
+    <defs>
+        <linearGradient id="Gradient" gradientUnits="userSpaceOnUse" x1="660" y1="0" x2="860" y2="0">
+            <stop offset="0" stop-color="white" stop-opacity="0" />
+            <stop offset="1" stop-color="white" stop-opacity="1" />
+        </linearGradient>
+        <mask id="m1" x="660" y="270" width="200" height="50" maskUnits="userSpaceOnUse">
+            <rect x="660" y="270" width="200" height="50" fill="url(#Gradient)" />
+        </mask>
+        <text id="Text" x="760" y="310" font-family="Verdana" text-anchor="middle" >
+            Masked text
+        </text>
+    </defs>
+    <!--<rect x="660" y="270" width="200" height="50" fill="url(#Gradient)" />-->
+    <g mask="url(#m1)">
+        <rect x="660" y="270" width="200" height="50" fill="#FF8080" />
+        <use xlink:href="#Text" fill="blue" />
+    </g>
+
+    <!--测试filter-->
+    <!--<defs>-->
+        <!--<filter id="MyFilter" filterUnits="userSpaceOnUse" x="0" y="0" width="200" height="120">-->
+            <!--<feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>-->
+            <!--<feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>-->
+            <!--<feSpecularLighting in="blur" surfaceScale="5" specularConstant=".75"-->
+                                <!--specularExponent="20" lighting-color="#bbbbbb"-->
+                                <!--result="specOut">-->
+                <!--<fePointLight x="-5000" y="-10000" z="20000"/>-->
+            <!--</feSpecularLighting>-->
+            <!--<feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>-->
+            <!--<feComposite in="SourceGraphic" in2="specOut" operator="arithmetic"-->
+                         <!--k1="0" k2="1" k3="1" k4="0" result="litPaint"/>-->
+            <!--<feMerge>-->
+                <!--<feMergeNode in="offsetBlur"/>-->
+                <!--<feMergeNode in="litPaint"/>-->
+            <!--</feMerge>-->
+        <!--</filter>-->
+    <!--</defs>-->
+    <!--<rect x="1" y="1" width="198" height="118" fill="#888888" stroke="blue" />-->
+    <!--<g filter="url(#MyFilter)" >-->
+        <!--<g>-->
+            <!--<path fill="none" stroke="#D90000" stroke-width="10"-->
+                  <!--d="M50,90 C0,90 0,30 50,30 L150,30 C200,30 200,90 150,90 z" />-->
+            <!--<path fill="#D90000"-->
+                  <!--d="M60,80 C30,80 30,40 60,40 L140,40 C170,40 170,80 140,80 z" />-->
+            <!--<g fill="#FFFFFF" stroke="black" font-size="45" font-family="Verdana" >-->
+                <!--<text x="52" y="76">SVG</text>-->
+            <!--</g>-->
+        <!--</g>-->
+    <!--</g>-->
+
+    <defs>
+        <filter id="ShiftBGAndBlur"
+                filterUnits="userSpaceOnUse" x="0" y="0" width="1200" height="400">
+            <desc>这个滤镜舍弃了源图片，而是使用背景截图</desc>
+            <feOffset in="BackgroundImage" dx="0" dy="125" />
+            <feGaussianBlur stdDeviation="8" />
+        </filter>
+        <filter id="ShiftBGAndBlur_WithSourceGraphic"
+                filterUnits="userSpaceOnUse" x="0" y="0" width="1200" height="400">
+            <desc>这个滤镜特效同时融合了背景截图和当前元素的图片</desc>
+            <feOffset in="BackgroundImage" dx="0" dy="125" />
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <g transform="translate(0,0)">
+        <desc>第一幅是没加滤镜的效果</desc>
+        <rect x="25" y="25" width="100" height="100" fill="red"/>
+        <g opacity=".5">
+            <circle cx="125" cy="75" r="45" fill="green"/>
+            <polygon points="160,25 160,125 240,75" fill="blue"/>
+        </g>
+        <rect x="5" y="5" width="260" height="260" fill="none" stroke="blue"/>
+    </g>
+
+    <g enable-background="new" transform="translate(270,0)">
+        <desc>第二幅是在容器上使用滤镜效果</desc>
+        <rect x="25" y="25" width="100" height="100" fill="red"/>
+        <g opacity=".5">
+            <circle cx="125" cy="75" r="45" fill="green"/>
+            <polygon points="160,25 160,125 240,75" fill="blue"/>
+        </g>
+        <g filter="url(#ShiftBGAndBlur)"/>
+        <rect x="5" y="5" width="260" height="260" fill="none" stroke="blue"/>
+    </g>
+
+    <g enable-background="new" transform="translate(540,0)">
+        <desc>第三幅是在内部容器上使用滤镜效果，注意与第二幅图的不同</desc>
+        <rect x="25" y="25" width="100" height="100" fill="red"/>
+        <g filter="url(#ShiftBGAndBlur)" opacity=".5">
+            <circle cx="125" cy="75" r="45" fill="green"/>
+            <polygon points="160,25 160,125 240,75" fill="blue"/>
+        </g>
+        <rect x="5" y="5" width="260" height="260" fill="none" stroke="blue"/>
+    </g>
+
+    <!--<g enable-background="new" transform="translate(810,0)">-->
+        <!--<desc>第四幅是在图形元素上使用滤镜效果</desc>-->
+        <!--<rect x="25" y="25" width="100" height="100" fill="red"/>-->
+        <!--<g opacity=".5">-->
+            <!--<circle cx="125" cy="75" r="45" fill="green"/>-->
+            <!--<polygon points="160,25 160,125 240,75" fill="blue"-->
+                     <!--filter="url(#ShiftBGAndBlur)"/>-->
+        <!--</g>-->
+        <!--<rect x="5" y="5" width="260" height="260" fill="none" stroke="blue"/>-->
+    <!--</g>-->
+
+    <!--<g enable-background="new" transform="translate(1080,0)">-->
+        <!--<desc>第五幅是在图形元素上使用不同的滤镜效果</desc>-->
+        <!--<rect x="25" y="25" width="100" height="100" fill="red"/>-->
+        <!--<g opacity=".5">-->
+            <!--<circle cx="125" cy="75" r="45" fill="green"/>-->
+            <!--<polygon points="160,25 160,125 240,75" fill="blue"-->
+                     <!--filter="url(#ShiftBGAndBlur_WithSourceGraphic)"/>-->
+        <!--</g>-->
+        <!--<rect x="5" y="5" width="260" height="260" fill="none" stroke="blue"/>-->
+    <!--</g>-->
+</svg>

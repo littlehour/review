@@ -1,0 +1,1029 @@
+1、以下的 HTML 4.01 元素在HTML5中已经被删除:
+<acronym>
+<applet>
+<basefont>
+<big>
+<center>
+<dir>
+<font>
+<frame>
+<frameset>
+<noframes>
+<strike>
+
+
+2、IE9 以下版本浏览器兼容HTML5的方法，使用百度静态资源的html5shiv包：
+<!--[if lt IE9]>      //有网的时候查一下这个的意思？？？
+<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+针对IE浏览器html5shiv 是比较好的解决方案。html5shiv主要解决HTML5提出的新的元素不被IE6-8识别，这些新元素不能作为父节点包裹子元素，并且不能应用CSS样式。
+html5shiv.js 引用代码必须放在  <head> 元素中，因为 IE 浏览器在解析 HTML5 新元素时需要先加载该文件。（告诉浏览器这些元素该如何显示）
+
+载入后，初始化新标签的CSS：
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}  //如何编写专属于自己网站的reset.css？？？
+
+8个新增的块级语义元素：
+header, section, footer, aside, nav, main, article, figure {
+   display: block;
+}
+
+
+3、canvas使用：
+canvas默认宽300px 高150px 默认背景为透明色
+canvas宽和高使用样式表和style属性设置与在元素中用width和height属性设置显示结果不一样，使用样式表和style属性设置有点小问题，最好使用width和height属性设置
+
+在支持canvas的浏览器，canvas里面的东西是不会显示的，但是在不支持的情况下，会赤裸裸的显示出来，于是，我们可以把它作为提示用语，用来告诉不支持的浏览器，该换换了
+<canvas width="400" height="400" id="canvas">
+        <span>亲，您的浏览器不支持canvas，换个浏览器试试吧！</span>
+</canvas>
+
+如果要支持ie8及以下浏览器，可以试试explorercanvas开源项目，里面有一个excanvas.js。
+
+图形绘制时，绘制6像素的地方向左绘制0.5像素，向右绘制0.5像素，但是浏览器实际上是不存在半个像素的，所以浏览器会帮我们补上个半个像素，就成了2个像素了，如果要做成1像素边框，只需将坐标左移或右移半个像素，即0.5px，如果要精确绘图，须知这一点细节！
+
+无法使用css来给canvas中绘制的图形（包括文字）设置样式，canvas的上下文环境会有相关样式的属性，提供设置。
+
+canvas元素的getContext('2d')方法返回一个绘制平面图形的上下文环境对象，这个对象有一些绘制平面图形的方法和属性，一些方法的调用会给其属性设置值，然后一些方法的调用会用到这些值。
+
+使用fill()方法时，如果绘制的图形不是封闭的，会连接终点和起点，构成封闭图形（连接起点和终点后可能构成不止一个封闭图形），再进行填充，中间如果改变了起点，最终的终点会和改变的起点
+相连，之前的终点会和之前的起点相连，封闭图形如果是直线的会去掉。填充方式使用的是nonzero（详情见SVG的fill-rule属性）。
+
+canvas本身是有默认宽高的（宽300，高150），如果在css中设置宽高，会让canvas认为，现在canvas的宽度倍自动缩放了，缩放比例为css设置的宽度/300，高的也一样，那么就可以理解了，
+现在css设置的宽度是300，高的是300，那么就会缩放宽=300/300，高缩放=300/150，高的自然就被拉高了一倍，所以这才是必须在canvas的属性上设置宽高的原因。
+
+绘制线：
+    moveTo(x,y);//移动到(x,y)坐标点（我的想法：会有一个对象，来保存当前绘制所在起点，这个方法就是用来设置这个值的）
+    lineTo(x,y);//连接到坐标点(x,y)（我的想法：会有一个与画直线有关的对象，这个方法会实例化一个直线对象，来保存这条直线图形的像素）（我的想法：x,y会改变绘制起点）
+    stroke();//画线，绘制，描边（我的想法：这个方法会遍历所有的图形对象，来绘制相应的图形，fill方法则是填充图形）
+
+绘制矩形：
+    rect(x,y,w,h)   在x,y坐标点绘制一个矩形，宽高为w,h，此方法只是绘制路径，必须用黑白双煞才能显示(stroke,fill)（我的想法：x,y会改变绘制起点,绘制起点终点均为(x,y)）
+    fillRect(x,y,w,h)  在x,y坐标点绘制一个填充矩形，宽高为w,h（我的想法：不会改变绘制起点）
+    strokeRect(x,y,w,h)  在x,y坐标点绘制一个描边矩形，宽高为w,h（我的想法：不会改变绘制起点）
+    rect()不能单独使用，必须借助fill(),stroke()方法
+    rect()+stroke() 组合的效果和strokeRect()一致，可等价
+    rect()+fill() 组合的效果和fillRect()一致，可等价
+
+绘制文字：
+    fillText(text,x,y,[maxWidth]);  顾名思义，这是填充文字
+    strokeText(text,x,y,[maxWidth]); 顾名思义，这是描边文字,描边文字并不是加粗的，而是对文字进行描边了，文字小时，就挤到一起了,就有可能看起来比fillText粗
+    参数：
+    text ：需要绘制的文字
+    x,y: 文字绘制的起始坐标
+    [maxWidth] ： 文字的最大宽度，选填
+
+    textBaseline（各浏览器的支持不太一样）
+    参数：
+    alphabetic ： 默认。文本基线是普通的字母基线。
+    top ： 文本基线是 em 方框的顶端。
+    hanging ： 文本基线是悬挂基线。
+    middle ：文本基线是 em 方框的正中。
+    ideographic ： 文本基线是表意基线。
+    bottom ：文本基线是 em 方框的底端。
+
+    font参数：font-style font-variant font-weight font-size font-family，分别表示的意思是字体样式（如倾斜），是否大小写，字体粗细，字体大小，字体.
+    (这只是部分的font属性，其用法与css相同，部分参数是必填的)
+
+    textAlign参数：left(默认，文本左对齐),right（文本右对齐）,center（文本在指定位置居中）,start（文本开始位置）,end（文本结束位置）
+
+    字体颜色通过fillStyle或strokeStyle设置
+
+    measureText(text)  返回文本的宽度，单位为像素，用法是：
+    measureText(text).width
+    注意：此方法只能获取到宽度，不能获取到高度，跟我们一般获取宽高的方法有点不一样，它可以在文本输出前计算出其宽度，故如果想在文本输出前知道其宽度，这个方法正好有用武之地。
+
+绘制圆及其相关的图形:
+    arc(x,y,r,sAngle,eAngle,counterclockwise)
+    参数:
+    x,y:表示坐标点表示圆心坐标
+    r:表示半径
+    sAngle:表示开始弧度（不管最后一个参数是true或是false，都从最右端按顺时针方向开始计算，得到绘制弧的起点）
+    eAngle:表示结束弧度（不管最后一个参数是true或是false，都从最右端按顺时针方向开始计算，得到绘制弧的终点）
+    counterclockwise:表示顺时针还是逆时针方式，默认为顺时针false，逆时针为true（按顺时针或逆时针方向画弧）
+
+    arcTo(x1,y1,x2,y2,r) 创建两个切线之间的弧/曲线，两条切线为起点到(x1,y1),(x1,y1)到(x2,y2)，绘制弧的半径为r，这段弧的起点和终点分别为两切线切点，之前的起点会和弧的起点相连
+
+绘制贝塞尔曲线：
+    quadraticCurveTo(cpx,cpy,x,y) 二次贝塞尔曲线
+    参数：cpx,cpy 表示第一个控制点，x,y 表示结束点
+    加上起点，就是3个点控制一条曲线。
+    二次贝塞尔曲线的大致规律：从起始点出发，曲线越靠近控制点，曲线越陡，然后慢慢远离控制点，曲线随即越来越平缓，直到结束点，并且此曲线会与起始点和结束点相切。
+    这个控制点是不是有点像一个磁铁一样，吸引着这条曲线的运动。当然，曲线弯曲的程度是多少是有公式的，但是我们不需要关心，只需要记住一点就够了：曲线靠近控制点，曲线越陡，远离控制点，曲线越平。
+
+    bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x,y)  三次贝塞尔曲线
+    参数：cpx1,cpy1表示第一个控制点，cpx2,cpy2表示第二个控制点  x,y表示结束点
+    包括起始点一起4个点来决定一条曲线，这个跟二次贝塞尔曲线的原理是一样一样的，只是多一个控制点，其精髓还是那句话：曲线靠近控制点，曲线越陡，远离控制点，曲线越平。
+    曲线从起始点开始，下方有一个控制点，则曲线越陡，到第二个控制点与曲线的切线的点的位置，因为受2个控制点的影响，曲线开始慢慢变平缓，然后继续受2个控制点的作用，
+    其中第二个控制点的作用越来越大，直到第一个控制点与曲线的切线点位置，曲线继续受到第二个控制点的作用，反向受力，到结束点。
+
+绘制图片：
+    drawImage(img,sx_or_dx,sy_or_dy,sw,sh,dx,dy,dw,dh) 在画布上定位一张图片
+    参数：
+    img：表示引入的图片对象(img在这里表示的是图片的对象而不是图片的路径)(img参数可以是img元素对象、video元素对象、canvas元素对象)
+    sx,sy：表示剪切原图片的起始坐标
+    sw,sh：表示剪切的宽度和高度
+    dx,dy：表示在画布绘制的坐标
+    dw,dh：表示绘制图片的大小
+    有三种用法:
+    drawImage(img,dx,dy)
+    drawImage(img,dx,dy,dw,dh)
+    drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh)
+
+    drawImage(video,x,y,w,h) 在画布上定位视频，并规定视频的宽高
+    参数：
+    video：表示引入的视频对象
+    x,y：表示视频引入的坐标
+    w,h：表示规定视频的大小
+
+    getImageData(x,y,w,h) 拷贝画布指定矩形的像素数据
+    参数：x,y表示开始复制的左上角的坐标  w,h表示将要复制的区域大小
+
+    createImageData(w,h)  表示创建一个规定尺寸的ImageData对象
+    createImageData(ImageData)  表示创建与指定的另一个 ImageData 对象尺寸相同的新 ImageData 对象（不会复制图像数据）
+
+    putImageData(imageData,dx,dy,dirtyX,dirtyY,dirtyWidth,dirtyHeight)  方法将图像数据（从指定的 ImageData 对象）放回画布上
+    参数：
+    imageData：一个imageData对象（包含像素值的数组）
+    dx,dy：在画布上放置image data的坐标
+    dirtyX,dirtyY：从image data的(x,y)位置开始绘制，可选，默认为0
+    dirtyWidth,dirtyHeight ：绘制image data的宽和高，可选，默认为image data的宽和高
+    有两种用法:
+    putImageData(imageData,dx,dy)
+    putImageData(imageData,dx,dy,dirtyX,dirtyY,dirtyWidth,dirtyHeight)
+
+canvas的其他属性和方法：
+    beginPath()：开始路径。开始一个新的绘制路径的上下文环境，决定了stroke()和fill()绘制路径的环境，其他属性的设置仍然是全局的。通常与closePath()一起使用
+    closePath()：闭合路径。创建从当前点到开始点的路径，相当于lineTo(x,y),(x,y)为开始点的坐标，moveTo()方法可能改变开始点的位置。通常与beginPath()一起使用
+    先开始路径，里面写你要绘制的内容，然后结束路径，相当于是一个盒子已经封箱了，这样做有个好处就是可以避免绘制过程中的样式污染
+
+    shadowOffsetX  阴影距形状的水平距离
+    shadowOffsetY  阴影距形状的垂直距离
+    shadowBlur  阴影的模糊级别，这里是高斯模糊，默认值为0
+    shadowColor  阴影的颜色
+    如果给css3的text-shadow不设阴影颜色，它的阴影颜色会默认跟字体颜色一样，但是如果不设shadowColor ；则阴影是出不来的。
+
+    lineWidth：设置或返回当前的线条宽度
+
+    lineJoin：两线交叉的拐角类型
+    参数：
+    miter ：尖角 默认
+    bevel ：斜角
+    round ：圆角
+    配合折线效果，还有一个属性：
+    miterLimit 规定最大斜接长度。只有当 lineJoin 属性为 "miter" 时，miterLimit 才有效。边角的角度越小，斜接长度就会越大。为了避免斜接长度过长，我们可以使用 miterLimit 属性。
+    如果斜接长度(我的想法：斜接长度/lineWidth)超过 miterLimit 的值，边角会以 lineJoin 的 "bevel" 类型来显示。
+
+    lineCap: 设置或返回线条的结束端点样式  注意，这是设置线条的哦！
+    参数：
+    butt 默认。向线条的每个末端添加平直的边缘。
+    round  向线条的每个末端添加圆形线帽。
+    square 向线条的每个末端添加正方形线帽。(多出的一部分的长度就是线条lineWidth的一半)
+
+    渐变：
+    createLinearGradient(x1,y1,x2,y2)   创建线性渐变
+    参数：x1,y1 表示渐变起始点。x2,y2 表示渐变结束点。(x1,y1)与(x2,y2)的直线方向为渐变方向。
+    createRadialGradient(x1,y1,r1,x2,y2,r2)  创建径向渐变
+    参数：x1,y1 表示渐变开始圆心坐标。r1表示渐变开始圆的半径。x2,y2 表示渐变结束圆心坐标。r2表示渐变结束圆的半径。
+    gradient.addColorStop(stop,color)  规定gradient 对象中的颜色和位置
+    参数：stop 取值0-1之间，表示渐变中开始与结束之间的位置 。color表示渐变颜色
+
+    globalAlpha = num 参数：num取值0-1之间。设置或返回绘图的当前透明值
+
+    save():会将目前已经设置的决定如何绘图的全局属性保存，然后就可以对这些属性进行修改了，如果还是想使用之前设置的所有的属性，则可以使用restore方法返回。
+    restore():返回之前保存过的属性。
+
+    clearRect(x,y,w,h):在给定的矩形内清除指定的像素。
+    参数：x,y 表示要清除的矩形的左上角的坐标， w,h 表示要清除的矩形的宽高。
+
+    变换：
+    创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有绘制都按描述直接绘制，为绘制上下文应用变换，会改变默认的变换矩阵，每次应用变换都是基于现在的变换矩阵，
+    而不是默认的变换矩阵。
+    scale(scaleX,scaleY) 缩放当前绘图，相当于将现在的坐标系，x和y缩放相应倍数，原来(x,y)可以表示到(300,200)的话，放大2倍后，现在就只能表示到(150,100),即：现在1px为之前的
+    2px。会改变当前的变换矩阵。
+    rotate(angle) 旋转当前绘图。参数：angle表示旋转角度，这里需要填写弧度。会改变当前的变换矩阵。
+    translate(x,y) 默认原点是画布左上角，用此方法会将原点改成（x,y）。会改变当前的变换矩阵。
+    transform(a,b,c,d,e,f) 替换当前的变换矩阵
+    参数：
+    a：水平缩放绘图
+    b：水平倾斜绘图
+    c：垂直倾斜绘图
+    d：垂直缩放绘图
+    e：水平移动绘图
+    f：垂直移动绘图
+    scale(scaleX,scaleY)=transform(scaleX,0,0,scaleY,0,0)
+    rotate(angle)=transform(Math.cos(angle),Math.sin(angle),-Math.sin(angle),Math.cos(angle),0,0)(angle为弧度)
+    translate(x,y)=transform(1,0,0,1,x,y)
+    skew(angleX,angleY)=transform(1,Math.tan(angleY),Math.tan(angleX),1,0,0)(虽然canvas没有skew方法，但是transform依然可以做出来,angleX表示X方向的倾斜角,angleY表示Y方向的倾斜角,均为弧度)
+    setTransform(a,b,c,d,e,f) 将当前的变换矩阵重置为单位矩阵后，在调用transform(a,b,c,d,e,f)。
+
+    clip() 从原始画布中剪切任意形状和尺寸(和fill、stroke遍历要绘制的图形一样，clip会遍历要裁剪的图形，若之前未绘制图形，或绘制的图形构成不了区域，则剪切的区域为0),一旦剪切了某个
+    区域，则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域），之前的绘图不受影响。您也可以在使用clip()方法前通过使用save()方法对当前画布区域进行保存，并在以后的
+    任意时间对其进行恢复（通过restore() 方法）。
+
+    createPattern(image,"repeat|repeat-x|repeat-y|no-repeat")  在指定的方向上重复指定的元素
+    参数： image指使用的图片，画布或者是视频对象 第二个参数表示重复的方式
+
+    gloableCompositeOperation：设置或返回新图像如何绘制到已有的图像上（属性值效果详情见https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation）
+
+    setLineDash(arr)  使用stroke绘制路径时，线条的样式，没有参数，即为实线
+    参数：arr 表示的是一个数组，数组里面的项可以有多个，依次表示线的宽度，线与线之间的距离，然后依此规律来描边路径。
+    getLineDash()  返回一个数组，数组里面的项为lineDash一个周期的线宽、线与线之间距离的值
+
+    isPointInPath(x,y)  指定点是否在路径区域中，如果在则返回true，不在则返回false
+    isPointInStroke(x,y)  指定点是否在路径区域的边上，如果在则返回true，不在则返回false
+
+
+4、SVG(Scalable Vector Graphics可伸缩矢量图形)使用：
+IE9之前的版本，需要装SVG的插件来支持SVG的使用
+
+位图和矢量图：
+    位图：以前，浏览器中显示的图形，例如jpeg、gif等，都是位图，这些图像格式是基于光栅的。在光栅图像中，图像文件定义了图像中每个像素的颜色值。浏览器需要读取这些值并做出相应行动。这种
+         图像的再现能力比较强，但是在某些情形下会显得不足。例如，当浏览器以不同大小显示一副图像时，通常会产生锯齿边缘，这时，浏览器不得不为那些在原始图像中不存在的像素插入或猜测数值；
+         这样会导致图像失真。此外，针对位图进行动画，最多也仅限于生成“翻动书本”类型的动画，即快速连续地显示单独图像。
+    矢量图：矢量图通过指定为确定每个像素的值所需的指令而不是指定这些值本身，克服了这些困难中的一部分。例如，向量图形不再为一个直径一英寸的圆提供像素值，而是告诉浏览器创建一个直径一英
+           寸的圆，然后让浏览器（或插件）做其余事情。这消除了光栅图形的许多限制；使用向量图形，浏览器只要知道它必须画一个圆。如果图像需要以正常大小的三倍来显示，那么浏览器只要按正确
+           的大小画圆而不必执行光栅图像通常的插入法。类似地，浏览器接收的指令可以更容易地与外部信息源（如应用程序和数据库）绑定，要对图像制作动画，浏览器只要接收有关如何操纵属性（如
+           半径或颜色）的指令即可。
+
+SVG概述:
+    可缩放矢量图形(Scalable Vector Graphics，简称SVG)是一种使用XML来描述二维图形的语言(SVG严格遵从XML语法)。
+    SVG允许三种类型的图形对象：矢量图形形状（例如由直线和曲线组成的路径）、图像和文本。
+    可以将图形对象（包括文本）分组、样式化、转换和组合到以前呈现的对象中。
+    SVG 功能集包括：嵌套转换、剪切路径、alpha 蒙板和模板对象。
+    SVG绘图是交互式和动态的。 例如，可使用脚本来定义和触发动画。这一点与Flash相比很强大。Flash是二进制文件，动态创建和修改都比较困难。而SVG是文本文件，动态操作是相当容易的。而且，
+    SVG直接提供了完成动画的相关元素，操作起来非常方便。
+    SVG与其他Web标准兼容，并直接支持文档对象模型DOM。这一点也是与HTML5中的canvas相比很强大的地方(这里注意，SVG内部也是用一个类似的canvas这样的东西来展示SVG图形，到后面你会发现
+    很多特性和HTML5的canvas还有点像)。因而，可以很方便的使用脚本实现SVG的很多高级应用。而且SVG的图形元素基本上都支持DOM中的标准事件。可将大量事件处理程序(如“onmouseover”和“onclick”)
+    分配给任何SVG图形对象。 虽然SVG的渲染速度比不上canvas元素，但是胜在DOM操作很灵活，这个优势完全可以弥补速度上的劣势。
+    SVG既可以说是一种协议，也可以说是一门语言；既是HTML的一个标准元素，也是一种图片格式。
+
+SVG：
+    SVG 指可伸缩矢量图形 (Scalable Vector Graphics)
+    SVG 用于定义用于网络的基于矢量的图形
+    SVG 使用 XML 格式定义图形
+    SVG 图像在放大或改变尺寸的情况下其图形质量不会有损失
+    SVG 是万维网联盟的标准
+
+SVG优势（与其他图像格式相比（比如 JPEG 和 GIF），使用 SVG 的优势在于）：
+    SVG 图像可通过文本编辑器来创建和修改
+    SVG 图像可被搜索、索引、脚本化或压缩
+    SVG 是可伸缩的
+    SVG 图像可在任何的分辨率下被高质量地打印
+    SVG 可在图像质量不下降的情况下被放大
+
+SVG与Canvas两者间的区别：
+    SVG 是一种使用 XML 描述 2D 图形的语言。
+    Canvas 通过 JavaScript 来绘制 2D 图形。
+    SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。
+    在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。
+    Canvas 是逐像素进行渲染的。在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。
+
+Canvas与SVG 的比较：
+    Canvas：
+        依赖分辨率
+        不支持事件处理器
+        弱的文本渲染能力
+        能够以 .png 或 .jpg 格式保存结果图像
+        最适合图像密集型的游戏，其中的许多对象会被频繁重绘
+    SVG：
+        不依赖分辨率
+        支持事件处理器
+        最适合带有大型渲染区域的应用程序（比如谷歌地图）
+        复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）
+        不适合游戏应用
+
+SVG与Flash的比较：
+    SVG 的主要竞争者是Flash。与Flash相比，SVG 最大的优势是它与其他标准(比如XSL和DOM)相兼容，操作方便，而Flash则是未开源的私有技术。其它的比如存储的格式，动态生成图形等方面，
+    SVG也占有很大的优势。
+
+SVG呈现方式：
+    SVG是标准的HTML元素，直接写到HTML中就可以了，例如：
+    <?xml version="1.0" encoding="UTF-8"?>  //xml声明
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <!-- <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> -->
+      <title> My First SVG Page</title>
+    </head>
+    <body>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200px" height="200px">
+        <rect x="0" y="0" width="100%" height="100%" fill="none" stroke="black"/>
+        <circle cx="100" cy="100" r="50" style="stroke: black; fill: red;"/>
+      </svg>
+    </body>
+    </html>
+    请注意开头的部分xml声明，与svg的命名空间xmlns、版本version等部分，主要是考虑兼容性的问题；这些部分在HTML5中基本都可以不用写了(写不写还是自己瞧着办吧)。
+
+    独立SVG文件:
+    1.独立的SVG文件/页面，定义的模板基本就像下面的一样：
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <!-- SVG markup here. -->
+        </svg>
+    把这样的文本文件保存成以svg为扩展名的文件，例如sun.svg，这样的文件可以直接用浏览器打开浏览，也可以作为引用嵌入到别的页面中。
+    2.HTML引用外部的SVG文件。使用object或者img元素嵌入svg图形就可以了，例如下面的小例子：
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title> My First SVG Page</title>
+        </head>
+        <body>
+          <object data="sun.svg" type="image/svg+xml" width="300px" height="300px">
+            <!-- Implement fallback code here, or display a message: -->
+            <p>Your browser does not support SVG - please upgrade to a modern browser.</p>
+          </object>
+
+          <img src="sun.svg" alt="svg not supported!" />
+        </body>
+        </html>
+    其实SVG也可以放在其他的XML文档中，也可以像其他的XML文档一样，使用XML相关的技术格式化和验证。
+
+SVG的渲染顺序
+    SVG是严格按照定义元素的顺序来渲染的，这个与HTML靠z-index值来控制分层不一样。在SVG中，写在前面的元素先被渲染，写在后面的元素后被渲染。后渲染的元素会覆盖前面的元素，虽然有时候受透
+    明度影响，看起来不是被覆盖的，但是SVG确实是严格按照先后顺序来渲染的。
+
+注意：SVG是以XML定义的，所以是大小写敏感的，这点与HTML不一样。
+
+SVG默认宽高，不同浏览器有不同的值。（chrome、opera为300px、150px，IE为100%、150px）
+在SVG上使用overflow:visible，不同浏览器有不同的表现，chrome、opera上是hidden，IE上是visible。
+
+SVG文件通过img元素引入html中时，SVG里面的image元素引入的图片无法显示。
+
+基本形状的绘制：
+    矩形--rect元素：
+    这个元素有6个控制位置和形状的属性，分别是：
+    x：矩形左上角的坐标(用户坐标系)的x值。
+    y：矩形左上角的坐标(用户坐标系)的y值。
+    width：矩形宽度。
+    height：矩形高度。
+    rx：实现圆角效果时，圆角沿x轴的半径。
+    ry：实现圆角效果时，圆角沿y轴的半径。
+    可以通过设置rx,ry为不同的值实现椭圆角效果。
+
+    圆--circle元素:
+    这个元素的属性很简单，主要是定义圆心和半径：
+    r：圆的半径。
+    cx：圆心坐标x值。
+    cy：圆心坐标y值。
+
+    椭圆--ellipse元素:
+    这个是更加通用的圆形元素，你可以分别控制半长轴和半短轴的长度，来实现不同的椭圆，很容易想到，当两个半轴相等时，就是正圆形了。
+    rx：半长轴(x半径)。
+    ry：半短轴(y半径)。
+    cx：圆心坐标x值。
+    cy：圆心坐标y值。
+
+    直线--line元素:
+    直线需要定义起点与终点即可：
+    x1：起点x坐标。
+    y1：起点y坐标。
+    x2：终点x坐标。
+    y2：终点y坐标。
+    只规定一点(x1,y1)或(x2,y2)，则起点为原点(0,0)svg左上角，终点为规定的(x1,y1)或(x2,y2)
+
+    折线--polyline元素：
+    折线主要是要定义每条线段的端点即可，所以只需要一个点的集合作为参数：
+    points：一系列的用空格，逗号，换行符等分隔开的点。每个点必须有2个数字：x值和y值。所以下面3个点 (0,0), (1,1)和(2,2)可以写成："0 0, 1 1, 2 2"。
+
+    多边形--polygon元素:
+    这个元素就是比polyline元素多做一步，把最后一个点和第一个点连起来，形成闭合图形。参数是一样的。
+    points：一系列的用空格，逗号，换行符等分隔开的点。每个点必须有2个数字：x值和y值。所以下面3个点 (0,0), (1,1)和(2,2)可以写成："0 0, 1 1, 2 2"。
+
+    路径--path元素:
+    这个是最通用，最强力的元素了；使用这个元素你可以实现任何其他的图形，不仅包括上面这些基本形状，也可以实现像贝塞尔曲线那样的复杂形状；此外，使用path可以实现平滑的过渡线段，虽然也可以
+    使用polyline来实现这种效果，但是需要提供的点很多，而且放大了效果也不好。这个元素控制位置和形状的只有一个参数：
+    d：一系列绘制指令和绘制参数(点)组合成。
+    绘制指令分为绝对坐标指令和相对坐标指令两种，这两种指令使用的字母是一样的，就是大小写不一样，绝对指令使用大写字母，坐标也是绝对坐标；相对指令使用对应的小写字母，点的坐标表示的都是偏移量。
+    绝对坐标绘制指令:
+    这组指令的参数代表的是绝对坐标。假设当前画笔所在的位置为(x0,y0)，则下面的绝对坐标指令代表的含义如下所示：
+    指令		参数               说明
+    M		x y               将画笔移动到点(x,y)
+    L		x y			      画笔从当前的点绘制线段到点(x,y)
+    H		x			      画笔从当前的点绘制水平线段到点(x,y0)
+    V		y			      画笔从当前的点绘制竖直线段到点(x0,y)
+
+    		rx ry
+    		x-axis-rotation
+    A		large-arc-flag	  画笔从当前的点绘制一段圆弧到点(x,y)
+    		sweep-flag
+    		x y
+
+    C		x1 y1, x2 y2, x y 画笔从当前的点绘制一段三次贝塞尔曲线到点(x,y)
+    S		x2 y2, x y		  特殊版本的三次贝塞尔曲线(省略第一个控制点)
+    Q		x1 y1, x y		  绘制二次贝塞尔曲线到点(x,y)
+    T		x y			      特殊版本的二次贝塞尔曲线(省略控制点)
+    Z		无参数			  绘制闭合图形，如果d属性不指定Z命令，则绘制线段，而不是封闭图形
+    绘制圆弧指令：A  rx ry x-axis-rotation large-arc-flag sweep-flag x y
+    用圆弧连接2个点比较复杂，情况也很多，所以这个命令有7个参数，分别控制曲线的的各个属性。下面解释一下数值的含义：
+    rx,ry：是弧的半长轴、半短轴长度。
+    x-axis-rotation：是此段弧所在的x轴与水平方向的夹角，正数代表顺时针旋转角度，负数代表逆时针转动的角度。
+    large-arc-flag：为1 表示大角度弧线，0 代表小角度弧线。
+    sweep-flag：为1代表从起点到终点弧线绕中心顺时针方向，0 代表逆时针方向。
+    x,y：是弧终端坐标。
+    椭圆旋转参数(x-axis-rotation)的不同导致绘制的圆弧方向不同，当然这个参数对正圆来说没有影响。
+    绘制三次贝塞尔曲线指令：C  x1 y1, x2 y2, x y
+    三次贝塞尔曲线有两个控制点，就是(x1,y1)和(x2,y2)，最后面(x,y)代表曲线的终点。
+    特殊版本的三次贝塞尔曲线：S  x2 y2, x y
+    很多时候，为了绘制平滑的曲线，需要多次连续绘制曲线。这个时候，为了平滑过渡，常常第二个曲线的控制点是第一个曲线控制点在曲线另外一边的映射点。这个时候可以使用这个简化版本。这里要注
+    意的是，如果S指令前面没有其他的S指令或C指令，这个时候会认为两个控制点是一样的，退化成二次贝塞尔曲线的样子；如果S指令是用在另外一个S指令或者C指令后面，这个时候后面这个S指令的第一
+    个控制点会默认设置为前面的这个曲线的第二个控制点的一个映射点。
+    绘制二次贝塞尔曲线指令：Q  x1 y1, x y
+    二次贝塞尔曲线只有一个控制点(x1,y1)最后面(x,y)代表曲线的终点。
+    特殊版本的二次贝塞尔曲线：T x y
+    如果是连续的绘制曲线，同样可以使用简化版本T。同样的，只有T前面是Q或者T指令的时候，后面的T指令的控制点会默认设置为前面的曲线的控制点的映射点。同样的，如果T指令前面不是Q或者T指令，
+    则认为无控制点，画出来的是直线。
+    相对坐标绘制指令：
+    与绝对坐标绘制指令的字母是一样的，只不过全部是小写表示。这组指令的参数中涉及坐标的参数代表的是相对坐标，意思就是参数代表的是从当前点到目标点的偏移量，正数就代表向轴正向偏移，负数代
+    表向反向偏移。不过对Z指令来说，大小写没有区别。
+    这里要注意，绝对坐标指令与相对坐标指令是可以混合使用的。有时混合使用可以带来更灵活的画法。
+    SVG path绘制注意事项：
+    绘制带孔的图形时要注意：外层边的绘制需要是逆时针顺序的，里面的洞的边的顺序必须是顺时针的。只有这样绘制的图形填充效果才会正确。
+
+SVG中渲染文本：
+　　SVG的强大能力之一是它可以将文本控制到标准HTML页面不可能有的程度，而无须求助图像或其它插件。任何可以在形状或路径上执行的操作（如绘制或滤镜）都可以在文本上执行。尽管SVG的文本渲染如此
+    强大，但是还是有一个不足之处：SVG不能执行自动换行。如果文本比允许空间长，则简单地将它切断。多数情况下，创建多行文本需要多个文本元素。此外，可以使用 tspan 元素可以将文本元素分成几部
+    分，允许每部分有各自的样式。还有，在text元素中，空格的处理与HTML类似：换行和回车变成空格，而多个空格压缩成单个空格。
+
+    直接显示在图片中的文本--text元素：
+    text元素可以设置下列的属性：
+    x,y：x,y用于设置包含的文本的绝对坐标值，这个值会覆盖默认的文本位置。这些属性可以包含一系列数字，这些数字会应用到每个对应的单个字符。没有对应设置的字符会紧跟前一个字符。
+    dx,dy：dx,dy用于设置包含的文本相对于默认的文本位置的偏移量。这些属性同样可以包含一系列数字，每个都会应用到对应的字符。没有对应设置的字符会紧跟前一个字符。
+    rotate：用于设置字体的旋转角度。这个属性也可以包含一系列数字，应用到每个字符。没有对应设置的字符会使用最后设置的那个数字。
+    textLength：设置完以后，渲染发现文本的长度与这个值不一致时，会以这个长度为准。会影响dx的值，从而达到textLength设置的值。
+                各浏览器的支持不太一样。
+    text-anchor：是文本显示的方向，其实也就是位置(x,y)处于文本的位置。这个属性有start,middle和end三种值。
+        start：表示文本位置坐标(x,y)位于文本的开始处，文本从这点开始向右挨个显示。
+        middle：表示(x,y)位于文本中间处，文本向左右两个方向显示，其实就是居中显示。
+        end：表示(x,y)点位于文本结尾，文本向左挨个显示。
+    dominant-baseline：垂直对齐方式(www.w3.org/TR/SVG/text.html#DominantBaselineProperty)，各浏览器的支持不太一样。
+        auto：
+        use-script
+        no-change
+        reset-size
+        ideographic：表意基线
+        alphabetic：基线
+        hanging：悬挂基线
+        mathematical：字母x的上部
+        central：text-after-edge和text-before-edge之间
+        middle：居中，字母x中间
+        text-after-edge：相当于text-bottom
+        text-before-edge：相当于text-top
+        inhert
+    lengthAdjust:配合textLength一起使用，控制文字的压缩和拉伸。各浏览器的支持不太一样。
+        spacingAndGlyphs：对文字进行压缩和拉伸来达到textLength的设置值。
+        spacing：默认值，不对文字进行压缩和拉伸。
+    除了这些属性，下面的这些属性都既可以在CSS中指定，也可以直接在属性中指定(text-anchor和dominant-baseline也是):
+    fill,stroke：填充和描边颜色，具体使用在后面总结。
+    font的相关属性：font-family, font-style, font-weight, font-variant, font-stretch, font-size, font-size-adjust, kerning, letter-spacing,
+                  word-spacing and text-decoration。
+
+    文本区间--tspan元素：
+    　　这个元素是text元素的强力补充；它用于渲染一个区间内的文本；它只能出现在text元素或者tspan元素的子元素中。典型的用法就是强调显示部分文本。text的属性，tspan均可以用。
+
+    文本引用--tref元素：（效果未测试出来,这个是SVG1.1规范中的内容，已经从SVG2.0规范中删除）
+    　　这个元素允许引用定义过的文本，并高效的拷贝到当前位置，通常配合xlink:href指定目的元素。因为是拷贝过来的，所以使用css修改当前文本的时候，不会修改原来的文本。
+
+    文本路径--textPath元素
+    　　这个比较有意思，效果也很酷，能做出很多的艺术效果；这个元素从它的xlink:href属性获取指定的路径并把文本对齐到这个路径上。
+
+SVG中渲染图片--image元素(在html中的svg元素中使用才可以在html页面中看到效果)
+　　SVG中的image元素可以直接支持显示光栅图片，使用很简单。
+    需要注意几点：
+    1.如果没有设置x或y坐标，则默认是0。
+    2.如果没有设置width或height，则默认也是0.
+    3.如果显式的设置width或height为0，则会禁止渲染这幅图片。
+    4.图片的格式支持png,jpeg,jpg,svg等等，所以svg是支持嵌套svg的。
+    5.image与其他元素一样，是svg的常规元素，所以它支持所有的裁剪，蒙板，滤镜，旋转等效果。
+    使用preserveAspectRatio="none meet"可以让图片按指定的宽高比例缩放。
+
+SVG描边与填充：（SVG描边和填充均可以以属性的方式设置，也可以以CSS的方式设置）
+    填充色--fill属性：这个属性使用设置的颜色填充图形内部。
+    需要注意几点：
+    1. 如果不提供fill属性，则默认会使用黑色填充,如果要取消填充，需要设置成none。
+    2. 可以设置填充的透明度，就是fill-opacity，值的范围是0到1。
+    3. 稍微复杂一点的是fill-rule属性。这个属性定义了判断点是不是属于填充范围的算法；除了inherit这个值外，还有两个取值：
+        nonzero：这个规则通过从canvas上的某个点往任一方向绘制射线到无穷远，然后检查图形的线段和射线相交的点，来确定“内部区域”。从0开始计数，每次路径线段是从左到右穿过射线就加一，
+                 从右到左的就减一。通过计算交叉点，如果结果是0，则这个点在路径外边，不然，就是在里边。
+        evenodd：这个规则通过从canvas上某个点往任一方向绘制射线到无穷远，然后计算给定图形上线段路径和该射线交叉点的数量。如果这个数是奇数，那么该点在图形内部；如果是偶数，该点在图形外部。
+
+    边框色--stroke属性：这个属性使用设置的值画图形的边框。
+    需要注意几点：
+    1. 如果不提供stroke属性，则默认不绘制图形边框。
+    2. 可以设置边的透明度，就是stroke-opacity，值的范围是0到1。
+    线的端点-- stroke-linecap属性：这个属性定义了线段端点的风格，这个属性可以使用butt,square,round三个值。
+    线的连接-- stroke-linejoin属性：这个属性定义了线段连接处的风格，这个属性可以使用miter,round,bevel三个值。
+    stroke-miterlimit：这个和canvas中的一样，它处理什么时候画和不画线连接处的miter效果。
+    线的虚实-- stroke-dasharray属性：这个属性可以设置线段采用何种虚实线。这个属性是设置一些列数字，不过这些数字必须是逗号隔开的(测试可以用空格分开，不知道是不是浏览器兼容性的原因)。相当于canvas的setLineDash。
+    stroke-dashoffset：这个属性设置开始画虚线的位置。将虚线向左偏移指定值。
+
+    颜色的表示：SVG和canvas中是一样的，都是使用标准的HTML/CSS中的颜色表示方法，这些颜色都可以用于fill和stroke属性。
+    基本有下面这些定义颜色的方式：
+    1. 颜色名字：直接使用颜色名字red, blue, black...
+    2. rgba/rgb值：这个也很好理解，例如rgb(255,100,100),rgba(255,100,100,0.5)。
+    3. 十六进制值： 用十六进制定义的颜色，例如#ffffff。
+    4. 渐变值：这个也与canvas中一样，支持两种渐变色：线性渐变，径向渐变。
+    5. 图案填充：使用自定义的图案作为填充色。
+
+    线性渐变：使用linearGradient元素即可定义线性渐变，每一个渐变色成分使用stop元素定义。
+    需要注意以下几点：
+    1. 渐变色元素必须要放到defs元素中；
+    2. 需要给渐变色元素设置id值，否则的话，别的元素无法使用这个渐变色。
+    3. 渐变色的成员使用stop定义，它的属性也可以使用CSS定义；它支持class，id这种标准HTML都支持的属性。其它常用属性如下：
+        offset属性：这个定义了该成员色的作用范围，该属性取值从0%到100%(或者是0到1)；通常第一种颜色都是设置成0%，最后一种设置成100%。
+        stop-color属性：这个很简单，定义了该成员色的颜色。
+        stop-opacity属性：定义了成员色的透明度。
+        x1,y1,x2,y2属性：这两个点定义了渐变的方向，默认不写的话是水平渐变，这个是linearGradient元素的属性。
+    4. 渐变色的使用，直接用url(#id)的形式赋值给fill或者stroke就可以了。
+    5. 渐变色成员的复用：你也可以使用xlink:href引用定义过的渐变色成员，例如：
+        <linearGradient id="Gradient1">
+           <stop class="stop1" offset="0%"/>
+           <stop class="stop2" offset="50%"/>
+           <stop class="stop3" offset="100%"/>
+        </linearGradient>
+        <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1" xlink:href="#Gradient1"/>
+
+    径向渐变：使用radialGradient元素定义径向渐变，还是使用stop定义成员色。
+    除了元素名字和一些特别的成员，其他的所有都和线性渐变一样，这些特别的成员如下：
+    offset属性：这个和线性渐变的值是一样，但是含义不一样。在径向渐变中，0%代表圆心处，这个很好理解。
+    cx,cy,r属性：定义径向渐变的圆心和半径，感觉像是canvas的表示渐变结束的圆心坐标和渐变结束圆的半径。
+    fx,fy属性：定义颜色中心(焦点)处的位置，也就是渐变色最浓处的坐标，感觉像是canvas中的渐变开始的圆心坐标，而渐变开始的圆的半径为0，若没有设置，感觉像是等于（cx,cy）。
+
+    与渐变相关的一些属性：
+    gradientUnits：定义渐变色使用的坐标单位。
+        objectBoundingBox：是默认值，它使用的坐标都是相对于对象包围盒的(方形包围盒，不是方形包围盒的情况比较复杂，略过)，取值范围是0到1。
+                          (0,0)即盒子左上角，(1,1)即盒子右下角，盒子宽高的比例即为x和y坐标的比例。
+        userSpaceOnUse：表示使用的是绝对坐标，使用这个设置的时候，你必须要保证渐变色和填充的对象要保持在一个位置。
+    spreadMethod：这个属性定义了渐变色到达它的终点时应该采取的行为。
+        pad：属于自然过渡，渐变色结束以后，使用最后一个成员色直接渲染对象剩下的部分。
+        reflect：会让渐变色继续，只不过渐变色会反向继续渲染，从最后一个颜色开始到第一个颜色这个顺序渲染；等到再次到达渐变色终点时，再反序，如此这般直到对象填充完毕。
+        repeat：也会让渐变色继续渲染，但是不会反序，还是一遍一遍从第一种颜色到最后一种颜色渲染。
+        在chrome、IE、Opera和firefox中测试没毛病。在safari中测试只有pad的效果。
+
+    pattern（纹理）填充：纹理填充也是一种流行的填充方式，在SVG中，可以使用pattern创建一个纹理，然后用这个pattern去填充别的对象。
+    需要注意以下几点：
+    1. pattern也需要定义id。
+    2. pattern也必须要定义在defs中。
+    3. pattern的使用也是把url(#id)直接赋值给fill或stroke。
+
+    与pattern（纹理）填充相关的一些属性：
+    patternUnits属性：受这个属性影响的属性有x,y,width,height，这4个属性分别定义了pattern的起点，宽高度。
+        objectBoundingBox：是默认值，它使用的坐标都是相对于对象包围盒的(方形包围盒，不是方形包围盒的情况比较复杂，略过)，取值范围是0到1。
+                          (0,0)即盒子左上角，(1,1)即盒子右下角，盒子宽高的比例即为x和y坐标的比例。
+        userSpaceOnUse：表示使用的是绝对坐标，绝对坐标起点是整个SVG的左上角。
+    patternContentUnits属性：这个属性描述了pattern中绘制的形状(比如rect,circle)的坐标系统。
+        objectBoundingBox：是默认值，它使用的坐标也是相对于对象包围盒的(方形包围盒，不是方形包围盒的情况比较复杂，略过)，而不是pattern的宽高，取值范围是0到1。
+                           (0,0)即盒子左上角，(1,1)即盒子右下角，盒子宽高的比例即为x和y坐标的比例。
+        userSpaceOnUse：表示使用的是绝对坐标，绝对坐标起点是pattern的左上角(因为pattern建立了一个新视窗)。
+
+坐标与变换：
+    这里需要区分视窗，视窗坐标系，用户坐标系的概念：
+    视窗：指的是网页上面可视的矩形局域，长度和宽度都是有限的，这个区域一般与外围对象的尺寸有关。
+    视窗坐标系：本质是一个坐标系，有原点，x轴与y轴；而且在两个方向上是无限延伸的。默认情况下，原点在视窗的左上角，x轴水平向右，y轴竖直向下。可以对这个坐标系的点进行变换。
+    用户坐标系：本质是一个坐标系，有原点，x轴与y轴；而且在两个方向上是无限延伸的。默认情况下，原点在视窗的左上角，x轴水平向右，y轴竖直向下。可以对这个坐标系的点进行变换。
+    默认情况下，视窗坐标系与用户坐标系是重合的，但是这里需要注意，视窗坐标系属于的是创建视窗的元素，视窗坐标系确定好以后，整个视窗的坐标基调就确定了。但是用户坐标系是属于每个图形元素的，
+    只要图形进行了坐标变换，就会创建新的用户坐标系，这个元素中所有的坐标和尺寸都使用这个新的用户坐标系。
+    简单点说：视窗坐标系描述了视窗中所有元素的初始坐标概况，用户坐标系描述了每个元素的坐标概况，默认情况下，所有元素都使用默认的与视窗坐标系重合的那个用户坐标系。
+
+    SVG本身作为一种向量图元素，它的两个坐标系统本质上都可以算作"用户坐标系统"；SVG的两个坐标空间都是可以变换的：视窗空间变换和用户空间变换。视窗空间变换由相关元素(这些元素创建了新的视
+    窗)的属性viewBox控制；用户空间变换由图形元素的transform属性控制。视窗空间变换应用于对应的整个视窗，用户空间变换应用于当前元素及其子元素。
+
+    视窗变换--viewBox属性：
+    所有的能建立一个视窗的元素，再加上marker,pattern,view元素，都有一个viewBox属性。
+    viewBox属性值的格式为(x0,y0,u_width,u_height)，每个值之间用逗号或者空格隔开，它们共同确定了视窗显示的区域：视窗左上角坐标设为(x0,y0)、视窗的宽设为u_width，高为u_height；
+    这个变换对整个视窗都起作用。
+    这里一定不要混淆：视窗的大小和位置已经由创建视窗的元素和外围的元素共同确定了(例如最外层的svg元素建立的视窗由CSS，width和height确定)，这里的viewBox其实是设置这个确定的区域能显
+                   示视窗坐标系的哪个部分。
+    viewBox的设置其实是包含了视窗空间的缩放和平移两种变换。
+    变换的计算也很简单：以最外层的svg元素的视窗为例，假设svg的宽与长设置为width,height，viewBox的设置为(x0,y0,u_width,u_height)。则绘制的图形，宽和高的缩放比例分别为：
+                     width/u_width, height/u_height。视窗的左上角的坐标设置为了(x0,y0)。
+    能建立新视窗的元素：
+        任何时候，我们都可以嵌套视窗。创建新的视窗的时候，也会创建新的视窗坐标系和用户坐标系，当然也包括裁减路径也会创建新的。下列是能建立新视窗的元素列表：
+        svg：svg支持嵌套。
+        symbol：当被use元素实例化的时候创建新的视窗。
+        image：引用svg元素时会创建新视窗。
+        foreignObject：创建新视窗去渲染里面的对象。
+
+    保持缩放的比例--preserveAspectRatio属性：
+    有些时候，特别是当使用viewBox的时候，我们期望图形占据整个视窗，而不是两个方向上按相同的比例缩放。而有些时候，我们却是希望图形两个方向是按照固定的比例缩放的。使用属性
+    preserveAspectRatio就可以达到控制这个的目的。
+    这个属性是所有能建立一个新视窗的元素，再加上image,marker,pattern,view元素都有的。而且preserveAspectRatio属性只有在该元素设置了viewBox以后才会起作用。如果没有设置
+    viewBox，则preserveAspectRatio属性会被忽略。
+    属性的语法：preserveAspectRatio="[defer] <align> [<meetOrSlice>]"，注意3个参数之间需要使用空格隔开。
+    defer:可选参数，只对image元素有效，如果image元素中preserveAspectRatio属性的值以"defer"开头，则意味着image元素使用引用图片的缩放比例，如果被引用的图片没有缩放比例，
+          则忽略"defer"。所有其他的元素都忽略这个字符串。
+    align:该参数决定了统一缩放的对齐方式，可以取下列值：
+        none：不强制统一缩放，这样图形能完整填充整个viewport。
+        xMinYMin：强制统一缩放，并且把viewBox中设置的<min-x>和<min-y>对齐到viewport的最小X值和Y值处。
+        xMidYMin：强制统一缩放，并且把viewBox中X方向上的中点对齐到viewport的X方向中点处，简言之就是X方向中点对齐，Y方向与上面相同。
+        xMaxYMin：强制统一缩放，并且把viewBox中设置的<min-x> + <width>对齐到viewport的X值最大处。
+        类似的还有其他类型的值：xMinYMid,xMidYMid,xMaxYMid,xMinYMax,xMidYMax,xMaxYMax。这些组合的含义与上面的几种情况类似。
+    meetOrSlice：可选参数，可以去下列值：
+        meet：默认值，统一缩放图形，让图形全部显示在viewport中。
+        slice：统一缩放图形，让图形充满viewport，超出的部分被剪裁掉。
+
+    各浏览器在image元素引用SVG元素时，对viewBox和preserveAspectRatio这两个属性表现的效果不太一致。
+    safari：image元素对SVG的引用与对图片的引用是一样的，只不过SVG元素可以通过viewBox和preserveAspectRatio来改变自身创建的默认视窗坐标系。
+    chrome和opera：若SVG未设置viewBox时，表现的效果，就像是在image元素上设置preserveAspectRatio="none"。
+                   只要SVG设置了viewBox，且image元素上设置的preserveAspectRatio不为none时，image的宽高就决定了SVG的宽高，viewBox是相对于这个宽高的,SVG的preserveAspectRatio
+                   属性决定了对齐方式。
+                   若image元素设置了preserveAspectRatio="none"，则表现效果同safari。
+    IE:只要SVG设置了viewBox，则viewBox即为SVG的视窗坐标系，image的preserveAspectRatio属性决定了对齐方式，若image未设置preserveAspectRatio，则为居中对齐。
+       若SVG未设置viewBox，则image的宽高即为SVG的视窗坐标系。
+    firefox：若SVG未设置viewBox时，表现的效果，就像是在image元素上设置preserveAspectRatio="none"。
+             只要SVG设置了viewBox，则viewBox即为SVG的视窗坐标系，image的preserveAspectRatio属性决定了对齐方式，若image未设置preserveAspectRatio，则为居中对齐。
+
+    外围对象引用SVG时，各浏览器对SVG大小的决定方式不同，safari使用SVG的大小，其他的使用外围对象的。
+
+    用户坐标系的变换--transform属性:
+    该类型变换是通过设置元素的transform属性来指定的。这里需要注意，transform属性设置的元素的变换，只影响该元素及其子元素，与别的元素无关，不影响别的元素。
+    chrome、IE、safari、opera的SVG和symbol元素不支持transform属性。
+    平移--translate(x,y):将原点平移至(x,y)。
+    旋转--rotate(deg)：绕元素原点旋转deg度。
+        1.这里的变换是以角度值为参数的。
+        2.旋转指的是相对于x轴的旋转。
+        3.旋转是围绕用户坐标系的原点(0,0)展开的。
+    缩放--scale： 缩放对象由缩放变换完成，该变换接受2个参数，分别指定在水平和竖直上的缩放比例，如果第二个参数省略则与第一个参数取相同的值。
+    倾斜--skew：transform还支持倾斜变换。
+    可以是沿着x轴的(左右倾斜，正角度为向右倾斜，其实是倾斜了y轴)，或者是沿着y轴的(上下倾斜，正角度为向下倾斜，其实是倾斜了x轴)倾斜；该变换需要传入一个角度参数，这个角度参数会决定
+    倾斜的角度。
+
+    变换本质：前面我们总结canvas的时候，我们知道各种变换都是作用在用户坐标系上的。在SVG中，所有的变换也都是针对两个坐标系(本质上都是"用户坐标系")的。当给容器对象或图形对象
+    指定"transform"属性，或者给"svg,symbol,marker,pattern,view"指定"viewBox"属性以后，SVG会根据当前的用户坐标系统进行变换，去创建新的用户坐标系，并作用于当前的对象以
+    及它的子对象。该对象中指定的坐标和长度的单位不再是1:1的对应到外围的坐标系，而是随着变形，转换到新的用户坐标系中；这个新的用户坐标系是只作用于当前的元素及其子元素。
+
+    变换链：transform属性支持设置多个变换，这些变换只要中间用空格分开，然后一起放到属性中就可以了。执行效果跟按顺序独立执行这些变换是一样的。
+
+单位：最后说一下单位，任何坐标和长度都可以带和不带单位。
+不带单位的情况：不带单位的值被认为带的是"用户单位"，就是当前用户坐标系的单位值。
+带单位的情况：svg中相关单位与CSS中是一样的：em,ex,px,pt,pc,cm,mm和in。长度还可以使用"%"。
+相对度量单位：em和ex也与CSS中一样，是相对于当前字体的font-size和x-height来说的。
+绝对度量单位：一个px是等于一个"用户单位"的，也就是"5px"与"5"是一样的。但是一个px是不是对应一个像素，那就看有没有进行过一些变换了。
+其他的几个单位基本都是px的倍数：1pt=1.25px,1pc=15px,1mm=3.543307px,1cm=35.43307px,1in=90px。
+如果最外层的SVG元素的width和height没有指定单位(也就是"用户单位")，则这些值会被认为单位是px。
+
+重用和引用：
+    组合--g元素：g元素是一种容器，它组合一组相关的图形元素成为一个整体；这样，我们就可以对这个整体进行操作。这个元素通常可以和desc和title元素配合使用，提供文档的结构信息。
+    结构良好的文档通常可读性和渲染效率都不错。
+    需要注意以下几点：
+    1. xmlns="http://www.w3.org/2000/svg"表明了整个svg元素默认的命名空间是svg。这个在无歧义的时候可以省略。这里由于svg文档是一个XML文档，XML命名空间的相关规则这里都是适用的。
+       例如可以给svg显示的指定命名空间，给命名空间提供别名等。
+    2. g元素是可以嵌套的。
+    3. 组合起来的图形元素就和单个的元素一样，可以给id值，这样，需要的时候(例如动画和重用一组元素)只用引用这个id值就可以了。
+    4. 组合一组图形元素可以统一设置这组元素的相关属性(fill,stroke,transform等)，这也是使用组合的一种场景。
+
+    模板--symbol元素：symbol元素用于定义图形模板(模板可以包含很多图形)，这个模板可以被use元素实例化。模板的功能与g元素很相似，都是提供一组图形对象，但是也有一些区别。
+    与g元素不同的地方是：
+    1.symbol元素本身是不会被渲染的，只有symbol模板的实例会被渲染。
+    2.symbol元素可以拥有属性viewBox和preserveAspectRatio，这些允许symbol缩放图形元素。
+    从渲染角度来说，与symbol元素相似的元素是marker(定义箭头和标号)和pattern(定义颜色)元素；这些元素不会直接被渲染；他们的使用方式基本都是由use元素去实例化。正是这个原因，
+    对于symbol来说，'display'属性是没有意义的。
+
+    定义--defs元素：SVG允许定义一组对象，然后重用这组对象(注意，不仅仅是图形对象)。最常见的例子如定义渐变色，然后再其他的图形对象中赋给fill属性。渐变色定义的时候是不会渲染的，
+    所以这类型的对象可以放到任何地方。重用对于图形对象中也是经常存在的，而且我们也不希望定义的时候直接渲染，而是想在引用的地方渲染，这个可以用defs元素实现。
+    通常情况下，推荐的做法是：只要有可能，就把被引用的对象放到defs元素中。这些对象通常是：altGlyphDef,clipPath,cursor,filter, marker,mask,pattern,linearGradient,
+    radialGradient，symbol和图形对象等。把这些对象定义在defs元素中很容易理解，所以就提高了可访问性。
+    其实作为容器对象的g元素、symbol元素、defs元素都不同程度上提供了重用的作用，只不过每个元素的特性可能少许不同：比如g元素是直接渲染的，symbol和defs不会直接渲染，symbol含有
+    viewBox属性，会创建新的视窗。
+    通常都会给在defs中定义的元素赋予id属性，并在用到的地方直接使用。根据元素的不同，这些定义可以用到不同地方。
+
+    引用--use元素：任何svg, symbol, g, 单个的图形元素和use元素本质上都可以作为模板对象被use元素引用(例如初始化)。use引用的图形内容会在指定的位置渲染。与image元素不同，
+    use元素不能引用整个文档。use元素也有x, y, width和height属性，这些属性可以省略，如果不省略的话，会将被引用的图形内容坐标或长度映射到当前的用户坐标空间来。use元素的作用
+    过程就相当于把被引用的对象深拷贝一份到独立的非公开的DOM树中；这棵树的父节点是use元素。虽然是非公开的DOM节点，但是本质上还是DOM节点，所以被引用对象的所有属性值、动画、事件、
+    CSS的相关设置等都会拷贝过来并都还是会起作用，而且这些节点也会继承use元素和use祖先的相关属性(注意引用元素是深拷贝，这些拷贝过来的元素与原来的元素已经无关系了，所以这里不会
+    继承被引用元素祖先节点的属性)，如果这些节点本身有相关(CSS)属性，还会覆盖继承来的属性，这些与普通的DOM节点是一致的，所以对use元素使用"visibility:hidden"时要小心，并不一
+    定会起作用。但是由于这部分节点是非公开的，在DOM操作中，也只能看到use元素，所以也只能操作到use元素。
+    从视觉效果来看，use元素更像是占位符，渲染完成后的视觉效果就和直接用被引用对象渲染是一样的：
+    1. use元素引用一个symbol元素：
+    这种情况下，视觉效果就相当于：
+    (1) 把use元素换成g元素；
+    (2) 把use的除x,y,width,height,xlink:href外的属性全部移到g元素；
+    (3) 把use的x,y属性变成translate(x,y)，追加到g元素的transform属性最后；
+    (4) 把引用的symbol元素换成svg元素，这个svg元素会显式使用use元素的width和height属性(use元素没有这些属性不同浏览器表现可能有所不同，大部分都是100%，而firefox如果symbol有
+    指定width和height，则使用symbol元素的)；
+    (5) 把引用的symbol元素的图形内容深拷贝到替换的svg中。
+    2. use元素引用一个svg元素：
+    这种情况下，视觉效果就相当于：
+    (1) 把use元素换成g元素；
+    (2) 把use的除x,y,width,height,xlink:href外的属性全部移到g元素；
+    (3) 把use的x,y属性变成translate(x,y)，追加到g元素的transform属性最后；
+    (4) 把引用的svg元素包括内容拷贝过来，这个svg元素会显式使用use元素的width和height属性(use元素没有这些属性则使用原来的值)；
+    3. 其他情况：
+    这些情况下的视觉效果就相当于：
+    (1) 把use元素换成g元素；
+    (2) 把use的除x,y,width,height,xlink:href外的属性全部移到g元素；
+    (3) 把use的x,y属性变成translate(x,y)，追加到g元素的transform属性最后；
+    (4) 把引用元素拷贝过来；
+
+其他相关元素：
+    解释性元素--desc元素与title元素：每个容器元素(可以包含其他容器元素或者图形元素的元素，例如：a,defs,glyph,g,marker,mask,missing-glyph,pattern,svg,switch和symbol)和
+    图形元素都可以包含desc和title元素，这两个元素都是辅助性的元素，用于解释相关情境；它们的内容都是文本。当SVG文档被渲染的时候，这2个元素不会被渲染到图形中。这个2个元素之间差别
+    不是太大，title在有些实现中是作为提示信息出现的，所以通常title是放到父元素的第一个位置上。 通常，最外层的svg元素要配以title说明，这样程序可读性更好。
+
+    标记--marker元素：标记定义了附加到一个或者多个顶点(path,line,polyline或者polygon的顶点)上的图形元素(箭头和多点标记)。箭头可以通过把一个标记附加到path,line或者polyline
+    的起点或者终点上。多点标记可以把一个标记附加到path,line,polyline或者polygon的所有顶点上。标记是由marker元素定义的，然后在path,line,polyline或者polygon中设置相关的属性
+    (marker,marker-start,marker-mid,和marker-end)就可以了。(IE对该元素的支持与其他浏览器有点不一样)
+    下面详细看看marker的相关知识：
+    1. marker是容器元素，可以存放任意顺序的图形元素，容器元素，动画，渐变元素等。
+    2. marker元素可以创建新的视窗：设置viewBox的值。
+    3. marker比较重要的属性：
+    markerUnits = "strokeWidth | userSpaceOnUse"
+    这个属性定义了属性markerWidth,markerHeight和marker的内容使用的坐标系统。这个属性有2个值可选，第一个值strokeWidth是默认值，代表属性markerWidth,markerHeight和marker的
+    内容使用的坐标系统的单位等于引用该marker的图形元素的stroke-width设置的值。例如上面的例子中，marker元素的width是400,height是300，不过千万不要混淆了，mark元素中的path使用
+    的坐标是viewBox设置的新的用户坐标系。该属性另外一个取值userSpaceOnUse，代表属性markerWidth,markerHeight和marker的内容使用引用该marker的图形元素的坐标系统。
+    refX,refY：定义了引用的点与marker对齐的位置坐标。例如上面的例子中，引用的点是终点，要把它对齐到marker的(0,5)位置。注意refX,refY使用的是经过viewBox变换过的最终用户坐标系。
+    markerWidth,markerHeight：marker视窗的宽和高，这个很好理解。
+    orient：定义了marker旋转的角度。可以指定一个角度或者直接赋值auto。
+    auto代表x轴正方向按照下列规则旋转：
+    a. 如果marker所在的点只属于一个path，则marker的x轴正向与path走向相同。参看上面例子。
+    b. 如果marker所在的点属于两个不同的path，则marker的x轴正向与两个path的夹角的角等分线走向一致。
+    4. 图形元素的marker属性：
+    图形元素要引用一个marker则需要使用相关的属性，主要是这3个：marker-start(把引用的marker放到起点), marker-mid(把引用的marker放到除起点和终点外的所有点), marker-end(把引用
+    的marker放到终点)。这3个属性的取值可能是none(代表不引用marker),marker的引用(引用某marker)，inherit(这个不用多说了)。
+
+    脚本与样式--script元素与style元素：实际上，基本上所有的属性(对于所有元素，不仅是文本)都可以用CSS与一个元素关联，并且所有CSS属性都在SVG图像中可用。可以直接用样式属性设计元素的
+    样式，或者引用样式表设计元素的样式。对XML文件来说不应该解析样式表(因为它们偶尔包含会引起问题的字符)，因此需要将它们置于XML CDATA节。脚本也是同样的道理，需要放到XML CDATA节中。
+
+    条件处理--switch元素：条件处理属性是能控制所在元素渲染与否的属性。基本上大多数的元素(特别是图形元素)都可以指定条件处理属性。条件处理属性有3个：requiredFeatures,
+    requiredExtensions和systemLanguage。这些属性就是一组测试，都允许指定一个值列表(前面两个属性是空格隔开的，语言这个属性是使用逗号隔开的)，默认值都为true。SVG的switch元素提供
+    了按指定条件渲染的能力。switch元素是一个容器元素，可以包含图形元素，解释性元素，动画元素，a, foreignObject,g,image,svg,switch,text,use等元素。switch元素会按顺序检查直接子
+    元素的条件处理属性，然后渲染满足自身条件的的第一个子元素，其他的子元素都会被忽略。这些属性与display属性一样，只会影响直接使用这些属性的元素的渲染，不会影响引用的元素(比如use引用
+    的元素)。简单的说，这3个属性会影响a, altGlyph, foreignObject, textPath, tref, tspan ,animate, animateColor, animateMotion, animateTransform, set等元素，不会影响
+    defs,cursor, mask, clipPath, pattern等元素(这些元素那么不是可渲染的，要么就是引用别的元素)。注意：子元素的display和visibility属性值并不影响switch元素条件判断的结果。
+
+蒙版：
+SVG支持的蒙板类型：
+    1. 裁剪路径(cliping path)：
+    裁剪路径是由path, text或者基本图形组成的图形。所有在裁剪路径内的图形都可见，所有在裁剪路径外的图形都不可见。
+    2. 遮罩/蒙板(mask)：
+    蒙板是一种容器，它定义了一组图形并将它们作为半透明的媒介，可以用来组合前景对象和背景。
+裁剪路径和其他的蒙板一个重要的区别就是：裁剪路径是1位蒙板，也就是说裁剪路径覆盖的对象要么就是全透明(可见的，位于裁剪路径内部)，要么就是全不透明(不可见，位于裁剪路径外部)。而蒙板可以
+指定不同位置的透明度。
+裁剪路径：
+    视窗的裁剪路径--overflow和clip属性：HTML元素的overflow属性和clip属性共同设置了该元素对内容的剪裁行为。同样的，在SVG中，这2个属性还可以使用。
+    overflow = visible | hidden | scroll | auto | inherit
+    overflow属性定义了当元素的内容超过元素的边框的时候采取的行为。
+    这个属性可以用于能创建新视窗的元素(svg,symbol,image,foreignObject),pattern和marker元素。这个属性的取值含义如下：
+    visible：显示所有内容，即使是内容已经在元素的边框外边，这个是默认值。
+    hidden：隐藏超出裁剪路径的内容。裁剪路径由clip属性指定。
+    scroll：采用滚动条的形式，呈现超出的内容。
+    auto：采用浏览器定义的行为，这个似乎不太可靠。
+    这个属性和CSS2中的同名属性基本相同，只不过在SVG中，有一些不同的处理过程：
+    1.overflow属性对于除了创建新视窗的元素(svg,symbol,image,foreignObject),pattern和marker元素外的元素都没有效果。
+    2.裁剪路径与视窗是对应的，创建了新的视窗，就创建了新的裁剪路径。默认的裁剪路径就是视窗边界。
+    clip = <shape> | auto | inherit
+    clip属性用于设置当前视窗的裁剪路径。
+    这个属性可以用于能创建新视窗的元素(svg,symbol,image,foreignObject),pattern和marker元素。这个属性和CSS2中同名属性有一样的参数。auto代表裁剪路径与视窗边框是一致的。当使用图
+    形作为参数时(设置裁剪矩形的top,right,bottom和left的值)， 可以使用用户坐标值(即不带单位的坐标)。例如：
+    P { clip: rect(5px, 10px, 10px, 5px); }
+    这里注意，默认情况下(overflow和clip都取默认值)，裁剪路径是与视窗的边框是一致的。当设置了viewBox和preserveAspectRatio以后，通常也需要把clip裁剪路径的四边映射成viewBox的四边，
+    这样才能保证某些显示效果还是一样的(当然如果都是默认值，就不用设了)。
+
+    对象的裁剪路径--clipPath元素：裁剪路径使用clipPath元素定义，然后使用clip-path属性引用。
+    clipPath可以包含path元素，text元素，基本的图形元素(circle等)和use元素。如果是use元素，则它必须是直接引用path,text或者基本图形元素，不能引用的是其他的元素。
+    注意裁剪路径只是一位的遮罩层，该路径是包含的所有的元素的并集。在这个集合中的对象就可以显示，不在这个范围内的对象就不显示。具体判定点在不在范围内的算法由"clip-rule"属性指定。
+    对于图形对象，裁剪路径等于自己clip-path设置的裁剪路径与所有外层元素的裁剪路径(包括clip-path和overflow设置的裁剪路径)的并集。注意几点：
+    1.clipPath元素自身并不会从外层节点继承clipPath定义的裁剪路径。
+    2.clipPath元素自身可以设置clip-path属性。效果是两个路径的交集。
+    3.clipPath元素的子元素可以设置clip-path属性：效果是两个路径的并集。
+    4.空裁剪路径会裁掉元素内所有的内容。
+    下面看看几种重要的属性：
+    clipPathUnits = "userSpaceOnUse(默认值) | objectBoundingBox"
+    这个属性定义了clipPath元素使用的坐标系统，这两个值我们都很熟悉了，分别是采用引用当前裁剪路径的元素的用户坐标系统和包围盒比例值。
+    clipPath元素从来不直接渲染，都是通过clip-path被引用，所以设置clipPath元素的display属性没有作用。
+    clip-path = “<url(#裁剪路径名)> | none inherit”
+    这个属性不用多说了，用于引用裁剪路径，这里需要注意的是，所有的容器元素，基本图形元素和clipPath元素都可以使用这个属性。
+    clip-rule = "nonzero(默认值) | evenodd | inherit"
+    这个属性用于确定哪些点是属于裁剪路劲内部的点。对于简单的封闭图形，这个很好判定，但是对于复杂的内部有洞的图形，就有区别了。这个属性的取值与fill-rule的取值含义是一样的。
+    clip-rule属性只能用于clipPath元素的内部图形元素。
+
+    蒙板--mask元素:在SVG中，你可以为渲染的对象指定任何的图形元素或者g元素作为蒙板，来将渲染对象组合到背景中。
+    蒙板用mask元素定义，使用蒙板的时候只需要在对象的mask属性中引用蒙板就可以了。
+    mask元素可以包含任何的图形元素和容器元素(例如g)。
+    蒙板的效果其实大家也比较清楚，基本就是根据蒙板中每个点的颜色和透明度计算出一个最终的透明度，然后在渲染对象的时候，在对象上面罩上这个带有不同透明度的蒙板层，体现出蒙板的遮挡效果。
+    对于渲染对象来说，只有在蒙版内的部分会按照蒙板上点的透明度来渲染，不在蒙板内的部分不显示。
+    蒙板的定义和使用已经介绍了，下面看几个重要的属性：
+    maskUnits = "userSpaceOnUse | objectBoundingBox(默认值)"
+    定义了mask元素中坐标(x,y)和长度(width,height)的坐标系统：使用引用该蒙板的元素的用户坐标系，或者是使用相对于引用蒙板的元素的包围盒的相对值。这个值的含义与前面章节中的单位含义是相同的。
+    maskContentUnits = "userSpaceOnUse(默认值) | objectBoundingBox"
+    定义了mask元素中子元素的坐标系统。
+    x, y, width, height：
+    定义了蒙板的位置和大小，在默认的objectBoundingBox坐标下，默认值分别为-10%,-10%,120%,120%。
+    此外要注意：蒙板不会直接渲染，只会在引用的地方起作用，所以display,opacity等属性对于mask元素来说都是不起作用的。
+
+滤镜：
+滤镜称得上是SVG最强大的功能了，它允许你给图形(图形元素和容器元素)添加各种专业软件中才有的滤镜特效。这样你就很容易在客户端生成和修改图像了。而且滤镜并没有破坏原有文档的结构，所以维护性
+也很好。滤镜用filter元素定义；需要使用的时候，在需要滤镜效果的图形或容器上添加filter属性，引用相关滤镜即可。
+滤镜元素包含很多的滤镜原子操作；每个原子操作在传入的对象上执行一个基本的图形操作，并产生图形输出。大多数的原子操作生成的结果基本都是一个RGBA图片。每个原子操作的输入既可以是源图形，也可
+以使其他原子操作的结果。所以引用滤镜效果的过程就是在源图形上应用相关的滤镜原子操作，最后生成一个新的图形并渲染。当在容器上(例如g元素)使用filter属性的时候，滤镜效果会应用到容器中的所有
+元素。但是容器中的元素并不会直接渲染到屏幕，而是会被暂时存储起来。然后，图形命令会被当做处理引用的filter元素的过程的一部分被执行，这个时候才会去渲染。这是通过使用SourceGraphic和
+SourceAlpha来指定的。
+有些滤镜效果会生成一些没有定义的像素点，这些点会被处理成透明效果。
+filter元素与滤镜效果区域：
+滤镜效果区域指的是滤镜效果起作用的区域。这个区域的大小是由filter元素下列的属性定义的：
+filterUnits = "userSpaceOnUse | objectBoundingBox"
+这个属性定义了x,y,width和height使用的坐标空间。与其他的Unit相关的属性一样，该属性也是两个值：userSpaceOnUse和objectBoundingBox(默认值)。
+userSpaceOnUse表示使用引用该filter元素的元素的用户坐标系统。
+objectBoundingBox表示使用引用该filter元素的元素的包围盒的百分比做取值范围。
+x,y,width,height：这些属性定义了滤镜起作用的矩形区域。滤镜效果不会应用在超过这个区域的点上。x,y的默认值是-10%，width与height的默认值是120%。
+filterRes：该属性定义了中间缓存区域的大小，所以也定义了缓存图片的质量。通常情况下，不需要提供这个值，浏览器自己会选取合适的值。通常，滤镜效果区域应该定义成和背景正好能点和点一一对应，
+这样会带来一定的效率优势。
+除了这些属性，filter元素的下列属性也很重要：
+primitiveUnits = "userSpaceOnUse | objectBoundingBox"
+这个属性定义每个原子操作中坐标和长度使用的坐标空间，这个属性的取值还是userSpaceOnUse和objectBoundingBox。只不过默认值是userSpaceOnUse。
+xlink:href = "<iri>"：该属性用于在当前filter元素中引用其他的filter元素。
+值得注意的是，filter元素只会继承自己的父节点的属性，并不会继承引用该filter元素的元素的属性。
+滤镜总览：
+各种滤镜原子操作就不详述了，需要的时候查看官方文档即可。下面看一下这些操作的共性。除了"in"属性，下面的其他属性是所有原子操作都可用的。
+x,y,width,height：这几个属性不多说了，它定义了滤镜原子起作用的区域，不妨成为"滤镜子区域"吧。这几个属性是受filter元素的作用区域限制的，默认情况下，取值分别是0,0,100%,100%。这些原子
+的作用区域超过filter元素的作用区域都不起作用。
+result：存放该步操作的结果。指定了result以后，同一个filter元素的其他后续操作都可以用in来指定其为输入。这个参看上面的例子就知道了。如果省略了这个值，则只能作为紧挨着的下一步操作的隐式
+输入，注意如果紧挨着的下一步操作已经用in指定了输入，则以in指定的为准。
+in：表示该步操作的输入。省略in属性的话，将会默认使用前一步的结果作为本步的输入，如果省略的是第一步的in，则会使用"SourceGraphic"作为值(参看下面的说明)。in属性可以引用前面result存放
+的值，也可以指定下面6个特殊的值：
+SourceGraphic：这个值代表使用当前的图形元素作为操作的输入。
+SourceAlpha：这个值代表使用当前图形元素的Alpha值作为操作的输入。
+BackgroundImage：这个值代表使用当前的背景截图作为操作的输入。
+BackgroundAlpha：这个值代表使用当前的背景截图的Alpha值作为操作的输入。
+FillPaint：这个值使用当前图形元素的fill属性的值作为操作的输入。
+StrokePaint：这个值使用当前图形元素的stroke属性的值作为操作的输入。
+访问背景截图：
+通常情况下，我们可以直接使用引用filter元素的元素的背景截图作为filter效果的源图片。代表这种输入的取值是BackgroundImage和BackgroundAlpha，前一个包含颜色和Alpha值，后一个只包含
+Alpha值。为了支持这种使用方式，还需要在引用filter元素的元素上显式的开启这个特性，这需要设置元素的enable-background属性。
+enable-background = "accumulate | new [ <x> <y> <width> <height> ] | inherit"
+这个属性只能用于容器元素，它定义了如何去截取背景截图。
+new值代表：允许该容器的子元素访问容器的背景截图，并且该容器的子元素会渲染到背景中和设备上。
+accumulate是默认值，它的效果取决于上下文：如果父辈容器元素使用了enable-background：new的话，那么该容器的所有图形元素都会参与背景的渲染。否则，说明父辈容器没有准备截取背景截图，
+该元素的图形元素显示只显示在设备上。
+
+动画：
+交互性：SVG拥有良好的用户交互性，例如：
+1. SVG能响应大部分的DOM2事件。
+2. SVG能通过cursor良好的捕捉用户鼠标的移动。
+3. 用户可以很方便的通过设置svg元素的zoomAndPan属性的值来实现缩放等效果。
+4. 用户可以很方便的把动画和事件结合起来，完成一些复杂的效果。
+通过给SVG元素挂接事件，我们可以使用脚本语言方便的完成一些交互任务。SVG支持大部分的DOM2事件，例如：onfocusin, onfocusou, onclick, onmousedown, onmouseup, onmousemove,
+onmouseout, onload, onresize, onscroll等事件。除了这些，SVG还提供了独有的动画相关的事件，比如：onroom,onbegin,onend,onrepeat等。
+动画的方式：SVG采用的是使用文本来定义图形，这种文档结构非常适合于创建动画。要改变图形的位置、大小和颜色，只需要调整相应的属性就可以了。事实上，SVG有为各种事件处理而专门设计的属性，甚
+至很多还是专门为动画量身定做的。在SVG中，实现动画可以有下面几种方式：
+1. 使用SVG的动画元素。
+2. 使用脚本。采用DOM操作启动和控制动画，这个已经是一门成熟的技术了。
+3. SMIL(Synchronized Multimedia Integration Language)。这个有兴趣的请参考：http://www.w3.org/TR/2008/REC-SMIL3-20081201/。
+动画元素的公共属性：
+第一类：指定目标元素和属性：
+xlink:href：这个应该是很熟悉了，指向执行动画的元素。这个元素的必须是在当前的SVG文档片段中定义的。如果没有指定这个属性的话，动画会应用到自己的父元素上。
+attributeName = "<attributeName>"：
+这个属性指定了应用动画的属性。如果该属性有namespace的话(不要忘了，SVG本质是XML文档)，这个namespace也要加上。
+attributeType = "CSS | XML | auto(默认值)" 这个属性指定了属性取值的命名空间，这几个值的含义如下：
+CSS：代表attributeName指定的属性是CSS属性。
+XML：代表attributeName指定的属性是XML默认命名空间下的属性(注意svg文档本质上是xml文档)。
+auto：代表先在CSS属性中查找attributeName指定的属性，如果没找到，则在默认的XML命名空间下寻找该属性。
+第二类：控制动画时间的属性：
+下列属性都是动画时间属性；它们控制了动画执行的时间线，包括如何开始和结束动画，是否重复执行动画，是否保存动画的结束状态等。
+begin = "begin-value-list" 该属性定义了动画的开始时间。可以是分号分开的一系列时间值。也可以是一些其他触发动画开始的值。比如事件，快捷键等。
+dur = Clock-value | "media" | "indefinite" 定义了动画的持续时间。可以设置为以时钟格式显示的值。也可以设置为下列两个值：
+media：指定动画的时间为内部多媒体元素的持续时间。
+indefinite：指定动画时间为无限。
+时钟格式指的是下列这些合法的取值格式：
+  02:30:03    = 2 hours, 30 minutes and 3 seconds
+  50:00:10.25 = 50 hours, 10 seconds and 250 milliseconds
+  02:33   = 2 minutes and 33 seconds
+  00:10.5 = 10.5 seconds = 10 seconds and 500 milliseconds
+  3.2h    = 3.2 hours = 3 hours and 12 minutes
+  45min   = 45 minutes
+  30s     = 30 seconds
+  5ms     = 5 milliseconds
+  12.467  = 12 seconds and 467 milliseconds
+  00.5s = 500 milliseconds
+  00:00.005 = 5 milliseconds
+end = "end-value-list" 定义了动画的结束时间。可以是分号分开的一系列值。
+min = Clock-value | "media"   max = Clock-value | "media"  设置了动画持续时间的最大最小值。
+restart = "always" | "whenNotActive" | "never"
+设置了动画能否随时重新开始。always代表动画可以随时开始。whenNotActive代表只能在没播放的时候重新开始，比如前一次播放结束了。never表示动画不能重新开始。
+repeatCount = numeric value | "indefinite" 设置了动画重复的次数。 indefinite代表无限重复。
+repeatDur = Clock-value | "indefinite" 设置重复的总的动画时间。indefinite代表无限重复。
+fill = "freeze" | "remove(默认值)"
+设置了动画结束后元素的状态。freeze表示动画结束后元素停留在动画的最后状态。remove代表动画结束以后元素回到动画前的状态，这个是默认值。
+第三类：定义动画值的属性：
+这些属性定义了被执行动画的属性的取值情况。其实是定义了关键帧和插值的一些算法。
+calcMode = "discrete | linear(默认值) | paced | spline"
+定义了动画插值的方式：discrete:离散的，不插值；linear：线性插值；paced：步长插值；spline:样条插值。默认是linear(线性插值)，但是如果属性不支持线性插值，则会采用discrete插值方式。
+values = "<list>" 定义了以分号分隔的动画关键帧的值列表。支持向量值。
+keyTimes = "<list>"
+定义了以分号分隔的动画关键帧的时间列表。这个和values是一一对应的。这个值是受插值算法影响的，如果是线性(linear)和样条插值(spline)，则keyTimes的第一个值必须是0，最后一个值必须是1。
+对于离散(discrete)的不插值的方式，keyTimes的第一个值必须是0。对于步长插值方式，很显然是不需要keyTimes。而且如果动画的持续时间设置为indefinite，则忽略keyTimes。
+keySplines = "<list>" 这个属性定义了样条插值(贝塞尔插值)时的控制点，显然只有在插值模式选择为spline才起作用。这个列表中的值取值范围是0到1。
+from = "<value>"
+to = "<value>"
+by = "<value>"
+定义动画属性的起始值，结束值和步长值。这里需要注意：如果values已经制定了相关的值，则任何的from/to/by值都会被忽略。
+第四类：控制动画是否是增量式的属性：
+有时候，如果相关的值设置的不是绝对值，而是增量值是非常有用的，使用additive属性可以达到这个目的。
+additive = "replace(默认值) | sum"
+这个属性控制了动画是否是增量式的。sum表示动画会较大相关的属性值或者其他低优先级的动画上。replace是默认值，表示动画会覆盖相关的属性值或者其他低优先级的动画。
+accumulate = "none(默认值) | sum"
+这个属性控制了动画效果是否是累积的。none是默认值，表示重复的动画不累积。sum表示重复的动画效果是累积的。对于单次执行的动画，该属性没有意义。
+动画元素小结：
+SVG提供了下列动画元素：
+1. animate元素：这个是最基本的动画元素，可以直接为相关属性提供不同时间点的值。
+2. set元素：这个是animate元素的简写形式，支持所有的属性类型，尤其是当对非数字型的属性(例如visibility)进行动画时很方便。set元素是非增量的，相关的属性对之无效。 to指定的动画结束值类
+型一定要符合属性的取值类型。
+3. animateMotion元素：路径动画元素。这个元素大多数属性都和上面一样，只有下面几个稍微有点区别：
+calcMode = "discrete | linear | paced | spline" 这个属性的默认值不同，在该元素中默认的是paced。
+path = "<path-data>" 动画元素移动的路径，格式与path元素的d属性的值的格式是一致的。
+keyPoints = "<list-of-numbers>"
+这个属性的值是一系列分号给开的浮点数值，每个值的取值范围是0~1。这些值代表了keyTimes属性指定的对应时间点移动的距离，这里距离具体是多少是由浏览器自己决定的。
+rotate = <number> | auto | auto-reverse"
+这个属性指定了元素移动时旋转的角度。默认值是0，数字代表旋转的角度，auto表示随着路劲的方向转动物体。auto-reverse表示转向与移动方向相反的方向。
+此外animateMotion元素的from,by,to,values的值都是坐标对组成的；x值与y值之间用逗号或空格分开，每个坐标对之间用分号隔开比如from="33,15"表示起点x坐标为33，y坐标为15。
+指定运动路径的方式有两种：一种为直接给path属性赋值，一种为使用mpath元素作为animateMotionde的子元素指定路径。如果同时使用这两种方式，则使用mpath元素优先级高。这两种方式优先级都比
+values,from,by,to高。
+4. animateColor元素：颜色动画元素。这是一个过时的元素，基本上所有功能都可以用animate代替，所以还是不要用了。
+5. animateTransform元素：变换动画元素。看看特殊的一些属性：
+type = "translate | scale | rotate | skewX | skewY" 这个属性指定了变换的类型，translate是默认值。
+from,by和to的值相应的都是对应变换的参数，这个还是与前面讲的变换是一致的。values则是一组分号隔开的这样的值系列。
+支持动画效果的元素和属性：基本上所有图形元素(path,rect,ellipse,text,image...)，容器元素(svg, g, defs, use, switch, clipPath, mask...)都支持动画。基本上大多数的属性都支持动
+画效果。详细的说明请参看官方文档。
+使用DOM实现动画：SVG动画也可以使用脚本完成。
+
+SVG DOM：使用脚本可以很方便的完成各种复杂的任务，也是完成动画和交互的一种主流方式。由于SVG是html的元素，所以支持普通的DOM操作，又由于SVG本质上是xml文档，所以也有一种特殊的DOM操作，
+大多称之为SVG DOM。当然了，由于目前IE不支持SVG，开发基于IE的SVG页面需要采用不同的方式。
+与普通的html元素的DOM操作完全一样:
+选择元素：document.getElementById
+创建元素：document.createElementNS
+创建子元素的另外一种方式：element.createChildNS
+添加元素：node.appendChild
+设置元素的属性：element.setAttributeNS/element.setAttribute
+除了上面这几个操作，下面的操作和属性也很常见：
+获取元素的属性值： element.getAttributeNS/element.getAttribute
+检查元素是否存在某属性：element.hasAttributeNS
+移除元素的某属性：element.removeAttributeNS
+父元素、子元素和兄弟节点：element.parentNode/element.firstChild/child.nextSibling
+这些方法这里不再详细介绍了；此外，DOM树的节点结构，对象之间的继承关系也都是差不多的，就不详述了。需要的同学参看后面的DOM Core Object的文档。
+DOM Core Object API：http://reference.sitepoint.com/javascript/Document
+SVG DOM常用属性和方法:http://riso.iteye.com/blog/393454, http://riso.iteye.com/blog/393459
+不过，需要注意的是SVG本质上是XML文档，所以基本采用的DOM方法都是带NS结尾的方式，来提供相关的namespace；如果创建元素时已经提供了namespace，而且没有多个namespace的问题，那么设置相关
+属性的时候，也可以选择使用不带NS的版本，比如直接使用element.setAttribute设置属性值，但是总的来说，还是强烈推荐使用带NS结尾的版本，因为这个版本总是工作正常的，即使是在多namespace的
+情况下。
+SVG DOM这个与标准的DOM有哪些不同，我也没找到什么全面的资料，目前只知道对属性的赋值方式是不同的。如果有了解这方面的同学还请吱一声啊。
+一般我们使用element.setAttributeNS/element.setAttribute来给属性赋值，在SVG DOM中，可以使用面向对象的方式，通过访问点号来给对象的属性赋值，比如下面是两种方式的对比：
+普通的DOM方式：
+element.setAttribute("x", "10");
+element.setAttribute("y", "20");
+element.setAttribute("width", "100%");
+element.setAttribute("height", "2em");
+而SVG DOM的方式：
+element.x.baseVal.value = 10;
+element.y.baseVal.value = 20;
+element.width.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PERCENTAGE, 100);
+element.height.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_EMS, 10);
+DOM脚本属于传统的脚本，其特征是通过构建“值字符串”来设置各个项。SVG DOM脚本样式的优点是，你不必构建“值字符串”，所以性能优于DOM脚本。
+
+SVG与Canvas的对比：
+Canvas                                                  SVG
+基于像素（动态 .png）	                                    基于形状
+单个 HTML 元素	                                        多个图形元素，这些元素成为 DOM 的一部分
+仅通过脚本修改	                                        通过脚本和 CSS 修改
+事件模型/用户交互颗粒化 (x,y)	                            事件模型/用户交互抽象化 (rect, path)
+图面较小时、对象数量较大 (>10k)（或同时满足这二者）时性能更佳	对象数量较小 (<10k)、图面更大（或同时满足这二者）时性能更佳
+从上面的对比中可以看出：Canvas在像素操作方面有着强大的优势；而SVG的最大优势在于便捷的交互性和可操作性。使用Canvas受画布的尺寸(其实就是像素数目)影响很大，使用SVG受对象的数目(元素的
+数目)影响比较大。Canvas 和 SVG 在修改方式上还存在着不同。绘制 Canvas 对象后，不能使用脚本和 CSS 对它进行修改。而 SVG 对象是文档对象模型的一部分，所以可以随时使用脚本和 CSS 修改
+它们。
+实际上Canvas 是基于像素的即时模式图形系统，绘制完对象后不保存对象到内存中，当再次需要这个对象时想，需要重新绘制；SVG 是基于形状的保留模式图形系统，绘制完对象后会将其保存在内存中，
+当需要修改这个对象信息时，直接修改就可以了。这种根本的区别导致了很多应用场景的不同。
+在下面的几个常见应用中，我们也可以体会到这一点。
+高保真的文档：
+      这个方面很好理解，为了浏览文档时，缩放时不失真，或需要打印高质量的文档，通常会优先选择SVG，例如地图服务。
+静态的图片资源：
+      SVG常常用于简单图像，无论是应用程序还是网页中的图像，大图像还是小图像。由于SVG要加载到DOM中，或者创建图像前至少要进行解析，所以性能会稍微有所下降，但相比于呈现网页的成本（大约
+      几毫秒），这种效率损失是极其微小。在文件大小方面（为了评估网络流量的目的），SVG图片与png图片大小相差也不大。但是因为SVG作为图像格式是可缩放的，所以如果开发人员想要以更大的比例
+      使用该图像，或者用户使用高 DPI的屏幕，则使用SVG是相当不错的选择。
+像素操作：
+      使用Canvas时可以获得快速的绘图速度，且不需要保留元素的相应信息。特别是当需要处理像素操作时，性能较好。这种类型的应用基本都选择Canvas技术。
+实时数据：
+      Canvas非常适合非交互的实时数据可视化。比如实时天气数据。
+图表和图形：
+      使用SVG或者Canvas均可以绘制相关图形和图表，但是如果要强调可操作性，则SVG无疑是最好选择，如果不需要交互性，强调性能，则Canvas比较适合。
+二维游戏：
+      因为游戏大多数是使用低级的API开发，所以Canvas比较容易让人接受。但是实际上，绘制游戏的场景的时候，Canvas需要重复绘制和定位形状，而SVG是维护在内存中，修改相关的属性非常容易，
+      所以SVG也是一种不错的选择。在小游戏板上使用几个对象创建游戏时，Canvas 和 SVG 之间在性能上几乎没有差异。但是，随着创建更多的对象，Canvas 代码将会增大许多。由于每次进行游戏循
+      环时都必须重新绘制 Canvas 对象，因此 Canvas 游戏的速度会减慢。
+用户界面设计：
+      由于良好的交互性，无疑SVG更胜一筹。利用 SVG 的保留模式图形显示，你可以在正文的类似 HTML 的标记中创建所有用户界面详细信息。因为每个 SVG 元素和子元素都可以响应单独的事件，所以
+      你可以非常轻松地创建复杂的用户界面。而 Canvas 需要你按照更复杂的代码顺序来指定如何创建用户界面的每个部分。你需要遵照的顺序是：
+      ?获取上下文。
+      ?开始绘制。
+      ?指定每根线条和每个填充的颜色。
+      ?定义形状。
+      ?完成绘制。
+      此外，Canvas 只能处理整个画布的事件。如果有更复杂的用户界面，则必须确定在画布上单击的位置的坐标。SVG 可以单独处理每个子元素的事件。
+对比参考网址：https://msdn.microsoft.com/zh-cn/ie/hh377884
+
+5、MathML：HTML5 可以在文档中使用 MathML 元素，对应的标签是 <math>...</math> 。MathML 是数学标记语言，是一种基于XML（标准通用标记语言的子集）的标准，用来在互联网上书写数学符号
+和公式的置标语言。（目前浏览器兼容性不是太好，貌似只有firefox支持）
+
+6、HTML5拖放：
+当把一个文件从OS移动到浏览器时，不会触发dragstart和dragend事件。
+DragEvent和DataTransfer大多数桌面浏览器都支持，但是DataTransferItem和DataTransferItemList只有部分浏览器支持。
+浏览器默认禁止将一个元素拖放到另一个元素上，为了改变这个默认行为，需要将目标元素设置成可放置的，即这个元素必须设置ondragover和ondrop的事件处理器，并使用event.preventDefault()来
+阻止默认行为。
+

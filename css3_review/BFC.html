@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC</title>
+    <style type="text/css">
+        p{
+            background-color: aquamarine;
+            margin:10px;
+        }
+    </style>
+</head>
+<body style="/* border: 1px solid; */background: antiquewhite;">
+    <!--使用BFC我们可以防止外边距折叠-->
+    <div style="/* margin: 10px; */overflow: hidden;background: red;">
+        <p>sibling1</p>
+        <p>sibling2</p>
+        <div style="overflow: hidden;">
+            <p>sibling3</p>
+        </div>
+    </div>
+    <!--使用BFC清除浮动-->
+    <div style="margin: 10px;overflow: hidden;/* float: left; */">
+        <div style="float: left;margin: 10px;">
+            <div style="margin: 10px;">sibling1</div>
+            <div style="margin: 10px;">aaaaa</div>
+        </div>
+        <div style="margin: 10px;display: none;">dddddd</div>
+        <div style="float: left;margin: 10px;">
+            sibling2
+        </div>
+    </div>
+    <!--使用BFC防止文字环绕-->
+    <div>
+        <div style="float: left;border: 1px solid;">float div</div>
+        <p style="margin: 0px;overflow: hidden;">我是环绕，我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕，我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕我是环绕</p>
+    </div>
+    <!--在多列布局中使用BFC-->
+    <div>
+        <div style="width:33.33%;background-color: green;float:left;margin:0 1%;">column 1</div>
+        <div style="width:33.33%;background-color: green;float:left;margin:0 1%;">column 2</div>
+        <div style="width:33.33%;background-color: green;float:left;margin:0 1%;float: none;overflow: hidden;width: auto">column 3</div>
+    </div>
+
+</body>
+</html>

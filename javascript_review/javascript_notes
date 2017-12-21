@@ -1,0 +1,13 @@
+1、javascript的Number.MAX_VALUE、Number.MIN_VALUE、正负无穷大及可精确取值的最大整数：
+    Number.MAX_VALUE=Math.pow(2,971)*(Math.pow(2,53)-1)=1.7976931348623157e+308
+    指数部分（占11位）最大取到1023（指数部分元数据为+1023），尾数部分（占52位）全取1，换算成十进制即是Math.pow(2,971)*(Math.pow(2,53)-1)
+    Number.MIN_VALUE=Math.pow(2,-1023-51)=Math.pow(2,-1074)=5e-324
+    指数部分取最小-1023，尾数部分取51个0加一个1，换算成十进制即是Math.pow(2,-1023-51)=Math.pow(2,-1074)
+
+    如果某次计算结果（由于存储位数限制，得到的结果不一定是精确结果）大于Number.MAX_VALUE，那么这个数值将被自动转换成特殊的Infinity（无穷大值），
+    负数为Number.NEGATIVE_INFINITY=-Infinity,正数为Number.POSITIVE_INFINITY=Infinity
+
+    javascript可精确取值的最大正整数为：Math.pow(2,53)=Number.MAX_SAFE_INTEGER+1
+                        最小负整数为：-Math.pow(2,53)=Number.MIN_SAFE_INTEGER-1
+
+    二进制的舍入，当要舍弃的位和之前的位都为1时，进1，否则舍弃

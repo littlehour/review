@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多栏布局</title>
+</head>
+<body style="background: aliceblue;">
+<!--测试负边距（margin）、边距折叠及z-index问题-->
+<!--<div style="height: 100px;/* border: 1px solid; */width: 600px;margin: 30px auto;background: aquamarine;/* margin-bottom: 10px; *//* margin-top: 10px; *//* height: 0px; *//* position: relative; *//* overflow: hidden; */z-index: 1;" class="">-->
+    <!--<div style="width: 100%;/* height: 50px; */background: bisque;/* margin-bottom: -20px; *//* display: none; */float: left;z-index: 0;/* position: absolute; *//* top: 0; *//* left: 0; */margin-left: 0px;"><div style="-->
+    <!--width: 20px;-->
+    <!--height: 59px;-->
+    <!--position: absolute;-->
+    <!--background: blue;-->
+    <!--z-index: 0;-->
+<!--"></div>-->
+        <!--bfhdsl<br>dnjl<br>seioi<br>-->
+    <!--</div>-->
+    <!--<div style="width: 50px;height: 92px;background: black;/* margin-bottom: -20px; *//* display: none; */float: left;z-index: 3;position: absolute;/* top: -14px; *//* left: 0; */">-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div style="height: 130px;/* border: 1px solid; */width: 600px;margin: 30px auto;background: yellowgreen;margin-top: -10px;/* z-index: -1; */">-->
+    <!--<div style="width: 100%;float: left;/* background: brown; */margin-left: 50px;/* display: none; */margin-right: 40px;margin-top: 0px;/* z-index: -1; */">-->
+        <!--<div style="margin-left: 50px;margin-right: 50px;background: teal;">自适应<br>s<br>d<br>f</div>-->
+    <!--</div>-->
+    <!--<div style="width: 50px;height: 50px;/* border: 1px solid; */float: left;/* margin-top: -50px; *//* margin-right: 12px; */margin-left: 0px;/* margin-bottom: 9px; */background: antiquewhite;">-->
+        <!--dnlak<br>soa<br>-->
+    <!--</div>-->
+    <!--<span style="display: none;">aaaa</span>-->
+    <!--<div style="width: 50px;height: 50px;/* border: 1px solid; */float: left;margin-top: 0px;margin-bottom: 0px;/* display: none; */background: aqua;/* clear: both; */margin-left: 5px;margin-right: -25px;">-->
+    <!--</div>-->
+    <!--<div style="width: 50px;height: 50px;/* border: 1px solid; */float: left;/* margin-top: -50px; */margin-bottom: 0px;/* display: none; */background: brown;/* clear: both; */margin-left: 0px;/* display: none; */">-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div style="width:100px;height:50px;margin:10px auto;background-color:red;margin-top: 30px;"></div>-->
+
+<!--测试float布局引起的空白,及float的负边距问题-->
+    <!--<div style="width:200px;margin: 30px auto;background-color:darkkhaki;height: 400px;" id="div">-->
+        <!--<div style="width:50px;height:60px;float:left;background-color:palegoldenrod;"></div>-->
+        <!--<div style="width:50px;height:60px;float:left;background-color:cadetblue;"></div>-->
+        <!--<div style="width:50px;height:130px;float: right;background-color:green;margin-right:-40px"></div>-->
+        <!--<div style="width: 50px;height: 40px;float:left;background-color:yellow;"></div>-->
+        <!--<div style="width:40px;height: 50px;float: right;background-color: blueviolet;"></div>-->
+        <!--<div style="width: 50px;height:55px;background-color:brown;/* clear:left; */float: left;margin-left:-50px"></div>-->
+        <!--<div style="width: 50px;height:50px;background-color: aquamarine;/* clear:left; */float: left;"></div>-->
+        <!--<div style="width: 50px;height:50px;background-color: blue;/* clear:left; */float: left;margin-right:-10px"></div>-->
+    <!--</div>-->
+
+<!--测试absolute布局-->
+    <!--<div style="position:relative;width:200px;margin:30px auto;background-color:red;">-->
+        <!--<div style="width:50px;height:50px;background-color:lightblue"></div>-->
+        <!--<div style="position:absolute;width:50px;height:50px;background-color:lightgreen;top: 0;left: 60px;"></div>-->
+    <!--</div>-->
+    <!--<div>dddd</div>-->
+
+<!--测试line-height和vertical-align-->
+<!--<div style="-->
+    <!--padding: 20px;-->
+    <!--border: 1px solid;-->
+    <!--margin: 20px;-->
+    <!--line-height: 30px;-->
+    <!--/* height: 67px; */-->
+    <!--/* overflow: hidden; */-->
+    <!--/* vertical-align: middle; */-->
+    <!--display: inline-block;-->
+    <!--font-size: 30px;-->
+    <!--/* width: 69px; */-->
+<!--">-->
+    <!--<span style="-->
+    <!--line-height: 30px;-->
+    <!--font-size: 39px;-->
+    <!--/* display: none; */-->
+    <!--/* vertical-align: middle; */-->
+<!--">hfxxaso </span>-->
+  <!--<span style="-->
+    <!--/* vertical-align: middle; */-->
+    <!--font-size: 30px;-->
+    <!--line-height: 30px;-->
+    <!--vertical-align: -10%;-->
+<!--">hx <br>eix</span></div>-->
+<!--<table>-->
+    <!--<tbody><tr><td style="-->
+    <!--/* height: 40px; */-->
+    <!--width: 40px;-->
+    <!--line-height: 25px;-->
+    <!--height: 20px;-->
+    <!--vertical-align: baseline;-->
+<!--">eee</td><td>eee</td></tr>-->
+    <!--<tr><td colspan="2">eee</td></tr>-->
+    <!--</tbody></table>-->
+
+<!--display部分属性测试-->
+<div style="
+    float: left;
+    width: 300px;
+    height: 300px;
+    background: blueviolet;
+">
+</div>
+
+<div style="
+    display: table-cell;
+    width: 200px;
+    height: 200px;
+    background: aqua;
+"></div>
+<div style="
+    width: 200px;
+    height: 73px;
+    background: antiquewhite;
+    /* display: table-cell; */
+    /* overflow: hidden; */
+    /* float: left; */
+">我是右侧内容，我的内容是自适应我是右侧内容，我的内容是自适应的我是右侧内容，我的内容是自适应的的</div>
+<div style="
+    width: 200px;
+    height: 30px;
+    background: aquamarine;
+    /* clear: left; */
+    /* overflow: hidden; */
+    display: table-row;
+">发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别别</div>
+
+<div style="
+    /* width: 200px; */
+    /* height: 30px; */
+    background: brown;
+    /* clear: left; */
+    /* overflow: hidden; */
+    display: table-row;
+">发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别别</div>
+<div style="
+    /* width: 200px; */
+    /* height: 30px; */
+    background: brown;
+    /* clear: left; */
+    /* overflow: hidden; */
+    display: table-row;
+">发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别发i额怕分发i额怕分别发i额怕分别发i额怕分别发i额怕分别发i额怕分别别别</div><div style="
+    width: 200px;
+    /* height: 30px; */
+    background: brown;
+    /* clear: left; */
+    /* overflow: hidden; */
+    /* border: 1px solid; */
+">
+  <span style="
+    background: bisque;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+">烦恼i恶父啪内茅父啪内茅父啪内茅艰</span><span style="
+    background: cadetblue;
+    /* display: none; */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+">烦恼i恶父啪内佛山茅草恶法艰苦打吗佛啊念佛拍额分v哦你扫i娥方炯生票房你</span>
+</div>
+
+
+<!--多栏自适应布局-->
+<!--1、左侧尺寸固定右侧自适应-->
+    <!--浮动实现-->
+    <!--<div class="container" style=" width: 80%;margin: 0px auto;">-->
+        <!--float和absolute均可以-->
+        <!--<div class="left" style="width: 150px;float: left;background: aquamarine;">-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+        <!--</div>-->
+        <!--<div class="right" style="margin-left: 150px;background: blue;">-->
+            <!--我是右侧内容，我的内容是自适应的。使用了margin-left等于左侧固定宽度的方法来实现，这样就能保证右侧内容自适应了。-->
+            <!--我是右侧内容，我的内容是自适应的。使用了margin-left等于左侧固定宽度的方法来实现，这样就能保证右侧内容自适应了。-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--绝对定位实现-->
+    <!--<div class="container" style="width: 80%;margin: 10px auto;position: relative;padding-left: 150px;">-->
+        <!--<div class="left" style="position: absolute;width: 150px;left: 0px;background: bisque;">-->
+            <!--我是左侧内容，我的内容是放在宽度为150px的absolute定位的元素里面的，-->
+            <!--我是左侧内容，我的内容是放在宽度为150px的absolute定位的元素里面的，-->
+            <!--我是左侧内容，我的内容是放在宽度为150px的absolute定位的元素里面的，-->
+        <!--</div>-->
+        <!--<div class="right" style="background: blue;">-->
+            <!--我是右侧内容，我内容是自适应的，我使用的方法是，-->
+            <!--我是右侧内容，我内容是自适应的，我使用的方法是，-->
+            <!--我是右侧内容，我内容是自适应的，我使用的方法是，-->
+            <!--我是右侧内容，我内容是自适应的，我使用的方法是，-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--BFC实现-->
+    <!--<div class="container" style=" width: 80%;margin: 0px auto;">-->
+        <!--<div class="left" style="float: left;width: 150px;background: antiquewhite;">-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的float元素里面的.-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的float元素里面的.-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+        <!--</div>-->
+        <!--<div class="right" style="display: table-cell;background: chartreuse;">-->
+            <!--我是右侧内容，我是自适应的，我是通过将自己新建为BFC实现的，BFC可以阻止文字环绕。-->
+            <!--我是右侧内容，我是自适应的，我是通过将自己新建为BFC实现的，BFC可以阻止文字环绕。-->
+            <!--我是右侧内容，我是自适应的，我是通过将自己新建为BFC实现的，BFC可以阻止文字环绕。-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--table实现-->
+    <!--<div class="container" style="display:table; width: 80%;margin: 0px auto;">-->
+        <!--<div class="left" style="display:table-cell;width: 150px;background: antiquewhite;">-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的table-cell元素里面的.-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的table-cell元素里面的.-->
+            <!--我是左侧内容，我的内容是放在固定宽为150px的table-cell元素里面的-->
+        <!--</div>-->
+        <!--<div class="right" style="display: table-cell;background: chartreuse;">-->
+            <!--我是右侧内容，我是自适应的，我是放在没有设置宽度的table-cell元素里面的。-->
+            <!--我是右侧内容，我是自适应的，我是放在没有设置宽度的table-cell元素里面的。-->
+            <!--我是右侧内容，我是自适应的，我是放在没有设置宽度的table-cell元素里面的。-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--2、右侧尺寸固定左侧自适应-->
+    <!--不改变dom位置的写法-->
+    <!--<div class="container" style="width: 80%;margin: 0px auto;">-->
+        <!--<div class="wrap" style="width: 100%;float:left">-->
+            <!--<div class="left" style="margin-right:150px;background: antiquewhite;">-->
+                <!--我是左侧内容，我的内容是自适应的，我被一个宽100%，float：left的元素包裹.-->
+                <!--我是左侧内容，我的内容是自适应的，我被一个宽100%，float：left的元素包裹.-->
+                <!--我是左侧内容，我的内容是自适应的，我被一个宽100%，float：left的元素包裹.-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="right" style="float:left;margin-left:-150px;width:150px;background: chartreuse;">-->
+            <!--我是右侧内容，我的内容是放在固定宽度为150的float:left的元素里面的。-->
+            <!--我是右侧内容，我的内容是放在固定宽度为150的float:left的元素里面的。-->
+            <!--我是右侧内容，我的内容是放在固定宽度为150的float:left的元素里面的。-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--改变dom位置的写法-->
+    <!--<div class="container" style=" width: 80%;margin: 0px auto;">-->
+        <!--<div class="right" style="width: 150px;float: right;background: aquamarine;">-->
+            <!--我是右侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+            <!--我是右侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+            <!--我是右侧内容，我的内容是放在固定宽为150px的float元素里面的-->
+        <!--</div>-->
+        <!--<div class="left" style="margin-right: 150px;background: blue;">-->
+            <!--我是左侧内容，我的内容是自适应的。使用了margin-right等于右侧固定宽度的方法来实现，这样就能保证左侧内容自适应了。-->
+            <!--我是左侧内容，我的内容是自适应的。使用了margin-right等于右侧固定宽度的方法来实现，这样就能保证左侧内容自适应了。-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--3、左右都自适应-->
+    <!--<div class="container" style=" width: 80%;margin: 0px auto;">-->
+        <!--<div class="left" style="float: left;background: aquamarine;">-->
+            <!--我是左侧内容，我的内容是自适应的。我放在未设置宽的float元素里面的-->
+        <!--</div>-->
+        <!--<div class="right" style="display:table-cell;background: blue;">-->
+            <!--我是右侧内容，我的内容是自适应的。我放在未设置宽的table-cell元素里面-->
+            <!--我是右侧内容，我的内容是自适应的。我放在未设置宽的table-cell元素里面-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--左右都自适应用-->
+    <!--<style type="text/css">-->
+        <!--.left{-->
+            <!--float:left;-->
+        <!--}-->
+        <!--.right{-->
+            <!--display:table-cell;-->
+            <!--padding-left:10px;-->
+        <!--}-->
+    <!--</style>-->
+    <!--<div class="container" style="width:80%;margin:0px auto">-->
+        <!--<div class="left">2个奖励：</div>-->
+        <!--<div class="right">1个标签</div>-->
+        <!--<div class="right">2个橱窗位</div>-->
+        <!--<div class="left">2个新活动：</div>-->
+        <!--<div class="right">超级双响炮<br>超级优惠券</div>-->
+    <!--</div>-->
+
+<!--4、三栏布局，左右定宽，中间内容自适应-->
+    <!--左右float+中间margin实现，dom顺序和视觉顺序不同，关键的主体内容在文档后面，主次不合理，如果右栏包含大量脚本，可能影响甚至阻塞整个页面的载入，不适合用做整站页面框架的搭建-->
+    <!--<div class="container" style="width:80%;margin:0px auto">-->
+        <!--<div class="left" style="width:150px;float: left;background:olivedrab">-->
+            <!--我是左侧内容，我是定宽的，我使用向左浮动的方式。我是左侧内容，我是定宽的，我使用向左浮动的方式。我是左侧内容，我是定宽的，我使用向左浮动的方式。-->
+        <!--</div>-->
+        <!--<div class="right" style="width:100px;float:right;background:darkgreen">-->
+            <!--我是右侧内容，我是定宽的，我使用向右浮动的方式。我是右侧内容，我是定宽的，我使用向右浮动的方式。我是右侧内容，我是定宽的，我使用向右浮动的方式。-->
+        <!--</div>-->
+        <!--<div class="content" style="margin-left: 150px;margin-right:100px;background-color:brown">-->
+            <!--我是中间内容，我是自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度。-->
+            <!--<div style="height:300px">-->
+
+            <!--</div>-->
+            <!--我是中间内容，我是自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度。-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--左右绝对定位+margin-->
+    <!--<div class="container" style="width: 80%;margin:0px auto;position:relative">-->
+        <!--<div class="left" style="position: absolute;width: 150px;left: 0px;top:0px;background-color: cadetblue">-->
+            <!--我是左侧内容，我是定宽的，我使用的是绝对定位，left为0px。-->
+            <!--我是左侧内容，我是定宽的，我使用的是绝对定位，left为0px。-->
+            <!--我是左侧内容，我是定宽的，我使用的是绝对定位，left为0px。-->
+        <!--</div>-->
+        <!--<div class="content" style="margin-left: 150px;margin-right: 100px;background-color: blueviolet">-->
+            <!--我是中间内容，我是自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度-->
+            <!--我是中间内容，我是自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度-->
+            <!--我是中间内容，我是自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度-->
+        <!--</div>-->
+        <!--<div class="right" style="width: 100px;position: absolute;right: 0px;top:0px;background-color: burlywood">-->
+            <!--我是右侧内容，我是定宽的，我使用的是绝对定位，right和top为0px。-->
+            <!--我是右侧内容，我是定宽的，我使用的是绝对定位，right和top为0px。-->
+            <!--我是右侧内容，我是定宽的，我使用的是绝对定位，right和top为0px。-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--左中右全部浮动+左右margin-left为负值-->
+    <!--<div class="container" style="width: 80%;margin:0px auto;">-->
+        <!--<div class="contentWrap" style="float: left;width:100%;">-->
+            <!--<div class="content" style="margin-left: 150px;margin-right: 100px;background-color: burlywood">-->
+                <!--我是中间内容，我的自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度。-->
+                <!--我是中间内容，我的自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度。-->
+                <!--我是中间内容，我的自适应的，我的左外边距是左边定宽内容的宽度，我的右外边距是右边定宽内容的宽度。-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="left" style="float:left;width:150px;margin-left: -100%;background-color: blueviolet">-->
+            <!--我是左侧内容，我是定宽的，我使用的是向左浮动，然后将margin-left设置为-100%。-->
+            <!--我是左侧内容，我是定宽的，我使用的是向左浮动，然后将margin-left设置为-100%。-->
+            <!--我是左侧内容，我是定宽的，我使用的是向左浮动，然后将margin-left设置为-100%。-->
+        <!--</div>-->
+        <!--<div class="right" style="float:left;width:100px;margin-left: -100px;background-color: blue">-->
+            <!--我是右侧内容，我是定宽的，我使用的是向左浮动，然后将margin-left设置为负自己的宽度值。-->
+            <!--我是右侧内容，我是定宽的，我使用的是向左浮动，然后将margin-left设置为负自己的宽度值。-->
+            <!--我是右侧内容，我是定宽的，我使用的是向左浮动，然后将margin-left设置为负自己的宽度值。-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--float+负margin实现-->
+    <!--<div class="container" style="width: 80%;margin:0px auto">-->
+        <!--<div class="leftWrap" style="width: 100%;float: left;">-->
+            <!--<div class="leftContainer" style="margin-right: 100px;">-->
+                <!--<div class="left" style="width: 150px;float: left;background-color: burlywood">-->
+                    <!--我是左侧内容，我是定宽的，我是左侧内容自适应中的左侧定宽。-->
+                    <!--我是左侧内容，我是定宽的，我是左侧内容自适应中的左侧定宽。-->
+                    <!--我是左侧内容，我是定宽的，我是左侧内容自适应中的左侧定宽。-->
+                <!--</div>-->
+                <!--<div class="content" style="margin-left: 150px;background-color: blueviolet">-->
+                    <!--我是中间内容，我是自适应的，我是左侧内容自适应中的右侧自适应。-->
+                    <!--我是中间内容，我是自适应的，我是左侧内容自适应中的右侧自适应。-->
+                    <!--我是中间内容，我是自适应的，我是左侧内容自适应中的右侧自适应。-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="right" style="width:100px;float: left;margin-left: -100px;background-color: blue">-->
+            <!--我是右侧内容，我是定宽的，我是左适应右定宽的右定宽。-->
+            <!--我是右侧内容，我是定宽的，我是左适应右定宽的右定宽。-->
+            <!--我是右侧内容，我是定宽的，我是左适应右定宽的右定宽。-->
+        <!--</div>-->
+    <!--</div>-->
+</body>
+</html>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1000" height="400">-->
+    <!--<rect x="1" y="1" width="198" height="198" stroke="blue" fill="none" />-->
+    <!--<rect id="rectElem" x="100" y="100" width="80" height="80" fill="rgb(255,255,0)">-->
+        <!--<animate attributeName="x" attributeType="xml" begin="0s" dur="9s" fill="freeze" from="100" to="0" />-->
+        <!--<animate attributeName="y" attributeType="xml" begin="0s" dur="9s" fill="freeze" from="100" to="0" />-->
+        <!--<animate attributeName="width" attributeType="xml" begin="0s" dur="9s" fill="freeze" from="80" to="200" />-->
+        <!--<animate attributeName="height" attributeType="xml" begin="0s" dur="9s" fill="freeze" from="80" to="200" />-->
+    <!--</rect>-->
+
+    <!--<g transform="translate(200,0)" >-->
+        <!--&lt;!&ndash; 下面使用了set去动画visibility，然后使用animateMotion,-->
+     <!--animate和animateTransform执行其他类型的动画 &ndash;&gt;-->
+        <!--<text id="TextElement" font-family="Verdana" font-size="20" visibility="hidden"  >-->
+            <!--It's ing!-->
+            <!--<set attributeName="visibility" attributeType="CSS" to="visible" begin="3s" dur="6s" fill="freeze" />-->
+            <!--<animateMotion path="M 0 0 L 50 50" begin="3s" dur="6s" fill="freeze" />-->
+            <!--<animate attributeName="fill" attributeType="CSS" from="rgb(0,0,255)" to="rgb(128,0,0)" begin="3s" dur="6s" fill="freeze" />-->
+            <!--<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="-30" to="0" begin="3s" dur="6s" fill="freeze" />-->
+            <!--<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="2" additive="sum" begin="3s" dur="6s" fill="freeze" />-->
+        <!--</text>-->
+    <!--</g>-->
+    <!--<line x1="200" y1="50" x2="400" y2="50" stroke="black" />-->
+    <!--<line x1="250" y1="0" x2="250" y2="50" stroke="black" />-->
+
+    <!--<defs xmlns:a="http://www.w3.org/1999/xlink">-->
+        <!--<animate attributeName="a:href" a:href="#foo" to="images/02.jpg" dur="3s" fill="freeze" />-->
+    <!--</defs>-->
+    <!--<image id="foo" x="405" y="5" width="150" height="150" xlink:href="images/01.jpg" />-->
+
+    <!--<rect x="600" y="5" width="20" height="50" stroke="black" fill="none">-->
+        <!--<animate attributeName="width" from="0" to="100" begin="0s" dur="3s" additive="replace"  fill="freeze" />-->
+    <!--</rect>-->
+    <!--<line x1="720" y1="0" x2="720" y2="50" stroke="black" />-->
+<!--</svg>-->
+
+<!--<svg width="5cm" height="3cm"  viewBox="0 0 500 300"-->
+     <!--xmlns="http://www.w3.org/2000/svg" version="1.1"-->
+     <!--xmlns:xlink="http://www.w3.org/1999/xlink" >-->
+    <!--<rect x="1" y="1" width="498" height="298"-->
+          <!--fill="none" stroke="blue" stroke-width="2" />-->
+
+    <!--<path id="path1" d="M100,250 C 100,50 400,50 400,250"-->
+          <!--fill="none" stroke="blue" stroke-width="7.06"  />-->
+    <!--<circle cx="100" cy="250" r="17.64" fill="blue"  />-->
+    <!--<circle cx="250" cy="100" r="17.64" fill="blue"  />-->
+    <!--<circle cx="400" cy="250" r="17.64" fill="blue"  />-->
+    <!--<path d="M-25,-12.5 L25,-12.5 L 0,-87.5 z"-->
+          <!--fill="yellow" stroke="red" stroke-width="7.06"  >-->
+        <!--<animateMotion dur="6s" repeatCount="indefinite" rotate="auto-reverse" >-->
+            <!--<mpath xlink:href="#path1"/>-->
+        <!--</animateMotion>-->
+    <!--</path>-->
+<!--</svg>-->
+
+<!--<svg width="4cm" height="2cm" viewBox="0 0 400 200"-->
+     <!--xmlns="http://www.w3.org/2000/svg"-->
+     <!--onload="StartAnimation(evt)" version="1.1">-->
+    <!--<script type="application/ecmascript"><![CDATA[-->
+    <!--var timevalue = 0;-->
+    <!--var timer_increment = 50;-->
+    <!--var max_time = 5000;-->
+    <!--var text_element;-->
+    <!--function StartAnimation(evt) {-->
+      <!--text_element = evt.target.ownerDocument.getElementById("TextElement");-->
+      <!--ShowAndGrowElement();-->
+    <!--}-->
+    <!--function ShowAndGrowElement() {-->
+      <!--timevalue = timevalue + timer_increment;-->
+      <!--if (timevalue > max_time)-->
+        <!--return;-->
+      <!--// Scale the text string gradually until it is 20 times larger-->
+      <!--scalefactor = (timevalue * 20.) / max_time;-->
+      <!--text_element.setAttribute("transform", "scale(" + scalefactor + ")");-->
+      <!--// Make the string more opaque-->
+      <!--opacityfactor = timevalue / max_time;-->
+      <!--text_element.setAttribute("opacity", opacityfactor);-->
+      <!--// Call ShowAndGrowElement again <timer_increment> milliseconds later.-->
+      <!--setTimeout(ShowAndGrowElement, timer_increment)-->
+    <!--}-->
+    <!--//window.ShowAndGrowElement = ShowAndGrowElement-->
+  <!--]]></script>-->
+    <!--<rect x="1" y="1" width="398" height="198"-->
+          <!--fill="none" stroke="blue" stroke-width="2"/>-->
+    <!--<g transform="translate(50,150)" fill="red" font-size="7">-->
+        <!--<text id="TextElement">SVG</text>-->
+    <!--</g>-->
+<!--</svg>-->
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300">
+    <script type="text/ecmascript">
+        <![CDATA[
+      function showRectColor() {
+        alert(document.getElementById("myBlueRect").getAttributeNS(null,"fill"));
+      }
+
+      //var rect=document.getElementById('myBlueRect');
+      function showRectArea(evt) {
+        var width = parseFloat(evt.target.getAttributeNS(null,"width"));
+        var height = parseFloat(evt.target.getAttributeNS(null,"height"));
+        alert("The rectangle area is: " + (width * height));
+      }
+      //rect.setAttribute('onclick','showRectArea()');
+
+      function showRootChildrenNr() {
+        alert("Nr of Children: "+document.documentElement.childNodes.length);
+        console.log(document.documentElement.childNodes[0]);
+        console.log(document.documentElement.childNodes[1]);
+        console.log(document.documentElement.childNodes[2]);
+        console.log(document.documentElement.childNodes[3]);
+        console.log(document.documentElement.childNodes[4]);
+      }
+    ]]>
+    </script>
+    <g id="firstGroup">
+        <rect id="myBlueRect" width="100" height="50" x="40" y="20" fill="blue" />
+        <text x="40" y="100" onclick="showRectColor()">Click on this text to show rectangle color.</text>
+        <text x="40" y="130">Click on rectangle to show rectangle area.</text>
+        <text x="40" y="160" onclick="showRootChildrenNr()">Click on this text to show the number of child
+            <tspan x="40" dy="20">elements of the root element.</tspan></text>
+    </g>
+    <script type="text/ecmascript">
+        <![CDATA[
+        var rect=document.getElementById('myBlueRect');
+        rect.setAttributeNS(null,'onclick','showRectArea(evt)');
+        ]]>
+    </script>
+</svg>

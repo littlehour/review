@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>html5_review</title>
+    <!--html5添加新元素-->
+    <script type="text/javascript">
+        document.createElement('newtag');
+    </script>
+    <style type="text/css">
+        newtag{
+            display:block;
+            background-color: darkcyan;
+            padding: 50px;
+            font-size:30px;
+        }
+    </style>
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+    <!--<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+</head>
+<body>
+    <div>/*------html5添加新元素演示------*/</div>
+    <p>第一个段落</p>
+    <newtag>第一个newtag</newtag>
+    <article>第一篇文章</article><br /><br />
+    <div>/*------canvas------*/</div>
+    <canvas style="border:1px solid">默认宽300px，高150px，背景色为透明色</canvas><span>测试canvas为内联元素</span><br />
+    <p><a href="canvas.html" title="canvas api 详解">canvas api 详解</a><br />参考网址：<br /><a href="http://www.cnblogs.com/liugang-vip/p/5360283.html">http://www.cnblogs.com/liugang-vip/p/5360283.html</a></p><br />
+    <div>/*------svg------*/</div>
+    <p>
+        <a href="svg.html" title="svg详解">svg详解</a><br />参考网址：<br />
+        <a href="http://www.cnblogs.com/dxy1982/archive/2012/03/15/2381312.html">http://www.cnblogs.com/dxy1982/archive/2012/03/15/2381312.html</a><br />
+        实用参考：<br />
+        官方文档：<a href="http://www.w3.org/TR/SVG11/">http://www.w3.org/TR/SVG11/</a><br />
+        脚本索引：<a href="http://msdn.microsoft.com/zh-cn/library/ff971910(v=vs.85).aspx">http://msdn.microsoft.com/zh-cn/library/ff971910(v=vs.85).aspx</a><br />
+        开发中心：<a href="https://developer.mozilla.org/en/SVG">https://developer.mozilla.org/en/SVG</a><br />
+        热门参考：<a href="http://www.chinasvg.com/">http://www.chinasvg.com/</a><br />
+    </p>
+    <br />
+    <div>/*------HTML5拖放------*/</div>
+    <p><a href="HTML_Drag_and_Drop_API.html" title="HTML5拖放详解">HTML5拖放详解</a><br />参考网址：<br /><a href="http://www.cnblogs.com/moqiutao/p/6365113.html">http://www.cnblogs.com/moqiutao/p/6365113.html</a></p>
+    <br />
+    <script src="js/html5_review.js"></script>
+</body>
+</html>

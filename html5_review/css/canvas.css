@@ -1,0 +1,10 @@
+body{
+    background-color: #ccc;
+}
+canvas{
+    //border:1px solid;
+    background-color: #fff;
+    cursor: default;
+    /*width: 120px;*/
+    /*height: 120px;*/
+}

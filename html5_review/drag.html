@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <!--<style type="text/css">-->
+        <!--.detial:hover{-->
+            <!--background-color: coral;-->
+        <!--}-->
+    <!--</style>-->
+</head>
+<body>
+    <div style="width: 600px;height: 400px; border: 1px solid gray;position:relative;margin: 20px auto;overflow: hidden;cursor:move;">
+        <div id="drag" style="width: 900px;height:600px;position:absolute;top:0px;left:0px;background-image: url('images/bg.jpg') ">
+            <div class="detail" style="position:absolute;left: 352px;top:360px;background: darkturquoise;height: 30px;line-height: 30px;cursor:pointer">
+                <a style=""><span style="padding:0px 10px;">#21</span><span style="background-color: bisque;display:inline-block;padding:0px 5px">待售</span></a>
+                <i style="width:12px;height:6px;position:absolute;top:30px;left:10px;background-image: url('images/blu_ar01.png')"></i>
+            </div>
+            <div class="detail" style="position:absolute;left: 567px;top:195px;background: darkturquoise;height: 30px;line-height: 30px;cursor:pointer">
+                <a style=""><span style="padding:0px 10px;">#22</span><span style="background-color: bisque;display:inline-block;padding:0px 5px">待售</span></a>
+                <i style="width:12px;height:6px;position:absolute;top:30px;left:10px;background-image: url('images/blu_ar01.png')"></i>
+            </div>
+            <div class="detail" style="position:absolute;left: 457px;top:65px;background: darkturquoise;height: 30px;line-height: 30px;cursor:pointer">
+                <a style=""><span style="padding:0px 10px;">#21</span><span style="background-color: bisque;display:inline-block;padding:0px 5px">待售</span></a>
+                <i style="width:12px;height:6px;position:absolute;top:30px;left:10px;background-image: url('images/blu_ar01.png')"></i>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            var drag=document.getElementById('drag');
+            drag.onmousedown=function(ev){
+                var disX=ev.clientX-this.offsetLeft;
+//                var disX=ev.clientX-(this.offsetLeft+this.offsetParent.offsetLeft);
+//                console.log(this.offsetLeft+this.offsetParent.offsetLeft);
+                var disY=ev.clientY-this.offsetTop;
+                drag.onmousemove=function(ev){
+                    var l=ev.clientX-disX;
+                    var t=ev.clientY-disY;
+//                    console.log(l);
+                    if(l>=0){
+                        l=0;
+                    }
+                    if(l<=-300){
+                        l=-300;
+                    }
+                    if(t>=0){
+                        t=0;
+                    }
+                    if(t<=-200){
+                        t=-200;
+                    }
+                    drag.style.left=l+'px';
+                    drag.style.top=t+'px';
+
+                }
+                drag.onmouseup=function(){
+                    this.onmousemove=this.onmouseup=null;
+                }
+                return false;
+            }
+            var detail=document.getElementsByClassName('detail');
+//            console.log(detail);
+            for(var i=0;i<detail.length;i++){
+                detail[i].onmouseover=function(){
+                    this.style.backgroundColor='orange';
+                };
+                detail[i].onmouseout=function(){
+                    this.style.backgroundColor='darkturquoise';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
