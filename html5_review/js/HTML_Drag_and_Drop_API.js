@@ -31,4 +31,4 @@ window.onload=function(){
         var s=document.getElementById(d);
         this.appendChild(s);
     }
-}
+};
