@@ -2,11 +2,122 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache" />
     <title>HTML5拖放详解</title>
+    <style type="text/css">
+        /*需要在dragenter事件中取消默认处理*/
+        #t1:-moz-drag-over{
+            border:2px solid blueviolet;
+        }
+    </style>
+    <link href="data:text/css,.striped_box
+        {
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/gif;base64,R0lGODlhAwADAIAAAP///8zMzCH5BAAAAAAALAAAAAADAAMAAAIEBHIJBQA7');
+    border: 1px solid gray;
+    padding: 10px;
+    }" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<p id="p1" draggable="true">This element is draggable.</p>
-<div id="t1" style="width: 400px;height: 50px;border: 1px solid;"></div>
+<p draggable="true" id="p1">This element is draggable.
+    <a id="a1" href="http://www.baidu.com">baidu</a>
+    <a id="a2" href="http://www.souhu.com">souhu</a>
+    <img src="images/04.jpg" />
+</p>
+<div class="striped_box lazy ">
+    这是一个有条纹的方块
+</div>
+<input type="button" ondragstart="event.dataTransfer.setData('text', 'Drag Me Button');" />
+<button draggable="true" ondragstart="event.dataTransfer.setData('text', 'Drag Me Button');">drag me</button>
+<div id="t1" style="width: 400px;height: 50px;"></div>
+<div id="t2" style="width:400px;height: 50px;border: 1px solid"></div>
+<div id="t3" style="width:400px;height: 50px;border: 1px solid"></div>
+
+<p>drag me</p>
+<textarea ondragenter="event.preventDefault();event.stopPropagation()" ondrop="event.preventDefault();event.stopPropagation();this.value+=event.dataTransfer.getData('text/plain')"></textarea>
+
+<iframe src="data:text/html,<p>test uri data</p>"></iframe>
+
+<!--XUI元素-->
+<panel id="panel" style="opacity: 0.6">
+    <description id="pb">Drag Me</description>
+</panel>
+
+<vbox align="start" style="border: 1px solid black;" ondragstart="startDrag(event)">
+    <description>Drag Me</description>
+</vbox>
+<script type="text/javascript">
+    function startDrag(event) {
+        event.dataTransfer.setData("text/plain", "<strong>Body</strong>");
+        event.dataTransfer.setDragImage(document.getElementById("panel"), 20, 20);
+    }
+</script>
 <script type="text/javascript" src="js/HTML_Drag_and_Drop_API.js"></script>
+<!--<script type="text/javascript" src="data:text/javascript,alert('test data url')"></script>-->
 </body>
 </html>
+
+<!--Dragging and Dropping Multiple Items-->
+<!--<html>-->
+<!--<head>-->
+    <!--<script>-->
+
+        <!--function dodrop(event)-->
+        <!--{-->
+            <!--var dt = event.dataTransfer;-->
+            <!--var count = dt.mozItemCount;-->
+            <!--output("Items: " + count + "\n");-->
+
+            <!--for (var i = 0; i < count; i++) {-->
+                <!--output(" Item " + i + ":\n");-->
+                <!--var types = dt.mozTypesAt(i);-->
+                <!--for (var t = 0; t < types.length; t++) {-->
+                    <!--output("  " + types[t] + ": ");-->
+                    <!--try {-->
+                        <!--var data = dt.mozGetDataAt(types[t], i);-->
+                        <!--output("(" + (typeof data) + ") : <" + data + " >\n");-->
+                    <!--} catch (ex) {-->
+                        <!--output("<<error>>\n");-->
+                        <!--dump(ex);-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+
+        <!--function output(text)-->
+        <!--{-->
+            <!--document.getElementById("output").textContent += text;-->
+            <!--dump(text);-->
+        <!--}-->
+<!--//        var img=new Image();-->
+<!--//        img.src='images/04.jpg';-->
+        <!--function drag_start(event){-->
+<!--//            var file=document.getElementsByTagName('input')[0].files[0];-->
+<!--//            var file=new File([file],file.name);-->
+<!--//            event.dataTransfer.mozSetDataAt('application/x-moz-image',img,0);-->
+<!--//            console.log(document.getElementsByTagName('input')[0].files[0]);-->
+            <!--event.dataTransfer.mozSetDataAt('text/uri-list','baidu.com',0);-->
+            <!--event.dataTransfer.mozSetDataAt('text/plain','baidu.com',0);-->
+            <!--event.dataTransfer.mozSetDataAt('text/uri-list','firefox.com',1);-->
+<!--//            event.dataTransfer.mozSetDataAt('text/plain','firefox.com',1);-->
+        <!--}-->
+    <!--</script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div id="output" style="min-height: 100px; white-space: pre; border: 1px solid black;"-->
+     <!--ondragenter="document.getElementById('output').textContent = ''; event.stopPropagation(); event.preventDefault();"-->
+     <!--ondragover="event.stopPropagation(); event.preventDefault();"-->
+     <!--ondrop="event.stopPropagation(); event.preventDefault(); dodrop(event);">-->
+
+    <!--<div>-->
+
+        <!--Fix</div>-->
+<!--</div>-->
+<!--<div draggable="true" id="drag" ondragstart="drag_start(event)">-->
+<!--drag me-->
+<!--</div>-->
+<!--<input type="file" />-->
+<!--</body>-->
+<!--</html>-->
