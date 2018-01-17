@@ -101,7 +101,7 @@ window.onload=function(){
         //if(event.dataTransfer.types.includes('text/uri-list')){
             event.preventDefault();
             event.stopPropagation();
-            //event.dataTransfer.dropEffect='copy';
+            event.dataTransfer.dropEffect='none';
             //console.log(event.dataTransfer.getData('text'));
             //event.dataTransfer.setData('text',event.target.id);
             return false;

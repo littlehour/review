@@ -1026,7 +1026,7 @@ Canvas                                                  SVG
 DragEvent和DataTransfer大多数桌面浏览器都支持，但是DataTransferItem和DataTransferItemList只有部分浏览器支持。
 浏览器默认禁止将一个元素拖放到另一个元素上，为了改变这个默认行为，需要将目标元素设置成可放置的，即这个元素必须设置ondragover或ondragenter的事件处理器，并使用event.preventDefault()来
 阻止默认行为，不可放置的元素将不会触发ondrop事件。(firefox貌似除外)
-chrome只有在ondragover事件中都阻止默认行为，dropEffect才有效，而元素可以放置，只需要ondragover或ondragenter取消默认行为即可。
+chrome只有在ondragover事件中阻止默认行为，dropEffect才有效，而元素可以放置，只需要ondragover或ondragenter取消默认行为即可。
 chrome不会在事件中默认设置dropEffect的值。
 chrome貌似在除了ondrop事件中，都无法获取drag data。
 firefox若在ondrop事件中未取消默认行为，会弹出拖拽内容的搜索标签。
@@ -1037,6 +1037,268 @@ dropEffect属性只有部分浏览器支持。（IE不支持）
 在dragstart事件中设置effectAllowed属性的值，在dragenter或dragover事件中设置dropEffect属性的值。
 即使拖放操作被取消，ondragleave事件总是会被触发，因此可以总是确保在这个事件中来清理一些设置过的拖放效果。
 在firefox中，如果在拖拽一个元素期间，这个元素被移动或删除，那么dragend事件不会发生。(测试貌似会发生).
+firefox对于拖放操作有一些自己特有的实现，像对于某一类型的数据可以设置多个值。
+拖放文件时，默认的拖动数据是文件对象，可以使用dataTransfer的files[index]来获取拖动的文件对象，从而获取相关的文件信息。
+dataTransfer的getData（type）方法只能获取简单的string类数据，无法获取复杂的数据，例如对象，不过firefox对此有特有的实现。
+推荐的拖放数据类型：text/plain,text/uri-list,text/html,text/xml以及自定义数据。还有一些firefox特有的：application/x-moz-file,image/jpeg,image/png,image/gif,
+application/x-moz-node。使用text/uri-list类型时，最好也使用text/plain存储一下数据。使用text/html和text/xml类型时，最好也使用text/plain类型存储一下不包含标签的html内容。使用
+自定义数据类型时，最好也使用text/plain存储一下数据。文件和图片类型最好也使用text/plain存储一下相关的URL。对于Node类型，来自不同的域想要获取该类型的数据时，会无法获取。
 
+拖放基本步骤：
+一、draggable属性：在网页中，有一些默认的行为会产生拖放，像：拖动选择文本、图片以及链接。当拖动图片和链接时，拖放数据就是图片和链接的URL，当拖动选择文本时，拖动数据就是选择的文本（这是
+浏览器的默认行为，除非为拖放添加事件处理，来改变拖放数据）。在HTML中，对于除了图片和链接的其他元素，只有当它们是选择文本时，默认才可以被拖动，否则默认是不可被拖动的。而在XUI中，所有元
+素都是可以被拖动的。为了让HTML中的其他元素可以被拖动，需要将这个元素的draggable属性设置为true。当元素可以拖动时，可以给这个元素添加dragstart事件处理器，从而在这个事件处理器中，设置
+一些需要用到的数据。当元素变为可拖动时，那么他及其中的文本都不再能被选中（图片和链接除外），当然，可以使用ALT键修改拖放行为为选择（貌似只有firefox支持）。图片和链接的draggable属性默认
+为true，可以设置该属性为false，来防止图片和链接被拖动。
+二、给可拖动元素添加dragstart事件：当用户开始拖动这个元素时，dragstart事件便会被触发，当然可以将这个事件添加到拖动元素的祖先元素，通过冒泡来处理。在这个事件中，你可以设置具体需要用到
+的数据、可以设置拖动过程中跟随鼠标的反馈图片以及表明此次拖动将会产生的效果（移动、复制、关联），数据根据需求是必须设置的，对于后两者，默认的反馈图片和效果在大多数情况下都是适用的。
+    设置拖放数据：每个拖放事件的event对象都有一个dataTransfer属性，这个属性有一些方法来管理与拖放相关的一些数据。拖放数据包含两个部分：数据类型（MIME类型）和数据值，均以字符串形似表
+                式。在dragenter和dragover事件中，你可以通过核对拖放数据的类型，来决定是否允许该元素的放置。拖放数据的类型可以通过dataTransfer的types属性来获取，types属性会以一个
+                DOMStrings的形式返回数据的所有类型，像：text/plain，text/uri-list。对于数据的类型，除了可以使用已经定义的一些数据类型外，还可以自定义一些类型，自定义的数据只能在
+                该站点或应用访问的到，其他站点或应用不能访问。对于一个拖放操作可以设置多个类型的拖放数据，这样可以给应用尽可能提供更加具体的可支持的数据，不同浏览器或应用支持的数据类型
+                可能不太一样，这样便也可以起到一个兼容不同浏览器的目的。通常，text/plain是最不具体的数据类型，设置多个数据类型时，最好按从最具体到最不具体的顺序设置。设置数据使用的是
+                dataTransfer的setData（type，value）方法，设置多个不同类型的数据时，只需多次调用setData（）方法即可，若使用setData方法多次设置同一类型的数据，则后一个数据值均会
+                覆盖前一个数据值。清除数据使用的是dataTransfer的clearData（type）方法，若未给clearData方法传递类型参数，则该方法会清除所有类型的数据。如果拖放期间没有任何拖放数据
+                或所有数据已被删除，则拖放行为不将发生。
+    设置拖动过程中跟随鼠标的反馈图片：可以使用dataTransfer的setDragImage（image，xOffset，yOffset）方法来设置。firefox的image可以是canvas和XUI的panel。
+    设置表明拖动将产生的效果：拖放操作一般有3种情况，移动、复制以及链接，可以设置相应的拖放效果来表明这几种情况。设置为移动即表明将拖动数据移动到放置位置，设置为复制即表明将拖动的数据复
+                          制一份到放置位置，设置为链接即表明拖动数据的原位置和即将放置的位置之间会建立一种关系或连接。你可以在dragstart事件的处理器中，通过设置dataTransfer的
+                          effectAllowed属性，来表明允许的拖放效果。effectAllowed的值可以取以下几种：
+                              none：no operation is permitted（任何一种操作都不被允许）。
+                              copy：copy only（仅仅允许复制）。
+                              move：move only（仅仅允许移动）。
+                              link：link only（仅仅允许链接）。
+                              copyMove：copy or move only（允许复制或移动）。
+                              copyLink：copy or link only（允许复制或链接）。
+                              linkMove：link or move only（允许链接或移动）。
+                              all：copy, move, or link（允许复制，移动或链接）。
+                          如果未设置effectAllowed的值，则默认为all。一般来说没有必要调整这个属性的值，除非你想具体允许一些操作。一个与effectAllowed相关的属性是dataTransfer的
+                          dropEffect属性，你可以在dragenter或dragover事件中，检查effectAllowed的值来判断那些操作效果是被允许的，从而设置dropeffect的值，来表明具体那个操作效
+                          果将会被实现。dropEffect属性的合法值有：none, copy, move或link。在dragenter或dragover事件中，dropEffect属性会被初始化为用户要求的效果，用户可以通
+                          过使用修改键（像shift或ctrl键，不同浏览器或操作系统使用的键可能不同）修改拖放效果为自己想要的效果，例如想修改效果为复制效果，则鼠标附近会有一个加号出现，
+                          当然，代码编写者也可以在dragenter或dragover事件中，设置dropEffect的值，因为可能放置目标仅支持某一确定的拖放效果，这样会覆盖用户想要的效果，强行设置为
+                          某一确定的值，这个值必须是effectAllowed属性中设置的允许的值，否则dropEffect的值会被设置为effectAllowed允许的值之一。当dropEffect的值被设置为none时，
+                          表明该元素位置不允许被放置，但并不会取消拖放操作。在drop和dragend事件中，可以检查dropEffect的值，来确定最终哪一种效果将被实现，例如，如果是移动的话，那么
+                          在dragend的事件处理器中，拖动数据需要从原始位置移除。貌似不同浏览器对于effectAllowed和dropEffect这两个属性的支持不太一样，有些浏览器可能无法在drop和
+                          dragend事件中获取在dragenter或dragover事件中设置的dropEffect值。
+三、定义可放置目标：浏览器默认禁止将一个元素拖放到另一个元素上，为了改变这个默认行为，需要将目标元素设置成可放置的，即这个元素必须设置ondragover或ondragenter的事件处理器，并使用
+event.preventDefault()（firefox中可能需要使用event.stopPropagation()）来阻止默认行为，如果使用的是属性定义事件处理的方式，还可以使用return false来取消默认行为，不可放置的元素
+将不会触发ondrop事件(firefox貌似除外)。在dragenter或dragover事件中，你可以根据需求来确定该元素位置是否允许被放置，例如：该元素位置只允许放置text/uri-list类型的数据，则可以通过检
+查数据类型是否符合要求来决定是否取消默认行为。若未取消默认行为，即该元素位置不可放置，则当用户在该元素位置释放鼠标键时，该元素的drop事件不会被触发。以前dataTransfer的types属性会返回
+一个DOMStringList，现在，最新的规范规定应该返回一个只读的DOMString数组，这样可以使用includes方法来检查是否包含某一个类型的数据。在检查数据类型时，最好先做一些特征检测来决定使用那个
+方法来检查数据类型。
+四、放置的反馈效果：有一些方式可以用来向用户表明某个位置是否可被放置。设置dropEffect的值就是其中的一种，例如，设置其值为copy，则当鼠标经过该可放置元素时，鼠标指针附近就会出现一个加号
+图标（不同浏览器的实现可能会有所不同），来表明在该可放置元素位置会发生复制的拖放效果，在大多数情况下，鼠标的这种反馈都是很有意义的。你还可以更新可放置元素位置的用户界面，例如，高亮该位置
+，在firefox中，就有一个-moz-drag-over伪类，可以用来实现这种效果，使用这个伪类时，必须在dragenter事件中取消默认行为，因为该伪类所表示的状态并不会在dragover事件发生时被检查，当然除
+了高亮可放置元素位置，还可以在dragenter事件中使用一些比较复杂的视觉效果，像：将拖动的元素插入到可放置的元素，可以起到一个预览的效果。但鼠标移动到或离开可放置元素时，会发生dragover以及
+dragleave事件，你应该在dragleave事件中，取消所有的在dragenter或dragover事件中设置的一些可放置的反馈效果，当然使用-moz-drag-over伪类设置的效果会自动取消。即使取消了拖放操作，
+dragleave事件也会发生，因此确保你总是能在这个事件的处理器中，清除设置的一些可放置的反馈效果。
+五、实现放置：当用户释放鼠标时，拖放操作就结束了。如果用户释放鼠标的位置是一个合法的可放置位置，那么放置行为就是成功的，drop事件也会被触发，否则拖放操作就会被取消，drop事件也不会被触发。
+在drop事件的事件处理器中，你应该获取你需要的在dragstart事件中设置的数据，将其插入放置位置，你可以根据dropEffect的值（貌似有些浏览器获取到的值为空字符串），来决定该放置所产生的效果（
+复制、移动或链接）。获取拖放数据，可以使用dataTransfer的getData（type）方法，如果传入的type参数不存在，则该方法会返回一个空字符串，当然，获取的数据类型肯定是存在的，因为之前在
+dragover事件中有对数据类型进行核对。在drop事件的事件处理器中，你还应该取消默认行为，因为在某些浏览器，像firefox中，如果不取消默认行为，浏览器将默认以链接的形式搜索拖拽的文本。
+text/uri-list类型可以包含一个URL列表（貌似只有部分浏览器支持，像firefox），每个URL占一行，后跟一行的注释，因此在获取这个类型的数据时，需要分离出每一行数据，然后进行迭代，找到有效的
+URL数据。你可以使用getData（'URL'）来获取text/uri-list类型数据的第一个合法的URL。
+六、完成拖放操作：一旦拖放操作完成，就会在拖动元素上触发dragend事件。成功完成拖放操作或中途取消拖放操作，都会触发dragend事件，在这个事件的事件处理器中，你可以根据dropEffect的值（有
+些浏览器获取的值可能是空字符串）来相应做一些处理，例如，如果值为move，则可以将拖动元素从原位置移除。在firefox中，dataTransfer还有一个mozUserCancelled属性，如果用户通过按Esc键取
+消拖放操作，那么这个属性的值为true，否则为false（像将元素放置在了一个不可放置位置导致的拖放操作被取消或者拖放操作成功完成）。拖动元素放置到其他应用也会触发dragend事件，这个事件的event
+对象的screenX和screenY属性的值为放置发生位置的屏幕坐标。
+
+7、geolocation：
+
+8、video和audio：
+video和audio的优点：不需要第三方插件就能播放音频和视频了，可以直接插入，并且用同一的API接口控制。
+video和audio的缺点：
+    1) 暂时没有对流视频的支持和规范。流媒体分HTTP渐进流式下载和实时流式传输，video和audio属于HTTP渐进流式下载，不需要流媒体服务器，普通HTTP服务器就可以。
+    2) 播放媒体类型不统一。由于各种原因，HTML5没有对播放媒体类型做规定，这可以通过source来改进，如果不支持播放第一个文件就播放下一个，以此类推。
+    3) 资源受跨域共享的限制。跨域的媒体数据需要统统下载到本地服务器。
+    4) 全屏无法通过脚本控制。从安全性角度来看，让脚本元素控制全屏操作是不合适的。不过，如果要让用户在全屏方式下播放视频，浏览器可以提供其他控制手段。
+
+src属性可以设置为一个音频文件的URL或者本地文件的路径。
+媒体元素的一些属性：
+    width和height:你可以用属性控制视频的尺寸，也可以用 CSS 来控制视频尺寸。 无论使用哪种方式，视频都会保持它原始的长宽比 — 也叫做纵横比。如果你设置的尺寸没有保持视频原始长宽比，
+    那么视频边框将会拉伸，而未被视频内容填充的部分，将会显示默认的背景颜色。audio元素不支持。
+    controls : 为网页中的音频显示标准的HTML5控制器。
+    autoplay : 使音频自动播放。
+    loop : 使音频自动重复播放。
+    preload：用来缓冲audio元素的大文件，有三个属性值可供设置：
+        "none" ：不缓冲文件。
+        "auto" ：缓冲音频文件。
+        "metadata" ：仅仅缓冲文件的元数据。
+    poster(video元素独有属性）:当视频的不可用时，可以使用该属性向用户展示一幅替代用的图片。audio元素不支持。
+    error：在读取、使用媒体数据的过程中，正常情况下，video元素或audio元素的error属性为null,但是任何时候只要出现错误，error属性将返回一个MediaError对象，该对象的code返回对应
+    的错误状态，错误状态共有4个可能值，如下所示：
+        MEDIA_ERR_ABORTED(数字值为1）：媒体数据的下载过程由于用户的操作原因而被中止。
+        MEDIA_ERR_NETWORK(数字值为2）：确认媒体资源可用，但是在下载时出现网络错误，媒体数据下载过程被中止。
+        MEDIA_ERR_DECODE(数字值为3)：确认媒体资源可用，但是解码时发生错误。
+        MEDIA_ERR_SRC_NOT_SUPPORTED（数字值为4）：媒体格式不被支持。
+        error为只读属性。
+    networkState：在媒体数据加载过程中可以使用networkState属性读取当前的网络状态，共有如下所示的4个可能值：
+        NETWORK_EMPTY（数字值为0）：元素未初始化。
+        NETWORK_IDLE（数字值为1）：正常但没有使用网络
+        NETWORK_LOADING（数字值为2）：正在下载数据。
+        NETWORK_NO_SOURCE（数字值为3）：没有找到资源。
+    currentSrc：可以使用currentSrc属性来读取播放中媒体数据的URL地。currentSrc属性为只读属性。
+    buffered：可以使用video元素或audio元素的buffered属性来返回一个对象，该对象实现TimeRanges接口，以确认浏览器是否已缓存媒体数据。TimeRanges对象表示一段时间范围，在大多数情况
+    下，TimeRanges对象表示的时间范围是一个单一的以0开始的范围，但是如果浏览器发出Range Requests请求，这时TimeRanges对象表示的时间范围是多个时间范围。TimeRanges对象对象具有一个
+    length属性，表示有多少个时间范围，大多数情况下存在时间范围是，该值为1；不存在时间范围是，该值为0。TimeRanges对象还具体两个方法，TimeRanges.start(index)与TimeRanges.end
+    (index)，大多数情况下将index值设为0就可以了。当用videoElement.buffered语句来实现TimeRanges接口时，TimeRanges.start(0)表示当前缓存区内从媒体数据的什么时间开始进行缓存，
+    TimeRanges.end(0)表示当前缓存区内的结束时间。
+    readyState：可以使用video元素或audio元素的readyState属性返回媒体当前播放位置的就绪状态，共有5个可能的值。
+        HAVE_NOTHING（数字值为0）：没有获取到媒体的任何信息，当前播放位置没有可播放数据。
+        HAVE_METADATA（数字值为1）：已经获取到足够的媒体数据，但是当前播放位置没有有效的媒体数据（也就是说，获取到的媒体数据无效，不能播放）。
+        HAVE_CURRENT_DATA（数字值为2）：当前播放位置已经有数据可以播放，但没有获致到可以让播放器前进的数据。当媒体为视频时，意思是当前帧的数据已获取，但没有获取到下一帧的数据，或
+                                      者当前帧已经是播放的最后一帧。
+        HAVE_FUTURE_DATA（数字值为3）：当前播放位置已经有数据可以播放，而且也获取到了可以让播放器前进的数据。当媒体为视频时，意思是当前帧的数据已获取，而且也获取到了下次播放数据，
+                                     当前帧是播放的最后一帧时。
+        HAVE_ENOUGH_DATA（数字值为4）：当前播放位置已经有数据可以播放，同时也获取到了可以让播放器前进的数据，而且浏览器确认媒体以某一种速度进行加载，可以保证有足够的后续数据进行播放。
+        readyState属性为只读属性。
+    seeking：表示浏览器是否正在请求某一特定播放位置的数据，true表示浏览器正在请求数据，false表示浏览器已停止请求。只读。
+    seekable：返回一个TimeRanges对象，该对象表示请求到的数据时间范围。当媒体为视频时，开始时间为请求到视频数据的第一帧的时间，结束时间为请求到视频数据的最后一帧的时间。只读。
+    currentTime：设置或修改当前播放位置。单位为秒。(如果video的src属性设置的是本地地址，在chrome中设置该属性可能会失效)
+    startTime：读取媒体播放的开始时间，通常为0。只读，单位为秒。
+    duration：读取媒体文件总的播放时间。只读，单位为秒。
+    defaultPlayRate：读取或修改媒体的默认播放速率。
+    playbackRate：读取或修改媒体当前的播放速率。(貌似只有safari支持该属性为负值，未测)
+    volume：读取或修改媒体的的播放音量，范围从0到1，0为静音，1为最大音量。
+    muted属性读取或修改媒体的音量状态，该值为布尔值，true表示静音状态，false表示非静音状态。
+
+媒体元素的一些方法：
+    play()：播放媒体。
+    pause()：暂停媒体。
+    load()：重新载入媒体进行播放，自动将元素的playbackRate属性值变为defaultPlaybackRate属性的值，自动将元素的error的值变为null。
+    canPlayType(type)：测试浏览器是否支持指定的媒体类型，该参数的指定方法与soruce元素的type参数相同，都用播放文件的MIME类型来指定，可以在指定的字符串中加上表示媒体编码格式的
+    codecs参数。该方法返回3个可能值：
+        空字符串：表示浏览器不支持此种媒体类型。
+        maybe：表示浏览器可能支持此种媒体类型。（若只指定MIME类型且浏览器可能支持，一般就会返回这个值）
+        probably：表示浏览器确定支持此种媒体类型。（指定了MIME类型，且指定了编解码格式，若浏览器支持，就会返回这个值）
+
+媒体元素的一些事件：
+    loadstart：客户端开始请求数据
+    progress：客户端正在请求数据 4
+    suspend：延迟下载 5
+    abort：客户端主动终止下载（不是因为错误引起），
+    error：请求数据时遇到网络错误
+    empty：发生错误阻止媒体下载
+    emptied：网络连接关闭
+    stalled：浏览器尝试下载，但未接收到数据
+    play：play()和autoplay开始播放时触发 10
+    pause：pause()触发
+    loadedmetadata：媒体元数据已加载完成 2
+    loadeddata：媒体第一帧已加载完成 8
+    waiting：等待数据，并非错误
+    playing：媒体已实际开始播放 11
+    canplay：可以播放，但中途可能因为加载而暂停；readyState为3 9
+    canplaythrough：播放可继续，而且应该不会中断；readyState为4 12
+    canshowcurrentframe：当前帧已经下载完成；readyState为2
+    dataunavailable：因为没有数据而不能播放；readyState为0
+    seeking：寻找中 3
+    seeked：寻找完毕 7
+    timeupdate：播放时间改变 6 13
+    ended：播放结束
+    ratechange：播放速率改变
+    durationchange：资源长度改变 1
+    volumechange：音量改变
+
+多格式支持：像 MP3、MP4、WebM这些术语叫做容器格式。他们是用不同的方式来播放音频或者视频的 — 也就是说这些容器是用不同的音频轨道、视频轨道、元数据来呈现媒体文件的。以上的格式主要用于
+将音频和视频压缩成可管理的文件（原始的音频和视频文件非常大）。浏览器包含了不同的 Codecs,，如 Vorbis 和 H.264,，它们用来将已压缩的音频和视频转化成二进制数字。正如刚才所说，浏览器并
+不全支持相同的 codecs，所以你得使用几个不同格式的文件来兼容不同的浏览器。如果你使用的格式都得不到浏览器的支持，那么媒体文件将不会播放。
+可以用 <source> 标签来指定多个文件，以为不同浏览器提供可支持的编码格式。指定视频文件类型的同时也可以指定视频文件需要的视频编解码器的值。如果浏览器支持该视频文件类型，却不支持指定
+的编解码器，视频也不会被加载。
+如果类型属性没有被指定，媒体类型将返回至服务器然后检查浏览器是否可以解决；如果不能被执行，就检查下一个来源。如果没有任何一个指定的来源元素可以使用，则分派一个错误事件给video标签。如
+果指定了类型属性，那么将会与浏览器能够播放的类型做对比，如果其没有被识别，甚至不会被向服务器发出询问；相反，下一个来源会被同时检查。
+每个 <source> 标签含有一个 type 属性，这个属性是可选的，但是建议你添加上这个属性 — 它包含了视频文件的 MIME types ，同时浏览器也会通过检查这个属性来迅速的跳过那些不支持的格式。
+如果你没有添加 type 属性，浏览器会尝试加载每一个文件，直到找到一个能正确播放的格式，这样会消耗掉大量的时间和资源。
+
+媒体回放控制：当你已经用新的元素将媒体嵌入 HTML 文档以后，你就可以用 JavaScript 代码 采用编程的方式来控制它们。
+
+终止媒体下载：停止媒体播放很简单，只要调用 pause() 方法即可，然而浏览器还会继续下载媒体直至媒体元素被垃圾回收机制回收。通过移除媒体元素的 src 属性（或者直接将其设为一个空字符串——这
+取决于具体浏览器）， 你可以摧毁该元素的内部解码，从而结束媒体下载。removeAttribute() 操作并不干净， 而将<video>元素的 'src' 属性设为空字符串可能会引起我们不想要的请求（Mozilla
+ Firefox 22）。
+
+在媒体中查找：媒体元素支持在媒体的内容中从当前播放位置移到某个特定点。 这是通过设置元素的属性currentTime的值来达成的。 简单的设置那个你希望继续播放的以秒为单位时间值。你可以使用元素
+的属性seekable来决定媒体目前能查找的范围。它返回一个你可以查找的TimeRanges 时间对象。
+
+标记播放范围：在给一个<audio>或者<video>元素标签指定媒体的URI的时候，你可以选择性地加入一些额外信息来指定媒体将要播放的部分。要这样做的话，需要附加一个哈希标志("#")，后面跟着媒体片
+段的描述。
+一些例子：
+http://foo.com/video.ogg#t=10,20
+指定视频播放范围为从第10秒到第20秒.
+http://foo.com/video.ogg#t=,10.5
+指定视频从开始播放到第10.5秒.
+http://foo.com/video.ogg#t=,02:00:00
+指定视频从开始播放到两小时.
+http://foo.com/video.ogg#t=60
+指定视频从第60秒播放到结束.
+媒体元素URI中播放范围部分的规范已被加入到 Gecko 9.0 (Firefox 9.0 / Thunderbird 9.0 / SeaMonkey 2.6). 当下, 这是Geoko Media Fragments URI specification 唯一实现的部分，并
+且只有是在非地址栏给媒体元素指定来源时才可使用。
+
+备选项：在HTML之间，例如，不支持HTML5媒体的浏览器可以处理媒体元素的开始和结束标记.你可以利用这一点给这些浏览器添加一些备项。
+此处提供了两个可能的备选项，在各种情况下，如果浏览器支持HTML5视频，它就会被使用，否则，会使用备选项。
+使用Flash：
+<video> 标签不被支持时可以使用Flash播放Flash格式的影像。
+<video src="video.ogv" controls>
+    <object data="flvplayer.swf" type="application/x-shockwave-flash">
+      <param value="flvplayer.swf" name="movie"/>
+    </object>
+</video>
+注意不要在object标签中加入class、id以兼容IE以外的浏览器。
+使用Java 小程序播放Ogg视频：
+这里有一个名为Cortado的Java小程序，在不支持HTML5视频的浏览器你可以用它作为备选项来播放Ogg视频。
+<video src="my_ogg_video.ogg" controls width="320" height="240">
+  <object type="application/x-java-applet" width="320" height="240">
+     <param name="archive" value="cortado.jar">
+     <param name="code" value="com.fluendo.player.Cortado.class">
+     <param name="url" value="my_ogg_video.ogg">
+     <p>You need to install Java to play this file.</p>
+  </object>
+</video>
+如果你没有给cortado object元素创建一个备用的子元素，像上面的 <p> 元素，没有安装java的Firfox3.5设备就会错误的通知用户需要安装一个插件才能查看页面内容。
+
+错误处理：Requires Gecko 2.0(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)Geocko2.0首发(Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1), 错误处理已经被修订符合HTML5的
+最新版规范。 取缔把错误事件发送给媒体元素自生的方式，现在把它交付给子代中的 <source>元素对应导致错误的来源。这使你可以查到是哪个资源加载失败，哪个是可用的。资源会根据出现的顺序尝试被
+加载，一旦有一个资源加载成功，剩下的资源就不会被加载。(貌似5个主流浏览器都不支持错误处理)
+
+没有资源加载成功时的检测：检测是否所有的子<source> 元素都加载失败，检查媒体元素的networkState属性值。如果值为HTMLMediaElement.NETWORK_NO_SOURCE，就可以知道所以的资源都加载失败
+了。如果这时你通过插入一个新的 <source> 元素作为媒体元素的子元素的方法添加一个新资源，Gecko会尝试加载指定的资源。
+
+显示音轨文本：许多人不想（或者不能）听到 Web 上的音频/视频内容，至少在某些情况下是这样的，比如：许多人患有听觉障碍（通常来说是很难听清声音的人，或者聋人），所以他们不能听见音频中的声音。
+另外的情况可能是由于人们并不能听音频，可能是因为他们在一个非常嘈杂的环境当中（比如在一个拥挤的酒吧内恰好赶上了球赛 ），也可能是由于他们并不想打扰到其他人（比如在一个十分安静的地方，例如
+图书馆）。有一些人他们不说音频当中的语言，所以他们听不懂，因此他们想要一个副本或者是翻译来帮助他们理解媒体内容。给那些听不懂音频语言的人们提供一个音频内容的副本岂不是一件很棒的事情吗？所
+以，感谢 HTML5 <video> 使之成为可能，有了 WebVTT 格式，你可以使用 <track> 标签。
+WebVTT 是一个格式，用来编写文本文件，这个文本文件包含了众多的字符串，这些字符串会带有一些元数据，它们可以用来描述这个字符串将会在视频中显示的时间，甚至可以用来描述这些字符串的样式以及定
+位信息。这些字符串叫做 cues ，你可以根据不同的需求来显示不同的样式，最常见的如下：
+    subtitle：通过添加翻译字幕，来帮助那些听不懂外国语言的人们理解音频当中的内容。
+    captions：同步翻译对白，或是描述一些有重要信息的声音，来帮助那些不能听音频的人们理解音频中的内容。
+    timed descriptions：将文字转换为音频，用于服务那些有视觉障碍的人。
+让其与 HTML 媒体一起显示，你需要做如下工作：
+    1、以 .vtt 后缀名保存文件。
+    2、用 <track> 标签链接 .vtt 文件， <track> 标签需放在 <audio> 或 <video> 标签当中，同时需要放在所有 <source> 标签之后。使用 kind 属性来指明是哪一种类型，如 subtitles 、
+      captions 、 descriptions。然后，使用 srclang 来告诉浏览器你是用什么语言来编写的 subtitles。
+<track>元素还有一个default属性，用于告诉浏览器，当用户打开字幕却未选择某一语言的字幕时，默认显示的字幕。
+可以使用，video.textTracks[i].mode = 'hidden'，来关闭某一个字幕，使用，video.textTracks[i].mode = 'showing'，显示某一个字幕。
+可以使用::cue伪元素来样式化字幕，但只支持部分的css属性来样式化：
+    color
+    opacity
+    visibility
+    text-decoration
+    text-shadow
+    background shorthand properties
+    outline shorthand properties
+    font shorthand properties, including line-height
+    white-space
+    ::cue {
+       color:#ccc;
+    }
+如果WebVTT文件使用了voice spans，还可以具体样式化这个voice，例如：
+    0
+    00:00:00.000 --> 00:00:12.000
+    <v Test>[Test]</v>
+    ::cue(v[voice='Test']) {
+       color:#fff;
+       background:#0095dd;
+    }
+
+当然，如果不想被媒体元素的一些浏览器兼容性所困扰，有很多带字幕的媒体播放插件可以使用，像：playr、jwplayer、MediaElement.js、Video.js等。
 
 
