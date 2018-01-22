@@ -1306,26 +1306,29 @@ HTML5 拥有多个新的表单输入类型。这些新特性提供了更好的输入控制和验证。
 并不是所有的主流浏览器都支持新的input类型，不过您已经可以在所有主流的浏览器中使用它们了。即使不被支持，仍然可以显示为常规的文本域。
 下面全面介绍这些新的输入类型：
 color：用在input字段主要用于选取颜色，chrome、firefox、opera支持。
-date：允许你从一个日期选择器选择一个日期。
-datetime：允许你选择一个日期（UTC 时间）。定义一个日期和时间控制器（本地时间）。
-datetime-local：允许你选择一个日期和时间 (无时区)。
+date：允许你从一个日期选择器选择一个日期。chrome、firefox、opera、safari支持。
+datetime：允许你选择一个日期（UTC 时间）。定义一个日期和时间控制器（本地时间）。safari支持。
+datetime-local：允许你选择一个日期和时间 (无时区)。chrome、safari、opera支持。
 email：用于应该包含 e-mail 地址的输入域。iPhone 中的 Safari 浏览器支持 email 输入类型，并通过改变触摸屏键盘来配合它（添加 @ 和 .com 选项）。在提交表单时，会自动验证 email 域的
-      值是否合法有效。
-month：允许你选择一个月份。定义月与年 (无时区)。
+      值是否合法有效。chrome、firefox、opera、IE支持，且会对其进行验证。
+month：允许你选择一个月份。定义月与年 (无时区)。chrome、safari、opera支持。
 number：用于应该包含数值的输入域。定义一个数值输入域(限定)。您还能够设定对所接受的数字的限定。使用下面的属性来规定对数字类型的限定：
         max- 规定允许的最大值。
         min - 规定允许的最小值。
         step - 规定合法的数字间隔（如果 step="3"，则合法的数是 -3,0,3,6 等）。
         value - 规定默认值。
+        chrome、firefox、opera、IE支持且验证，safari支持不验证。
 range：range 类型用于应该包含一定范围内数字值的输入域。range类型显示为滑动条。定义一个不需要非常精确的数值（类似于滑块控制）。使用下面的属性来规定对数字类型的限定：
         max - 规定允许的最大值。
         min - 规定允许的最小值。
         step - 规定合法的数字间隔。
         value - 规定默认值。
-search：用于搜索域，比如站点搜索或 Google 搜索。
-tel：定义输入电话号码字段。
-time：允许你选择一个时间。定义可输入时间控制器（无时区）。
+        均支持。
+search：用于搜索域，比如站点搜索或 Google 搜索。均支持。
+tel：定义输入电话号码字段。均支持。若要对特定号码类型进行验证，需要自己写验证。
+time：允许你选择一个时间。定义可输入时间控制器（无时区）。chrome、firefox、safari、opera支持。
 url：用于应该包含 URL 地址的输入域。在提交表单时，会自动验证 url 域的值。iPhone 中的 Safari 浏览器支持 url 输入类型，并通过改变触摸屏键盘来配合它（添加 .com 选项）。
-week：允许你选择周和年。
+    chrome、firefox、opera、IE支持且验证（输入需包含http://）。
+week：允许你选择周和年。chrome、safari、opera支持。
 
 

@@ -2,157 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a784cf40-c442-4ebc-88a3-db708e268dc0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/AlphaBar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/Bars.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/Maps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/NoColor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/bar-opacity.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/map-opacity.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/mappoint.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/picker.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/preview-opacity.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/images/rangearrows.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_day.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_day_meridian.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_decade.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_full.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_hour.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_hour_meridian.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_month.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/screenshot/standard_year.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testgit2/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/keyboard_navigation/2011.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/mouse_navigation/2011.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/keyboard_navigation/2012.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/mouse_navigation/2012.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/ChangeLog.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/Example.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/ReadMe.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/_coverage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/keyboard_navigation/all.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/mouse_navigation/all.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.az.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.bn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ee.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.hy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ka.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ko.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.nb.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.pt-BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.rs-latin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.rs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.th.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ua.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.uk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/build/build.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/build/build_standalone.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/component.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/coverage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/less/datetimepicker.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/events.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/formats.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/js/html5shiv.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notes/html参考手册" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/inline.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/css/jPicker-1.1.6.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/css/jPicker-1.1.6.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/jPicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/jpicker-1.1.6.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/jpicker-1.1.6.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/color_picker/jpicker-1.1.6/jquery-1.4.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/jquery-1.7.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v2/jquery/jquery-1.8.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/sample in bootstrap v3/jquery/jquery-1.8.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/minify.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testgit2/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/mock.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testgit2/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/suites/options.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/qunit-logging.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/qunit.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/qunit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/css/reset-min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/run-qunit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testgit2/.idea/testgit2.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/tests.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/tests.min.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/tests/assets/utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testgit2/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testgit2/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notes/html5_notes" afterPath="$PROJECT_DIR$/notes/html5_notes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html5_review/js/html5_review.js" afterPath="$PROJECT_DIR$/html5_review/js/html5_review.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html5_review/html_review.html" afterPath="$PROJECT_DIR$/html5_review/html_review.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="review.iws" />
@@ -174,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="html_review.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="html_review.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html5_review/html_review.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="79" column="10" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+            <state vertical-scroll-proportion="-4.9583335">
+              <caret line="88" column="117" selection-start-line="88" selection-start-column="117" selection-end-line="88" selection-end-column="117" />
               <folding>
                 <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -220,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="html5_notes" pinned="false" current-in-tab="false">
+      <file leaf-file-name="html5_notes" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notes/html5_notes">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1319" column="32" selection-start-line="1319" selection-start-column="32" selection-end-line="1319" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.59799">
+              <caret line="1321" column="23" selection-start-line="1321" selection-start-column="23" selection-end-line="1321" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -259,12 +110,12 @@
         <option value="$PROJECT_DIR$/html5_review/track/secret1.vtt" />
         <option value="$PROJECT_DIR$/html5_review/js/videoAndAudio.js" />
         <option value="$PROJECT_DIR$/html5_review/videoAndAudio.html" />
-        <option value="$PROJECT_DIR$/notes/html5_notes" />
         <option value="$PROJECT_DIR$/notes/html参考手册" />
         <option value="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" />
         <option value="$PROJECT_DIR$/html5_review/plugins/datatimepicker/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" />
-        <option value="$PROJECT_DIR$/html5_review/html_review.html" />
         <option value="$PROJECT_DIR$/html5_review/js/html5_review.js" />
+        <option value="$PROJECT_DIR$/html5_review/html_review.html" />
+        <option value="$PROJECT_DIR$/notes/html5_notes" />
       </list>
     </option>
   </component>
@@ -367,202 +218,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="track" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatimepicker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatimepicker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-datetimepicker-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatimepicker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-datetimepicker-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample in bootstrap v3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatimepicker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-datetimepicker-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample in bootstrap v3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatimepicker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-datetimepicker-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html5_review" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -741,15 +396,22 @@
       <option name="project" value="LOCAL" />
       <updated>1516185142936</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update">
+      <created>1516598243915</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1516598243915</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13142438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13142438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -757,7 +419,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1059,14 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes/html5_notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1319" column="32" selection-start-line="1319" selection-start-column="32" selection-end-line="1319" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html5_review/css/reset-min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17326732">
@@ -1079,6 +732,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10050251">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,6 +740,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41884816">
           <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,6 +756,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,6 +780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="2770" column="21" selection-start-line="2770" selection-start-column="6" selection-end-line="2770" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,7 +789,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1159,11 +816,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html5_review/html_review.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="10" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+        <state vertical-scroll-proportion="-4.9583335">
+          <caret line="88" column="117" selection-start-line="88" selection-start-column="117" selection-end-line="88" selection-end-column="117" />
           <folding>
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/html5_notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59799">
+          <caret line="1321" column="23" selection-start-line="1321" selection-start-column="23" selection-end-line="1321" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
