@@ -1301,4 +1301,31 @@ WebVTT ÊÇÒ»¸ö¸ñÊ½£¬ÓÃÀ´±àÐ´ÎÄ±¾ÎÄ¼þ£¬Õâ¸öÎÄ±¾ÎÄ¼þ°üº¬ÁËÖÚ¶àµÄ×Ö·û´®£¬ÕâÐ©×Ö·û´®»
 
 µ±È»£¬Èç¹û²»Ïë±»Ã½ÌåÔªËØµÄÒ»Ð©ä¯ÀÀÆ÷¼æÈÝÐÔËùÀ§ÈÅ£¬ÓÐºÜ¶à´ø×ÖÄ»µÄÃ½Ìå²¥·Å²å¼þ¿ÉÒÔÊ¹ÓÃ£¬Ïñ£ºplayr¡¢jwplayer¡¢MediaElement.js¡¢Video.jsµÈ¡£
 
+9¡¢inputÐÂÀàÐÍ£º
+HTML5 ÓµÓÐ¶à¸öÐÂµÄ±íµ¥ÊäÈëÀàÐÍ¡£ÕâÐ©ÐÂÌØÐÔÌá¹©ÁË¸üºÃµÄÊäÈë¿ØÖÆºÍÑéÖ¤¡£
+²¢²»ÊÇËùÓÐµÄÖ÷Á÷ä¯ÀÀÆ÷¶¼Ö§³ÖÐÂµÄinputÀàÐÍ£¬²»¹ýÄúÒÑ¾­¿ÉÒÔÔÚËùÓÐÖ÷Á÷µÄä¯ÀÀÆ÷ÖÐÊ¹ÓÃËüÃÇÁË¡£¼´Ê¹²»±»Ö§³Ö£¬ÈÔÈ»¿ÉÒÔÏÔÊ¾Îª³£¹æµÄÎÄ±¾Óò¡£
+ÏÂÃæÈ«Ãæ½éÉÜÕâÐ©ÐÂµÄÊäÈëÀàÐÍ£º
+color£ºÓÃÔÚinput×Ö¶ÎÖ÷ÒªÓÃÓÚÑ¡È¡ÑÕÉ«£¬chrome¡¢firefox¡¢operaÖ§³Ö¡£
+date£ºÔÊÐíÄã´ÓÒ»¸öÈÕÆÚÑ¡ÔñÆ÷Ñ¡ÔñÒ»¸öÈÕÆÚ¡£
+datetime£ºÔÊÐíÄãÑ¡ÔñÒ»¸öÈÕÆÚ£¨UTC Ê±¼ä£©¡£¶¨ÒåÒ»¸öÈÕÆÚºÍÊ±¼ä¿ØÖÆÆ÷£¨±¾µØÊ±¼ä£©¡£
+datetime-local£ºÔÊÐíÄãÑ¡ÔñÒ»¸öÈÕÆÚºÍÊ±¼ä (ÎÞÊ±Çø)¡£
+email£ºÓÃÓÚÓ¦¸Ã°üº¬ e-mail µØÖ·µÄÊäÈëÓò¡£iPhone ÖÐµÄ Safari ä¯ÀÀÆ÷Ö§³Ö email ÊäÈëÀàÐÍ£¬²¢Í¨¹ý¸Ä±ä´¥ÃþÆÁ¼üÅÌÀ´ÅäºÏËü£¨Ìí¼Ó @ ºÍ .com Ñ¡Ïî£©¡£ÔÚÌá½»±íµ¥Ê±£¬»á×Ô¶¯ÑéÖ¤ email ÓòµÄ
+      ÖµÊÇ·ñºÏ·¨ÓÐÐ§¡£
+month£ºÔÊÐíÄãÑ¡ÔñÒ»¸öÔÂ·Ý¡£¶¨ÒåÔÂÓëÄê (ÎÞÊ±Çø)¡£
+number£ºÓÃÓÚÓ¦¸Ã°üº¬ÊýÖµµÄÊäÈëÓò¡£¶¨ÒåÒ»¸öÊýÖµÊäÈëÓò(ÏÞ¶¨)¡£Äú»¹ÄÜ¹»Éè¶¨¶ÔËù½ÓÊÜµÄÊý×ÖµÄÏÞ¶¨¡£Ê¹ÓÃÏÂÃæµÄÊôÐÔÀ´¹æ¶¨¶ÔÊý×ÖÀàÐÍµÄÏÞ¶¨£º
+        max- ¹æ¶¨ÔÊÐíµÄ×î´óÖµ¡£
+        min - ¹æ¶¨ÔÊÐíµÄ×îÐ¡Öµ¡£
+        step - ¹æ¶¨ºÏ·¨µÄÊý×Ö¼ä¸ô£¨Èç¹û step="3"£¬ÔòºÏ·¨µÄÊýÊÇ -3,0,3,6 µÈ£©¡£
+        value - ¹æ¶¨Ä¬ÈÏÖµ¡£
+range£ºrange ÀàÐÍÓÃÓÚÓ¦¸Ã°üº¬Ò»¶¨·¶Î§ÄÚÊý×ÖÖµµÄÊäÈëÓò¡£rangeÀàÐÍÏÔÊ¾Îª»¬¶¯Ìõ¡£¶¨ÒåÒ»¸ö²»ÐèÒª·Ç³£¾«È·µÄÊýÖµ£¨ÀàËÆÓÚ»¬¿é¿ØÖÆ£©¡£Ê¹ÓÃÏÂÃæµÄÊôÐÔÀ´¹æ¶¨¶ÔÊý×ÖÀàÐÍµÄÏÞ¶¨£º
+        max - ¹æ¶¨ÔÊÐíµÄ×î´óÖµ¡£
+        min - ¹æ¶¨ÔÊÐíµÄ×îÐ¡Öµ¡£
+        step - ¹æ¶¨ºÏ·¨µÄÊý×Ö¼ä¸ô¡£
+        value - ¹æ¶¨Ä¬ÈÏÖµ¡£
+search£ºÓÃÓÚËÑË÷Óò£¬±ÈÈçÕ¾µãËÑË÷»ò Google ËÑË÷¡£
+tel£º¶¨ÒåÊäÈëµç»°ºÅÂë×Ö¶Î¡£
+time£ºÔÊÐíÄãÑ¡ÔñÒ»¸öÊ±¼ä¡£¶¨Òå¿ÉÊäÈëÊ±¼ä¿ØÖÆÆ÷£¨ÎÞÊ±Çø£©¡£
+url£ºÓÃÓÚÓ¦¸Ã°üº¬ URL µØÖ·µÄÊäÈëÓò¡£ÔÚÌá½»±íµ¥Ê±£¬»á×Ô¶¯ÑéÖ¤ url ÓòµÄÖµ¡£iPhone ÖÐµÄ Safari ä¯ÀÀÆ÷Ö§³Ö url ÊäÈëÀàÐÍ£¬²¢Í¨¹ý¸Ä±ä´¥ÃþÆÁ¼üÅÌÀ´ÅäºÏËü£¨Ìí¼Ó .com Ñ¡Ïî£©¡£
+week£ºÔÊÐíÄãÑ¡ÔñÖÜºÍÄê¡£
+
 
