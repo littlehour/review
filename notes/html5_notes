@@ -1331,4 +1331,45 @@ url：用于应该包含 URL 地址的输入域。在提交表单时，会自动验证 url 域的值。iPhone 
     chrome、firefox、opera、IE支持且验证（输入需包含http://）。
 week：允许你选择周和年。chrome、safari、opera支持。
 
+10、新的表单元素：
+HTML5 有以下新的表单元素:
+    <datalist>：规定了输入域的选项列表。<datalist>规定form或input域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项。使用 <input> 元素的列
+                表属性与 <datalist> 元素id属性绑定即可。chrome、firefox、opera、IE支持。
+    <keygen>：作用是提供一种验证用户的可靠方法。<keygen>标签规定用于表单的密钥对生成器字段。当提交表单时，会生成两个键，一个是私钥，一个公钥。私钥（private key）存储于客户端，公钥
+             （public key）则被发送到服务器。公钥可用于之后验证用户的客户端证书（client certificate）。
+    <output>：用于不同类型的输出，比如计算或脚本输出。chrome、firefox、opera、safari支持。
+注意:不是所有的浏览器都支持HTML5新的表单元素，但是你可以使用它们，即使浏览器不支持表单属性，仍然可以显示为常规的表单元素。
+
+11、表单新属性：
+HTML5 新的表单属性：HTML5 的 <form> 和 <input>标签添加了几个新属性.
+<form>新属性：
+    autocomplete：规定 form 或 input 域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项。autocomplete 属性有可能在 form元素中是开启的，而在
+                 input元素中是关闭的。autocomplete 适用于 <form> 标签，以及以下类型的 <input> 标签：text, search, url, telephone, email, password, datepickers, range
+                 以及 color。某些浏览器中，您可能需要启用自动完成功能，以使该属性生效。chrome、firefox、opera、IE支持。
+    novalidate：是一个boolean值，规定在提交表单时不应该验证 form 或 input 域。chrome、firefox、IE、opera支持。safari本身就不验证，不知道是不是未设置验证功能。
+<input>新属性：
+    autocomplete：规定 form 或 input 域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项。autocomplete 属性有可能在 form元素中是开启的，而在
+                 input元素中是关闭的。autocomplete 适用于 <form> 标签，以及以下类型的 <input> 标签：text, search, url, telephone, email, password, datepickers, range
+                 以及 color。某些浏览器中，您可能需要启用自动完成功能，以使该属性生效。chrome、firefox、opera、IE支持。
+    autofocus：是一个 boolean 属性。规定在页面加载时，域自动地获得焦点。均支持，对于多个域使用该属性时，那个域获取焦点表现不一致。safari为最后一个，其他为第一个。
+    form：规定输入域所属的一个或多个表单。如需引用一个以上的表单，请使用空格分隔的列表。chrome、firefox、safari、opera支持，但只支持一个表单。
+    formaction：用于描述表单提交的URL地址。会覆盖<form> 元素中的action属性。用于 type="submit" 和 type="image"。均支持。
+    formenctype：描述了表单提交到服务器的数据编码 (只对form表单中 method="post" 表单)。会覆盖form元素的enctype属性。该属性与 type="submit" 和 type="image" 配合使用。均支持。
+    formmethod：定义了表单提交的方式。会覆盖了 <form> 元素的的method 属性。该属性可以与 type="submit" 和 type="image" 配合使用。均支持。
+    formnovalidate：是一个 boolean 属性。描述了 <input> 元素在表单提交时无需被验证。会覆盖 <form> 元素的novalidate属性。与type="submit”一起使用。均支持。
+    formtarget：指定一个名称或一个关键字来指明表单提交数据接收后的展示。会覆盖 <form>元素的target属性.与type="submit" 和 type="image"配合使用。均支持。
+    height and width：规定用于 image 类型的 <input> 标签的图像高度和宽度。只适用于 image 类型的<input> 标签。图像通常会同时指定高度和宽度属性。如果图像设置高度和宽度，图像所需
+                     的空间 在加载页时会被保留。如果没有这些属性， 浏览器不知道图像的大小，并不能预留适当的空间。图片在加载过程中会使页面布局效果改变（尽管图片已加载）。均支持。
+    list：规定输入域的datalist。datalist是输入域的选项列表。chrome、firefox、opera、IE支持。
+    min and max：用于为包含数字或日期的input类型规定限定（约束）。适用于以下类型的 <input> 标签：datepickers、number 以及 range。均支持。
+    multiple：是一个 boolean 属性。规定<input> 元素中可选择多个值。适用于以下类型的<input> 标签：email 和 file。均支持。
+    pattern (regexp)：描述了一个正则表达式用于验证<input> 元素的值。适用于以下类型的<input> 标签: text, search, url, tel, email, 和 password。使用全局title属性描述了模式。
+                     chrome、IE、firefox、opera支持。
+    placeholder：提供一种提示，描述输入域所期待的值。简短的提示在用户输入值前会显示在输入域上。适用于以下类型的<input> 标签：text, search, url, telephone, email 以及 password。
+                chrome、IE、safari、firefox、opera支持。
+    required：是一个 boolean属性。规定必须在提交之前填写输入域（不能为空）。适用于以下类型的<input> 标签：text, search, url, telephone, email, password, date pickers,
+             number, checkbox, radio 以及 file。chrome、IE、firefox、opera支持。
+    step：为输入域规定合法的数字间隔。如果 step="3"，则合法的数是 -3,0,3,6 等。可以与 max 和 min 属性创建一个区域值。与以下type类型一起使用: number, range, date, datetime,
+         datetime-local, month, time 和 week。chrome、IE、safari、firefox、opera支持。
+
 
