@@ -225,4 +225,141 @@ $(function(){
             }
         }
     });
+
+    //web存储
+    if(typeof localStorage!=='undefined') {
+        $('#choose').jPicker({
+            window: {
+                expandable: true,
+                alphaSupport: true,
+                alphaPrecision: 2,
+                position: {
+                    x: '106px',
+                    y: 'top'
+                },
+                title: 'pick a color'
+            }
+        }, function (color, context) {
+            //console.log(color.val('ahex'));
+            $('#div').css('background-color', '#' + color.val('hex'));
+            localStorage.setItem('bgColor', '#' + color.val('hex'));
+        }, function (color, context) {
+            $('#div').css('background-color', '#' + color.val('hex'));
+        });
+        $('#div').css('background-color', localStorage.getItem('bgColor'));
+    }
+
+    if(typeof localStorage!=='undefined') {
+        $('#choose1').jPicker({
+            window: {
+                expandable: true,
+                alphaSupport: true,
+                alphaPrecision: 2,
+                position: {
+                    x: '106px',
+                    y: 'top'
+                },
+                title: 'pick a color'
+            }
+        }, function (color, context) {
+            //console.log(color.val('ahex'));
+            $('#div1').css('background-color', '#' + color.val('hex'));
+            sessionStorage.setItem('bgColor', '#' + color.val('hex'));
+        }, function (color, context) {
+            $('#div1').css('background-color', '#' + color.val('hex'));
+        });
+        $('#div1').css('background-color', sessionStorage.getItem('bgColor'));
+    }
+
+    //web sql
+    //var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+    //var msg;
+    //
+    //db.transaction(function (tx) {
+    //    tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+    //    tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "W3Cschool教程")');
+    //    tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.w3cschool.cn")');
+    //    msg = '<p>数据表已创建，且插入了两条数据。</p>';
+    //    document.querySelector('#status').innerHTML =  msg;
+    //});
+    //
+    //db.transaction(function (tx) {
+    //    tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+    //    msg = '<p>删除 id 为 1 的记录。</p>';
+    //    document.querySelector('#status').innerHTML =  msg;
+    //});
+    //
+    //db.transaction(function (tx) {
+    //    tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cn\' WHERE id=2');
+    //    msg = '<p>更新 id 为 2 的记录。</p>';
+    //    document.querySelector('#status').innerHTML =  msg;
+    //});
+    //
+    //db.transaction(function (tx) {
+    //    tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+    //        var len = results.rows.length, i;
+    //        msg = "<p>查询记录条数: " + len + "</p>";
+    //        document.querySelector('#status').innerHTML +=  msg;
+    //
+    //        for (i = 0; i < len; i++){
+    //            msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+    //            document.querySelector('#status').innerHTML +=  msg;
+    //        }
+    //    }, null);
+    //});
+
+    //web worker
+    var w;
+    $('#startCount').click(function(){
+        if(typeof Worker!=='undefined'){
+            if(typeof w==='undefined'){
+                w=new Worker('js/webWorkerTest.js');
+                w.onmessage=function(e){
+                    $('#count').html(e.data);
+                }
+            }
+        }else{
+            $('#count').html('您的浏览器不支持web worker!');
+        }
+
+        //var i=0;
+        //function countNumber(){
+        //    i+=1;
+        //    $('#count').html(i);
+        //    w=setTimeout(countNumber,500);
+        //}
+        //countNumber();
+    });
+    $('#stopCount').click(function(){
+        w.terminate();
+        //clearTimeout(w);
+    });
+
+    //HTML5服务器发送事件(Server-Sent Events)
+    var text;
+    if(typeof (EventSource)!=='undefined') {
+        var es = new EventSource('server/sseTest.asp');
+        //console.log(typeof es.onmessage);
+        es.onmessage=function (e) {
+            console.log('test');
+            $('#sseData')[0].innerHTML+=e.data + "<br>";
+        };
+        //es.addEventListener('message',function(e){
+        //    $('#sseData')[0].innerHTML+=e.data + "<br>";
+        //},false);
+    }
+    //$.ajax({
+    //    url:'server/sseTest.asp',
+    //    dataType:'text',
+    //    type:'post',
+    //    data:{
+    //        ll:'ll'
+    //    },
+    //    success:function(data){
+    //        console.log(data);
+    //    },
+    //    error:function(e){
+    //        console.log(e);
+    //    }
+    //});
 });

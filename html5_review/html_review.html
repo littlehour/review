@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--<html lang="zh-CN" manifest="manifest/test.appcache">-->
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -159,6 +160,58 @@
         <p><input type="submit" formaction="#form2" formenctype="multipart/form-data" formmethod="post" formtarget="_blank" /></p>
     </form>
     <p>请输入：<input type="text" form="form2" name="input" /></p>
+    <br />
+    <div>/*------HTML5语义元素------*/</div>
+    <section>
+        <h1>WWF</h1>
+        <p>The World Wide Fund for Nature (WWF) is....</p>
+    </section>
+    <article>
+        <h1>Internet Explorer 9</h1>
+        <p>Windows Internet Explorer 9 (abbreviated as IE9) was released to the  public on March 14, 2011 at 21:00 PDT.....</p>
+    </article>
+    <nav>
+        <a href="#">HTML</a> |
+        <a href="#">CSS</a> |
+        <a href="#">JavaScript</a> |
+        <a href="#">jQuery</a>
+    </nav>
+    <p>My family and I visited The Epcot center this summer.</p>
+    <aside>
+        <h4>Epcot Center</h4>
+        <p>The Epcot Center is a theme park in Disney World, Florida.</p>
+    </aside>
+    <article>
+        <header>
+            <h1>Internet Explorer 9</h1>
+            <p><time datetime="2011-03-15"></time></p>
+        </header>
+        <p>Windows Internet Explorer 9 (abbreviated as IE9) was released to the  public on March 14, 2011 at 21:00 PDT.....</p>
+    </article>
+    <figure>
+        <img src="images/04.jpg" alt="The Pulpit Rock" width="304" height="228">
+        <figcaption>Fig1. - The Pulpit Pock, Norway.</figcaption>
+    </figure>
+    <footer>
+        <p>Posted by: Hege Refsnes</p>
+        <p><time datetime="2012-03-01"></time></p>
+    </footer>
+    <br />
+    <div>/*------HTML5 Web存储------*/</div>
+    <div id="div" style="width:200px;height:200px;background-color: gray"></div>
+    <p><span id="choose">选择一个您喜欢的肤色：</span></p>
+    <div id="div1" style="width:200px;height:200px;background-color: purple"></div>
+    <p><span id="choose1">选择一个您喜欢的肤色：</span></p>
+    <br />
+    <div>/*------HTML5 Web SQL------*/</div>
+    <div id="status">状态信息</div>
+    <br />
+    <div>/*------HTML5 Web Worker------*/</div>
+    <p>计数：<span id="count"></span></p>
+    <p><button id="startCount">开始计数</button><button id="stopCount">停止计数</button></p>
+    <br />
+    <div>/*------HTML5服务器发送事件(Server-Sent Events)------*/</div>
+    <div id="sseData"></div>
     <script src="js/html5_review.js"></script>
 </body>
 </html>

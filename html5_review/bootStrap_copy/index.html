@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>首页</title>
+    <link href="../plugins/datatimepicker/bootstrap-datetimepicker-master/sample%20in%20bootstrap%20v3/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" />
+</head>
+<body>
+<header id="header">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-7">
+                    <div class="navbar-header">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <button class="navbar-toggle collapsed" type="button" id="toggle">
+                                    <span class="sr-only">菜单</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span id="menu">菜单</span>
+                                </button>
+                            </div>
+                            <div class="col-xs-3">
+                                <a href="#" class="navbar-brand"><img class="logo" src="images/logo.svg" alt="starbucks" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div id="account">
+                        星享俱乐部<br /><a class="nav-word" href="#">登录</a>或<a class="nav-word" href="#">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div id="wrap"></div>
+<div class="collapse" id="collapse1">
+    <!--<div id="wrap1">-->
+        <ul class="nav navbar-nav">
+        <li><a href="#">English</a></li>
+        <li><a href="#">星巴克门店</a></li>
+        <li><a href="#">上海烘焙工坊</a></li>
+        <li><a href="#">天猫旗舰店</a></li>
+        <li class="divider" role="separator"></li>
+        <li><a href="#">首页</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" role="button" id="new">
+                新品推荐
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="new">
+                <li><a href="#">当季新品</a></li>
+                <li><a href="#">咖啡融合冰淇淋</a></li>
+                <li><a href="#">冷翠冰咖啡</a></li>
+                <li><a href="#">气致™冷萃咖啡</a></li>
+                <li><a href="#">早安新一天</a></li>
+                <li><a href="#">星巴克ORIGAMI™</a></li>
+            </ul>
+        </li>
+        <li><a href="#">星享俱乐部</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" aria-haspopup="true" role="button" id="club">
+                星巴克移动应用
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="club">
+                <li><a href="#">星巴克移动应用</a></li>
+                <li><a href="#">星巴克Apple Watch</a></li>
+            </ul>
+        </li>
+        <li><a href="#">星礼卡</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" aria-haspopup="true" role="button" id="gift">
+                咖啡文化
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="gift">
+                <li><a href="#">咖啡文化</a></li>
+                <li><a href="#">星巴克臻选™咖啡</a></li>
+                <li><a href="#">如何冲泡咖啡</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" aria-haspopup="true" role="button" id="foods">
+                饮品美食
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="foods">
+                <li><a href="#">饮品</a></li>
+                <li><a href="#">星巴克美食</a></li>
+                <li><a href="#">星巴克咖啡</a></li>
+                <li><a href="#">星巴克VIA®免煮咖啡</a></li>
+                <li><a href="#">茶瓦纳™</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" aria-haspopup="true" role="button" id="about">
+                关于我们
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="about">
+                <li><a href="#">企业文化</a></li>
+                <li><a href="#">我们的使命和价值观</a></li>
+                <li><a href="#">星巴克责任</a></li>
+                <li><a href="#">工作在星巴克中国</a></li>
+                <li><a href="#">加入星巴克</a></li>
+                <li><a href="#">星巴克在中国</a></li>
+                <li><a href="#">历史回顾</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" aria-haspopup="true" role="button" id="help">
+                帮助中心
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="help">
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="#">使用条款</a></li>
+                <li><a href="#">隐私权政策</a></li>
+            </ul>
+        </li>
+
+    </ul>
+    <!--</div>-->
+</div>
+
+<div id="content">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="#" class="ad">
+                    <img src="images/ad01.jpg" alt="ad01">
+                    <div class="carousel-caption">
+                        了解更多>>
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#" class="ad">
+                    <img src="images/ad01.jpg" alt="ad02">
+                    <div class="carousel-caption">
+                        了解更多>>
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#" class="ad">
+                    <img src="images/ad01.jpg" alt="ad03">
+                    <div class="carousel-caption">
+                        了解更多>>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="rewards">
+        <div class="rewards-mark">
+            <p class="rewards-mark-label">星享卡</p>
+            <div class="rewards-mark-logo"></div>
+        </div>
+        <div class="rewards-content">
+            <p class="rewards-content-title">星享俱乐部</p>
+            <p class="rewards-content-text">开启您的星享之旅，星星越多、会员等级越高、好礼越丰富</p>
+            <div class="rewards-content-buttons">
+                <a href="#" class="btn btn-lg btn-primary" type="button">注册</a>
+                <a href="#" class="btn btn-lg btn-primary" type="button">登录</a>
+                <a href="#" class="rewards-content-buttons-link" type="button">了解更多>></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app">
+        <div class="app-pc">
+            <img src="images/app-web.png" alt="..." />
+            <div class="app-download-qrcode">
+                <img src="images/app_qr_20171115.png" />
+            </div>
+            <div class="content-info">
+                <p>下载全新星巴克中国官方APP，开启更便捷的星巴克体验。</p>
+                <a href="#" class="app-content-link pc-link" type="button">了解更多>></a>
+            </div>
+        </div>
+        <div class="app-mobile">
+            <img src="images/app-mobile.png" alt="..." />
+            <p>下载全新星巴克中国官方APP，开启更便捷的星巴克体验。</p>
+            <a href="#" class="app-content-link pc-link" type="button">了解更多>></a><br/>
+            <a href="#" class="btn btn-lg btn-primary app-content-unibutton" type="button"></a>
+        </div>
+    </div>
+    
+    <div class="mosaic">
+        <a href="#" class="product">
+            <img src="images/tmall-banner-20180109104542.jpg" alt="..." />
+            <div class="descr-cont">
+                <h3><span style="color: #000000">星巴克天猫旗舰店</span></h3>
+                <h2><span style="color: #D81026">冬日・暖意相随</span></h2>
+            </div>
+        </a>
+        <a href="#" class="product">
+            <img src="images/FT-Grid%20(2)-20170328191448.jpg" alt="..." />
+            <div class="descr-cont">
+                <h3 style="color: #a98e67">气致™冷萃咖啡</h3>
+                <h2 style="color: #fffffe;">如天鹅绒般丝滑</h2>
+            </div>
+        </a>
+    </div>
+</div>
+
+<footer class="page-footer cn" id="footer">
+    <div class="container">
+        <!-- Row 1 -->
+        <div class="page-footer-row">
+            <div class="item">
+                <a class="item-title">最新资讯</a>
+                <div class="item-content">
+                    <a class="item-link" href="/cn/new-at-starbucks/cny-2018" id="footer-">当季新品</a>
+                    <a class="item-link" href="/cn/new-at-starbucks/coffee-meets-ice-cream" id="footer-">咖啡融合冰淇淋</a>
+                    <a class="item-link" href="/cn/new-at-starbucks/cold-brew" id="footer-">冷萃冰咖啡</a>
+                    <a class="item-link" href="/cn/new-at-starbucks/nitro-cold-brew" id="footer-">气致™冷萃咖啡</a>
+                    <a class="item-link" href="/cn/new-at-starbucks/great-breakfast" id="footer-">早安新一天</a>
+                    <a class="item-link" href="/cn/new-at-starbucks/origami" id="footer-new-2">星巴克ORIGAMI™</a>
+
+                </div>
+            </div>
+            <div class="item">
+                <a class="item-title">菜单</a>
+                <div class="item-content">
+                    <a class="item-link" href="/cn/menu/beverages" id="footer-menu-1">饮品</a>
+                    <a class="item-link" href="/cn/menu/food" id="footer-menu-2">星巴克美食</a>
+                    <a class="item-link" href="/cn/menu/our-coffees" id="footer-menu-3">星巴克咖啡</a>
+                    <a class="item-link" href="/cn/menu/via" id="footer-menu-4">星巴克VIA® 免煮咖啡</a>
+                    <a class="item-link" href="/cn/menu/teavana" id="footer-menu-5">茶瓦纳™</a>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <a class="item-title" href="/cn/rewards" id="footer-reward">星享卡</a>
+                <div id="msr-logged-out" class="item-content">
+                    <a class="item-link" href="/cn/log-in" id="footer-reward-login">登录帐户</a>
+                    <a class="item-link" href="/cn/create-account" id="footer-reward-signup">注册星享卡</a>
+                    <a class="item-link" href="/cn/forget-password" id="footer-reward-forgot">忘记密码</a>
+                    <a class="item-link" href="/cn/account/manage-msr" id="footer-reward-report">报失星享卡</a>
+                    <a class="item-link desktop-only" id="footer-reward-purchase" target="_blank" href="https://starbucks.tmall.com/search.htm?spm=a1z10.1-b.w4006-14489348233.4.6XB3CU&amp;orderType=&amp;viewType=grid&amp;keyword=%D0%C7%CF%ED%BF%A8&amp;lowPrice=&amp;highPrice=&amp;scene=taobao_shop">购买星享卡</a>
+                    <a class="item-link mobile-only" id="footer-reward-about" href="/cn/rewards">了解星享卡</a>
+                    <a class="item-link mobile-only" id="footer-reward-purchase" target="_blank" href="https://starbucks.m.tmall.com/shop/shop_auction_search.htm?suid=&amp;scid=1141442750&amp;sort=default&amp;spm=a320p.7692171.1998705856.i1">购买星享卡</a>
+                </div>
+                <div id="msr-logged-in" class="item-content hide">
+                    <a class="item-link" href="/cn/account" id="footer-reward-dashboard">帐户一览</a>
+                    <a class="item-link" href="/cn/account/add-msr" id="footer-reward-add">关联星享卡</a>
+                    <a class="item-link" href="/cn/account/manage-msr" id="footer-reward-report">报失星享卡</a>
+                    <a class="item-link desktop-only" id="footer-reward-purchase" target="_blank" href="https://starbucks.tmall.com/search.htm?spm=a1z10.1-b.w4006-14489348233.4.6XB3CU&amp;orderType=&amp;viewType=grid&amp;keyword=%D0%C7%CF%ED%BF%A8&amp;lowPrice=&amp;highPrice=&amp;scene=taobao_shop">购买星享卡</a>
+                    <a class="item-link mobile-only" id="footer-reward-about" href="/cn/rewards">了解星享卡</a>
+                    <a class="item-link mobile-only" id="footer-reward-purchase" target="_blank" href="https://starbucks.m.tmall.com/shop/shop_auction_search.htm?suid=&amp;scid=1141442750&amp;sort=default&amp;spm=a320p.7692171.1998705856.i1">购买星享卡</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <a class="item-title" href="/cn/starbucks-gift-card" id="footer-svc">星巴克礼品卡</a>
+                <div id="svc-logged-out" class="item-content">
+                    <a class="item-link" href="/cn/svc-query" id="footer-svc-query">管理星礼卡</a>
+                    <a class="item-link" href="/cn/invoice" id="footer-svc-fapiao">申请发票</a>
+                    <a class="item-link desktop-only" id="footer-svc-purchase" target="_blank" href="https://starbucks.world.tmall.com/p/rd993825.htm?&amp;scene=taobao_shop">购买星礼卡</a>
+                    <a class="item-link mobile-only" id="footer-svc-about" href="/cn/starbucks-gift-card">了解星礼卡</a>
+                    <a class="item-link mobile-only" id="footer-svc-purchase" target="_blank" href="https://starbucks.m.tmall.com/shop/shop_auction_search.htm?suid=&amp;scid=1141442934&amp;sort=default&amp;spm=a320p.7692171.1998705856.i1">购买星礼卡</a>
+                </div>
+                <div id="svc-logged-in" class="item-content hide">
+                    <a class="item-link" href="/cn/account/manage-svc" id="footer-svc-manage">管理星礼卡</a>
+                    <a class="item-link" href="/cn/invoice" id="footer-svc-fapiao">申请发票</a>
+                    <a class="item-link desktop-only" id="footer-svc-purchase" target="_blank" href="https://starbucks.world.tmall.com/p/rd993825.htm?&amp;scene=taobao_shop">购买星礼卡</a>
+                    <a class="item-link mobile-only" id="footer-svc-about" href="/cn/starbucks-gift-card">了解星礼卡</a>
+                    <a class="item-link mobile-only" id="footer-svc-purchase" target="_blank" href="https://starbucks.m.tmall.com/shop/shop_auction_search.htm?suid=&amp;scid=1141442934&amp;sort=default&amp;spm=a320p.7692171.1998705856.i1">购买星礼卡</a>
+                </div>
+            </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="page-footer-row">
+            <div class="item">
+                <a class="item-title">关于星巴克</a>
+                <div class="item-content">
+                    <a class="item-link" href="/cn/about/company-news" id="footer-about-1">企业新闻</a>
+                    <a class="item-link" href="/cn/about/mission-statement" id="footer-about-2">我们的使命和价值观</a>
+                    <a class="item-link" href="/cn/about/responsibility" id="footer-about-3">星巴克责任</a>
+                    <a class="item-link" href="/cn/about/working-at-starbucks" id="footer-about-4">工作在星巴克中国</a>
+                    <a class="item-link" href="/cn/about/careers" id="footer-about-5">加入星巴克</a>
+                    <a class="item-link" href="/cn/about/inchina" id="footer-about-6">星巴克在中国</a>
+                    <a class="item-link" href="/cn/about/history" id="footer-about-7">历史回顾</a>
+
+                </div>
+            </div>
+            <div class="item">
+                <a class="item-title">快捷链接</a>
+                <div class="item-content">
+                    <a class="item-link" href="https://starbucks.tmall.com" target="_blank" id="footer-link-tmall">天猫旗舰店</a>
+                    <a class="item-link" href="/cn/stores" id="footer-link-store">星巴克门店</a>
+                    <a class="item-link" href="https://roastery.starbucks.com.cn">上海烘焙工坊</a>
+                    <a class="item-link" href="/cn/help/contact" id="footer-link-contact">联系星巴克</a>
+                    <a class="item-link mobile-only" id="footer-link-app" target="_blank" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.starbucks.cn">下载手机应用</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="item-title">常见问题</a>
+                <div class="item-content">
+                    <a class="item-link" href="/cn/help/faq/my-starbucks-rewards" id="footer-ask-rewards">星享卡</a>
+                    <a class="item-link" href="/cn/help/faq/starbucks-gift-card" id="footer-ask-svc">星礼卡</a>
+                    <a class="item-link" href="/cn/help/faq/starbucks-mobile-app" id="footer-ask-app">移动应用</a>
+                    <a class="item-link" href="/cn/help/faq/starbucks-efapiao" id="footer-ask-efapiao">电子发票</a>
+                    <a class="item-link" href="https://roastery.starbucks.com.cn/e-fapiao/">上海烘焙工坊发票</a>
+
+                    <a class="item-link" href="/cn/help/faq/starbucks-website" id="footer-ask-china">星巴克中国</a>
+                </div>
+            </div>
+            <div class="item download-section cn">
+                <div class="qrcode"></div>
+                <div class="download-btns">
+                    <a href="https://itunes.apple.com/cn/app/xing-ba-ke-zhong-guo/id499819758?ls=1&amp;mt=8" target="_blank" onclick="ga_download('HP','app','download_btn');" id="footer-download-iphone" class="download-btns-btn">b</a>
+                    <a href="/cn/the-starbucks-china-app#android" target="_blank" onclick="ga_download('HP','app','download_btn');" id="footer-download-android" class="download-btns-btn">f</a>
+                </div>
+                <p class="wording">扫码下载APP</p>
+            </div>
+        </div>
+        <!-- Row 3 -->
+        <div class="page-footer-row bottom">
+            <div class="contents" id="footer-icp">
+                <p class="contents-wording">© 2018 Starbucks Corporation</p>
+                <a class="contents-wording" target="_blank" href="http://www.miitbeian.gov.cn/">All rights reserved. 沪ICP备17003747号</a>
+                <a class="contents-wording" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000318">
+                    <span class="police-img"></span> 沪公网安备 31010402000318号
+                </a>
+            </div>
+            <div class="icons" id="footer-icons">
+                <a class="wechat icon" onclick="$('#wechat_qrcode').toggle();ga('send', 'event', 'social icons', 'footer', 'weixin');" id="footer-social-wechat">
+                    <div id="wechat_qrcode" class="wechat-qrcode"></div>
+                </a>
+                <a class="weibo icon" onclick="ga('send', 'event', 'social icons', 'footer', 'weibo');" id="footer-social-weibo" href="http://www.weibo.com/starbucks" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../plugins/datatimepicker/bootstrap-datetimepicker-master/sample%20in%20bootstrap%20v3/jquery/jquery-1.8.3.min.js"></script>
+<script src="../plugins/datatimepicker/bootstrap-datetimepicker-master/sample%20in%20bootstrap%20v3/bootstrap/js/bootstrap.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

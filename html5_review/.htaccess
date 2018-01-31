@@ -1,3 +1,4 @@
 ﻿
 AddType text/vtt .vtt
 AddType video/mp4 .mp4
+AddType text/cache-manifest .appcache
