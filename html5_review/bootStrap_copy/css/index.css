@@ -583,6 +583,7 @@ p.contents-wording {
         flex-direction: column;
         align-items: stretch;
         margin-bottom: 0 !important;
+        /*display: block;*/
     }
     .item-content{
         display: none;

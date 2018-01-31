@@ -2,6 +2,12 @@
  * Created by Administrator on 2018/1/27.
  */
 $(function(){
+    //console.log(navigator.userAgent);
+    var dm=document.documentMode;
+    console.log(dm);
+    if(dm&&(dm===10||dm===11)){
+        console.log('ie10 or 11')
+    }
     var $collapse1=$('#collapse1');
     var $wrap1=$('#wrap1');
     $collapse1.css('height',document.documentElement.clientHeight+'px');
@@ -71,8 +77,8 @@ $(function(){
     var load=true;
     //console.log(beforeScroll);
     $(document).on('scroll',function(){
-        console.log(load);
-        console.log(document.readyState);
+        //console.log(load);
+        //console.log(document.readyState);
         if(!load){
             //console.log('scroll');
             if($collapse1.css('display')==='block'){
