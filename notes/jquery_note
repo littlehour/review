@@ -1,0 +1,61 @@
+1、Ajax
+    全局Ajax事件(1.9版本的jquery全局Ajax事件必须绑定在document元素上。对于跨域的script或跨域的jsonp请求，全局Ajax事件不会触发。如果调用$.ajax()或$.ajaxSetup()时，global选项
+    设置为false，则全局Ajax事件不会被触发):
+        .ajaxComplete():注册一个事件处理器，无论什么时候Ajax请求完成时触发(不管请求成功或失败)。
+            .ajaxComplete(handler)
+            handler
+            Type: Function( Event event, jqXHR jqXHR, PlainObject ajaxOptions )
+
+        .ajaxError():注册一个事件处理器，无论什么时候当Ajax请求完成发生错误时触发,先于ajaxComplete触发。
+            .ajaxError(handler)
+            handler
+            Type: Function( Event event, jqXHR jqXHR, PlainObject ajaxSettings, String thrownError )
+            thrownError:http状态的文本信息。
+
+        .ajaxSend():注册一个事件处理器，无论什么时候Ajax请求被send时触发。
+            .ajaxSend( handler )
+            handler
+            Type: Function( Event event, jqXHR jqXHR, PlainObject ajaxOptions )
+
+        .ajaxStart():注册一个事件处理器，当开始Ajax请求时触发(api 文档中说是第一次开始，不太明白这个意思)。
+            .ajaxStart( handler )
+            handler
+            Type: Function()
+
+        .ajaxStop():注册一个事件处理器，当Ajax请求完成时触发(api 文档中说是所有请求完成时，不太明白这个意思)。
+            .ajaxStop( handler )
+            handler
+            Type: Function()
+
+        .ajaxSuccess():注册一个事件处理器，无论什么时候Ajax请求成功完成时触发。
+            .ajaxSuccess( handler )
+            handler
+            Type: Function( Event event, jqXHR jqXHR, PlainObject ajaxOptions, PlainObject data )
+
+    Ajax底层接口(这些方法可以用来发起任意的Ajax请求)：
+        jQuery.ajax()：发起一个异步的http(Ajax)请求。
+            jQuery.ajax( url [, settings ] )
+            url：向那个URL发起请求。
+            settings(PlainObject类型)：一组键值对，用来配置Ajax请求。所有的配置项都是可选的。默认值可以使用$.ajaxSetup()设置。
+                accepts(PlainObject类型,默认值取决于dataType)：将dataType映射到它的MIME类型。设置Accept的请求头信息，这个请求头信息用来告诉服务器它接受什么类型的响应内容。可以
+                设置为自定义类型，设置为自定义类型时，需要使用converters键值对进行补充说明，从而让自定义类型正确工作。
+
+                async(Boolean类型，默认值为true)：默认所有请求都是使用异步的方式发送的。如果需要使用同步的方式发送请求，就将这个选项设置为false。跨域请求以及dataType设置为'jsonp'
+                的请求不支持同步操作。注意，同步操作可能会暂时锁住浏览器，用户其它操作必须等待请求完成才可以执行。从 jQuery 1.8 开始, jqXHR ($.Deferred)中使用async: false 已经过
+                时。您必须使用的success/error/complete 的回调选项代替相应的jqXHR对象的方法，比如jqXHR.done()。
+
+                beforeSend( Function( jqXHR jqXHR, PlainObject settings )类型)：请求发送前的回调函数，用来修改请求发送前jqXHR（在jQuery 1.4.x中的，XMLHttpRequest）对象，
+                此功能用来设置自定义 HTTP 头信息，等等。该jqXHR和设置对象作为参数传递。这是一个Ajax事件 。在beforeSend函数中返回false将取消这个请求。从jQuery 1.5开始，
+                beforeSend选项将被访问，不管请求的类型。
+
+                cache(Boolean类型，默认值为true，当dataType设为'script'或'jsonp'时，默认值为false)：如果设置为false时，浏览器将不会缓存请求页面。注意：将cache设置为false，只对
+                HEAD和GET请求起作用。它的工作原理是在GET请求参数中附加"_={timestamp}"（译者注：时间戳）。该参数不是其他请求所必须的，除了在IE8中，当一个POST请求一个已经用GET请求过
+                的URL。
+
+                complete(Function( jqXHR jqXHR, String textStatus )类型)：当Ajax请求完成时触发(请求success和error之后均触发)。这个回调函数接收两个参数：jqXHR (在 jQuery
+                1.4.x中是 XMLHTTPRequest) 对象和一个描述请求状态的字符串("success", "notmodified", "nocontent"，"error", "timeout", "abort", 或者 "parsererror") 。从
+                jQuery 1.5开始， complete可以设置有一组回调函数。每个函数将被依次调用。这是一个Ajax事件。
+
+                contents(PlainObject类型)：一个以"{字符串/正则表达式}"配对的对象，根据给定的内容类型，解析请求的返回结果。 (1.5新增)
+
+

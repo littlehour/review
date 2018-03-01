@@ -1593,7 +1593,7 @@ NETWORK£ºÏÂÃæµÄ NETWORK Ğ¡½Ú¹æ¶¨ÎÄ¼ş "login.php" ÓÀÔ¶²»»á±»»º´æ£¬ÇÒÀëÏßÊ±ÊÇ²»¿ÉÓ
     *
 FALLBACK£ºÏÂÃæµÄ FALLBACK Ğ¡½Ú¹æ¶¨Èç¹ûÎŞ·¨½¨Á¢ÒòÌØÍøÁ¬½Ó£¬ÔòÓÃ "offline.html" Ìæ´ú /html5/ Ä¿Â¼ÖĞµÄËùÓĞÎÄ¼ş£º
     FALLBACK:
-    /html/ /offline.html
+    /html5/ /offline.html
 ×¢Òâ: µÚÒ»¸ö URI ÊÇ×ÊÔ´£¬µÚ¶ş¸öÊÇÌæ²¹¡£
 Ò»µ©Ó¦ÓÃ±»»º´æ£¬Ëü¾Í»á±£³Ö»º´æÖ±µ½·¢ÉúÏÂÁĞÇé¿ö£º
     ÓÃ»§Çå¿Õä¯ÀÀÆ÷»º´æ
@@ -1817,3 +1817,56 @@ mod_pywebsocket ÊÇÒ»¸ö Apache HTTP µÄ Web SocketÀ©Õ¹£¬°²×°²½ÖèÈçÏÂ£º
 ÒÔÉÏÃüÁî»á¿ªÆôÒ»¸ö¶Ë¿ÚºÅÎª 9998 µÄ·şÎñ£¬Ê¹ÓÃ -w À´ÉèÖÃ´¦Àí³ÌĞò echo_wsh.py ËùÔÚµÄÄ¿Â¼¡£
 ÏÖÔÚÎÒÃÇ¿ÉÒÔÔÚ Chrome ä¯ÀÀÆ÷´ò¿ªÇ°Ãæ´´½¨µÄ w3cschool_websocket.html ÎÄ¼ş¡£Èç¹ûÄãµÄä¯ÀÀÆ÷Ö§³Ö WebSocket(), µã»÷"ÔËĞĞ WebSocket"£¬Äã¾Í¿ÉÒÔ¿´µ½Õû¸öÁ÷³Ì¸÷¸ö²½Öèµ¯³öµÄ´°¿Ú¡£ÔÚÎÒÃÇÍ£
 Ö¹·şÎñºó£¬»áµ¯³ö "Á¬½ÓÒÑ¹Ø±Õ..."¡£
+
+
+19¡¢Ò³Ãæ»º´æ£º
+¡°Cache-control¡±³£¼ûµÄÈ¡ÖµÓĞ£ºprivate¡¢no-cache¡¢max-age¡¢must-revalidateµÈ¡£
+ÍøÒ³µÄ»º´æÊÇÓÉHTTPÏûÏ¢Í·ÖĞµÄ¡°Cache-control¡±À´¿ØÖÆµÄ£¬³£¼ûµÄÈ¡ÖµÓĞprivate¡¢no-cache¡¢max-age¡¢must-revalidateµÈ£¬Ä¬ÈÏÎªprivate¡£Æä×÷ÓÃ¸ù¾İ²»Í¬µÄÖØĞÂä¯ÀÀ·½Ê½·ÖÎªÒÔÏÂ¼¸ÖÖÇé¿ö£º
+£¨1£© ´ò¿ªĞÂ´°¿Ú
+Èç¹ûÖ¸¶¨cache-controlµÄÖµÎªprivate¡¢no-cache¡¢must-revalidate£¬ÄÇÃ´´ò¿ªĞÂ´°¿Ú·ÃÎÊÊ±¶¼»áÖØĞÂ·ÃÎÊ·şÎñÆ÷¡£¶øÈç¹ûÖ¸¶¨ÁËmax-ageÖµ£¬ÄÇÃ´ÔÚ´ËÖµÄÚµÄÊ±¼äÀï¾Í²»»áÖØĞÂ·ÃÎÊ·şÎñÆ÷£¬ÀıÈç£º
+Cache-control: max-age=5
+±íÊ¾µ±·ÃÎÊ´ËÍøÒ³ºóµÄ5ÃëÄÚÔÙ´Î·ÃÎÊ²»»áÈ¥·şÎñÆ÷¡£
+£¨2£© ÔÚµØÖ·À¸»Ø³µ
+Èç¹ûÖµÎªprivate»òmust-revalidate£¨ºÍÍøÉÏËµµÄ²»Ò»Ñù£©£¬ÔòÖ»ÓĞµÚÒ»´Î·ÃÎÊÊ±»á·ÃÎÊ·şÎñÆ÷£¬ÒÔºó¾Í²»ÔÙ·ÃÎÊ¡£Èç¹ûÖµÎªno-cache£¬ÄÇÃ´Ã¿´Î¶¼»á·ÃÎÊ¡£Èç¹ûÖµÎªmax-age£¬ÔòÔÚ¹ıÆÚÖ®Ç°²»»áÖØ¸´·ÃÎÊ¡£
+£¨3£© °´ºóÍË°´Å¤
+Èç¹ûÖµÎªprivate¡¢must-revalidate¡¢max-age£¬Ôò²»»áÖØ·ÃÎÊ£¬¶øÈç¹ûÎªno-cache£¬ÔòÃ¿´Î¶¼ÖØ¸´·ÃÎÊ
+£¨4£© °´Ë¢ĞÂ°´Å¤
+ÎŞÂÛÎªºÎÖµ£¬¶¼»áÖØ¸´·ÃÎÊ
+µ±Ö¸¶¨Cache-controlÖµÎª¡°no-cache¡±Ê±£¬·ÃÎÊ´ËÒ³Ãæ²»»áÔÚInternetÁÙÊ±ÎÄÕÂ¼ĞÁôÏÂÒ³Ãæ±¸·İ¡£
+ÁíÍâ£¬Í¨¹ıÖ¸¶¨¡°Expires¡±ÖµÒ²»áÓ°Ïìµ½»º´æ¡£ÀıÈç£¬Ö¸¶¨ExpiresÖµÎªÒ»¸öÔçÒÑ¹ıÈ¥µÄÊ±¼ä£¬ÄÇÃ´·ÃÎÊ´ËÍøÊ±ÈôÖØ¸´ÔÚµØÖ·À¸°´»Ø³µ£¬ÄÇÃ´Ã¿´Î¶¼»áÖØ¸´·ÃÎÊ£º
+Expires: Fri, 31 Dec 1999 16:00:00 GMT
+ÔÚASPÖĞ£¬¿ÉÒÔÍ¨¹ıResponse¶ÔÏóµÄExpires¡¢ExpiresAbsoluteÊôĞÔ¿ØÖÆExpiresÖµ£»Í¨¹ıResponse¶ÔÏóµÄCacheControlÊôĞÔ¿ØÖÆCache-controlµÄÖµ£¬ÀıÈç£º
+Response.ExpiresAbsolute = #2000-1-1# ' Ö¸¶¨¾ø¶ÔµÄ¹ıÆÚÊ±¼ä£¬Õâ¸öÊ±¼äÓÃµÄÊÇ·şÎñÆ÷µ±µØÊ±¼ä£¬»á±»×Ô¶¯×ª»»ÎªGMTÊ±¼ä
+Response.Expires = 20  ' Ö¸¶¨Ïà¶ÔµÄ¹ıÆÚÊ±¼ä£¬ÒÔ·ÖÖÓÎªµ¥Î»£¬±íÊ¾´Óµ±Ç°Ê±¼äÆğ¹ı¶àÉÙ·ÖÖÓ¹ıÆÚ¡£
+Response.CacheControl = "no-cache"
+ExpiresÖµÊÇ¿ÉÒÔÍ¨¹ıÔÚInternetÁÙÊ±ÎÄ¼ş¼ĞÖĞ²é¿´ÁÙÊ±ÎÄ¼şµÄÊôĞÔ¿´µ½µÄ¡£
+
+Ò³Ãæ»º´æ´¦ÀíµÄ¼¸ÖÖ·½·¨£º
+htmlÖ»Òª¼ÓÔÚÍ·²¿¾Í¿ÉÒÔÁË£º
+<HEAD>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+</HEAD>
+ËµÃ÷£ºHTTPÍ·ĞÅÏ¢¡°Expires¡±ºÍ¡°Cache-Control¡±ÎªÓ¦ÓÃ³ÌĞò·şÎñÆ÷Ìá¹©ÁËÒ»¸ö¿ØÖÆä¯ÀÀÆ÷ºÍ´úÀí·şÎñÆ÷ÉÏ»º´æµÄ»úÖÆ¡£HTTPÍ·ĞÅÏ¢Expires¸æËß´úÀí·şÎñÆ÷ËüµÄ»º´æÒ³ÃæºÎÊ±½«¹ıÆÚ¡£HTTP1.1¹æ·¶ÖĞĞÂ¶¨Òå
+µÄÍ·ĞÅÏ¢Cache-Control¿ÉÒÔÍ¨Öªä¯ÀÀÆ÷²»»º´æÈÎºÎÒ³Ãæ¡£µ±µã»÷ºóÍË°´Å¥Ê±£¬ä¯ÀÀÆ÷ÖØĞÂ·ÃÎÊ·şÎñÆ÷ÒÑ»ñÈ¡Ò³Ãæ¡£ÈçÏÂÊÇÊ¹ÓÃCache-ControlµÄ»ù±¾·½·¨£º
+¡¡¡¡1) no-cache:Ç¿ÖÆ»º´æ´Ó·şÎñÆ÷ÉÏ»ñÈ¡ĞÂµÄÒ³Ãæ
+¡¡¡¡2) no-store: ÔÚÈÎºÎ»·¾³ÏÂ»º´æ²»±£´æÈÎºÎÒ³Ãæ
+¡¡¡¡HTTP1.0¹æ·¶ÖĞµÄPragma:no-cacheµÈÍ¬ÓÚHTTP1.1¹æ·¶ÖĞµÄCache-Control:no-cache£¬Í¬Ñù¿ÉÒÔ°üº¬ÔÚÍ·ĞÅÏ¢ÖĞ¡£
+ÔÚĞèÒª´ò¿ªµÄurlºóÃæÔö¼ÓÒ»¸öËæ»úµÄ²ÎÊı£º
+Ôö¼Ó²ÎÊıÇ°£ºurl=test/test.jsp
+Ôö¼Ó²ÎÊıºó£ºurl=test/test.jsp?ranparam=random()
+ËµÃ÷£ºÒòÎªÃ¿´ÎÇëÇóµÄurlºóÃæµÄ²ÎÊı²»Ò»Ñù£¬Ïàµ±ÓÚÇëÇóµÄÊÇ²»Í¬µÄÒ³Ãæ£¬ÓÃÕâÑùµÄ·½·¨À´ÇúÏß¾È¹ú£¬Çå³ı»º´æ¡£
+asp½Ì³Ì×ö·¨£º
+Response.Buffer = True
+Response.ExpiresAbsolute = Now() - 1
+Response.Expires = 0
+Response.CacheControl = "no-cache"
+Response.AddHeader "Pragma", "No-Cache"
+php½Ì³Ì×ö·¨£º
+<?php
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . 'GMT');
+header('Cache-Control: no-cache, must-revalidate');
+header('Pragma: no-cache');
+?>
